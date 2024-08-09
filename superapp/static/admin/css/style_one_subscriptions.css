@@ -1,0 +1,73 @@
+.super_adm_list1_head1{
+	display:flex;
+	justify-content:space-between;
+	flex-wrap:wrap;
+	gap:10px;
+}
+
+.super_adm_list1_head1 input[type="date"]{
+	border-radius:7px;
+	width:100%;
+	border:1px solid rgba(102, 102, 102, 0.3);
+		padding:8px 10px;
+
+}
+
+.super_adm_list1_head1 form{
+	display:flex;
+	align-items:center;
+	gap:5px;
+	flex-wrap:wrap;
+}
+
+.super_adm_list1_head1 button{
+	border-radius:7px;
+	color:white;
+	width:100%;
+	background-color:#7B61FF;
+	border:none;
+	font-weight:700;
+	padding:8px 10px;
+}
+
+.super_adm_list1_table table{
+	width:100%;
+	background-color:white;
+}
+
+.super_adm_list1_table th:last-child{
+	text-align:right;
+}
+
+.super_adm_list1_table th,td{
+	padding:30px ;
+	
+}
+
+.super_adm_list1_table td{
+	color:rgba(102, 102, 102, 1);
+	font-weight:700;
+}  
+
+.super_adm_list1_table td:last-child{
+	text-align:right;
+}
+
+@media(max-width:1065px){
+	.super_adm_list1_table th,td{
+		font-size:0.8em;
+	}
+}
+
+
+@media(max-width:966px){
+	.super_adm_list1_table th,td{
+		font-size:0.6em;
+	}
+}
+
+@media(max-width:696px){
+	.super_adm_list1_table {
+		overflow:auto;
+	}
+}

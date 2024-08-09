@@ -1,0 +1,98 @@
+.prof_personal_filt button{
+	padding:0;
+	border:none;
+	background:white !important;
+
+}
+
+
+.prof_personal_savefilt1 button {
+    border-radius: 10px;
+    padding: 9px 16px !important;
+}	
+.prof_personal_filbtn2:hover{
+	background:white;
+	transition:0.5s;
+	color:black;
+	border:1px solid black;
+}
+/*  */
+.sub{
+	background-color: white;
+}
+label.form-label.tit {
+	font-weight: 600;
+	color: #2b3674;
+}
+.titl{
+    color: #2b3674;
+    font-weight: 600;
+}
+input#typeText\ tit2 {
+    margin-top: 9px;
+}
+.prof_personal_filbtn2{
+	background: linear-gradient(63deg,blue,#b772b7 );
+	color:white;
+	transition:0.5s;
+  	border:1px solid white;
+}
+
+.prof_personal_savefilt1 button{
+	 border-radius:10px;
+	padding:7px 20px;
+}
+
+.prof_personal_filbtn2:hover{
+	background:rgb(169, 171, 189);
+	transition:0.5s;
+	color:white;
+	border:1px solid rgb(61, 63, 150);
+}
+.advr{
+	color:  rgb(186, 131, 240); 
+	font-size: small;
+}
+@media only screen and (max-width: 1206px) and (min-width: 1199px)  {
+	.advr {
+		color: rgb(186, 131, 240);
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 1198px) and (min-width: 1153px)  {
+	.advr {
+		color: rgb(186, 131, 240);
+		font-size: 15px;
+	}
+}
+
+@media only screen and (max-width: 1152px) and (min-width: 1107px)  {
+	.advr {
+		color: rgb(186, 131, 240);
+		font-size: 14px;
+	}
+}
+@media(max-width:991px){
+	.col-md-3.amt {
+		padding-top: 0px;
+	}
+}
+@media(max-width:966px){
+	.advr{
+		color:  rgb(186, 131, 240); 
+		font-size: 14px;
+	}
+}
+@media(max-width:879px){
+	.advr{
+		color:  rgb(186, 131, 240); 
+		font-size: small;
+	}
+}
+
+@media(max-width:767px){
+	.col-md-3.amt {
+		padding-top: 32px;
+	}
+}

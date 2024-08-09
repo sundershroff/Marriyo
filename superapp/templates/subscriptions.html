@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Subscription(Super User)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<!--nav bar icon-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.css" />
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_subscription.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_subscription.css'%}">
+</head>
+<body style="background-color:  #f5f3fe;">
+
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+	{% include 'adminnav.html'%}
+		
+	</div>
+
+	<div class="super_adm_chi2"> 
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static 'admin/images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+		</div>	
+	</div>
+
+
+	<div class="container">
+		<div class="row ">
+		<div class="col-12">
+		  
+			<div class="addsea mb-2 mt-4">
+				<div><h4> <span class="count">Subscription</span></h4></div>    
+				<div class="locl_adm_form">
+					{% if "Add new Subscription" in access  %}
+					<a href="/subscriptionadd/{{key.id}}"><button data-bs-toggle="modal" data-bs-target="#Addnew1" class="Addnew1">Add New <i class="bi bi-plus-circle"></i></button></a>
+					{% elif access == "" %}
+					<a href="/subscriptionadd/{{key.id}}"><button data-bs-toggle="modal" data-bs-target="#Addnew1" class="Addnew1">Add New <i class="bi bi-plus-circle"></i></button></a>
+
+					{% else %}
+					{% endif %}
+				</div>
+				</div> 
+		</div>
+	  </div>
+	  <!-- over -->
+	  <div class="row my-4">	
+		<div class="col-md-12">
+			<h5 class="Countr">
+				India
+			</h5>
+		</div>  
+		<div  class="sub_sec2 mb-3">	
+			{% for i in all_subscription %}
+			{% if i.Type_Of_Subscription == "Trial" %}
+	 
+		<div class="sub_par1">	  
+			<h4 class="my-3 text-center" style="color:#27AE60;font-weight:700;">Trial</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for {{i.Validity}})</h6>	  
+			<h3 class="mt-3 mb-5 text-center"style = "color:#27AE60;">Free</h3>	 
+			<hr class="offer1line"> 
+			<h6 class="text-center" style="color:#6E717A;">Just Profile View Only</h6>
+			<hr class="offer11line"> 
+		<div class="edittools free">
+			{% if "Edit Subscription" in access %}
+			<a href="/subedit/{{key.id}}/{{i.id}}"><button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button></a>     		
+			{% elif access == "" %}
+			<a href="/subedit/{{key.id}}/{{i.id}}"><button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button></a>     		
+
+			{% else %}
+			{% endif %}
+			{% if "Delete Subscription" in access %}
+			<form method ="POST" style="    display: contents;">
+				{% csrf_token %}
+			<button type="submit" name="delete" value="{{i.id}}" class="trassh" ><i class="bi bi-trash trashh"></i></button>	
+			</form>	
+			{% elif access == "" %}
+			<form method ="POST" style="    display: contents;">
+				{% csrf_token %}
+			<button type="submit" name="delete" value="{{i.id}}" class="trassh" ><i class="bi bi-trash trashh"></i></button>	
+			</form>	
+
+			{% else %}
+			{% endif %}
+		</div>	
+		</div>
+		{% endif %}
+		{% endfor %}
+
+	  {% for i in all_subscription %}
+	     {% if i.Type_Of_Subscription == "Basic" %}
+		  <div class="sub_par2 ">	  
+			<h4 class="my-3 text-center" style="color:#56CCF2;font-weight:700;">Basic</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for {{i.Validity}}))</h6>
+			{{i.Validity_from|date:"Y-m-d"}}	  
+			<h3 class="mt-3 mb-5 text-center" style="font-weight:700;">₹ {{i.Amount_with_ad}}</h3>	  
+			<div class="row">	 
+				<hr class="offer2line">  
+			  <div class="sub_pos">
+				 			  
+			  <div class="col-9 sub_chi1">	
+				{% if i.value1 == None %}
+			  
+				{% else %}			
+			  <h6 style="color:#6E717A;" class="px-2">Profiles View</h6>
+			  {% endif %}
+
+			  {% if i.value2 == None %}
+			  
+			  {% else %}
+			  <h6 style="color:#6E717A;" class="px-2">Profiles Request</h6>
+			  {% endif %}
+
+			  {% if i.value3 == None %}
+			  
+			  {% else %}
+			  <h6 style="color:#6E717A;">Profiles Highlight</h6>
+			  {% endif %}
+			</div>	  
+			  <div class="col-3 sub_chi2">
+				{% if i.value1 == None %}
+			  
+				{% else %}	
+				<h6 class="text-end pr-5" style="color:#6E717A;"><span style="color:black;">{{i.value1}}</span>(Day)</h6>
+				{% endif %}
+
+				{% if i.value2 == None %}
+			  
+				{% else %}
+				<h6 class="text-end px-2">{{i.value2}}</h6>
+				{% endif %}
+
+				{% if i.value3 == None %}
+			  
+				{% else %}
+				<h6 class="text-end " style="color:#27AE60;">{{i.value3}}</h6>
+				{% endif %}
+			  </div>			  
+			  </div>
+			</div>
+			<hr class="offer3line">  		  
+			<div class="edittools">
+				<a href="/subedit/{{key.id}}/{{i.id}}"><button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button></a>     		
+				<form method ="POST" style="    display: contents;">
+					{% csrf_token %}
+				<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>	
+				</form>	
+				</div>		  
+		</div>
+		{% endif %}
+		{% endfor %}
+
+
+			  {% for i in all_subscription %}
+	     {% if i.Type_Of_Subscription == "Standard" %}
+
+		  <div class="sub_par3">	  
+			<h4 class="my-3 text-center" style="color:#F2994A;font-weight:700;">Standard</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for {{i.Validity}})</h6>	  
+			<h3 class="mt-3 mb-5 text-center" style="font-weight:700;">₹ {{i.Amount_with_ad}}</h3>	  
+			<div class="row">	
+				<hr class="offer2line">  
+			  <div class="sub_pos">
+				
+				<div class="col-9 sub_chi1">	
+					{% if i.value1 == None %}
+				  
+					{% else %}			
+				  <h6 style="color:#6E717A;" class="px-2">Profiles View</h6>
+				  {% endif %}
+	
+				  {% if i.value2 == None %}
+				  
+				  {% else %}
+				  <h6 style="color:#6E717A;" class="px-2">Profiles Request</h6>
+				  {% endif %}
+	
+				  {% if i.value3 == None %}
+				  
+				  {% else %}
+				  <h6 style="color:#6E717A;">Profiles Highlight</h6>
+				  {% endif %}
+				</div>	  
+				  <div class="col-3 sub_chi2">
+					{% if i.value1 == None %}
+				  
+					{% else %}	
+					<h6 class="text-end pr-5" style="color:#6E717A;"><span style="color:black;">{{i.value1}}</span>(Day)</h6>
+					{% endif %}
+	
+					{% if i.value2 == None %}
+				  
+					{% else %}
+					<h6 class="text-end px-2">{{i.value2}}</h6>
+					{% endif %}
+	
+					{% if i.value3 == None %}
+				  
+					{% else %}
+					<h6 class="text-end " style="color:#27AE60;">{{i.value3}}</h6>
+					{% endif %}
+				  </div>			    
+			  </div>	  			  			  
+			</div>	
+			<hr class="offer3line">  	  
+			<div class="edittools">
+				<a href="/subedit/{{key.id}}/{{i.id}}"><button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button></a>     		
+				<form method ="POST" style="    display: contents;">
+					{% csrf_token %}
+				<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>	
+				</form>	
+				</div>		  
+		</div>
+	{% endif %}
+	{% endfor %}
+
+	{% for i in all_subscription %}
+	{% if i.Type_Of_Subscription == "Premium" %}
+		  <div class="sub_par4">	  
+			<h4 class="my-3 text-center" style="color:#2F80ED;font-weight:700;">Premium</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for {{i.Validity}}))</h6>	  
+			<h3 class="mt-3 mb-5 text-center" style="font-weight:700;">₹ {{i.Amount_with_ad}}</h3>	  
+			<div class="row">	
+				<hr class="offer2line">		   
+			   <div class="sub_pos">
+			 					
+			  <div class="col-9 sub_chi1">	
+				{% if i.value1 == None %}
+			  
+				{% else %}			
+			  <h6 style="color:#6E717A;" class="px-2">Profiles View</h6>
+			  {% endif %}
+
+			  {% if i.value2 == None %}
+			  
+			  {% else %}
+			  <h6 style="color:#6E717A;" class="px-2">Profiles Request</h6>
+			  {% endif %}
+
+			  {% if i.value3 == None %}
+			  
+			  {% else %}
+			  <h6 style="color:#6E717A;">Profiles Highlight</h6>
+			  {% endif %}
+			</div>	  
+			  <div class="col-3 sub_chi2">
+				{% if i.value1 == None %}
+			  
+				{% else %}	
+				<h6 class="text-end pr-5" style="color:#6E717A;"><span style="color:black;">{{i.value1}}</span>(Day)</h6>
+				{% endif %}
+
+				{% if i.value2 == None %}
+			  
+				{% else %}
+				<h6 class="text-end px-2">{{i.value2}}</h6>
+				{% endif %}
+
+				{% if i.value3 == None %}
+			  
+				{% else %}
+				<h6 class="text-end " style="color:#27AE60;">{{i.value3}}</h6>
+				{% endif %}
+			  </div>			  		  
+			  </div>			  
+			</div>
+			<hr class="offer3line">  		  
+			<div class="edittools">
+				<a href="/subedit/{{key.id}}/{{i.id}}"><button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button></a>     		
+				<form method ="POST" style="    display: contents;">
+					{% csrf_token %}
+				<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>	
+				</form>	
+				</div>		  
+		</div>
+		{% endif %}
+		{% endfor %}
+		
+		  
+		{% for i in all_subscription %}
+		{% if i.Type_Of_Subscription == "Special" %}
+		  
+			<div class="sub_par5 ">	  
+			<h4 class="my-3 text-center" style="color:#7B61FF;font-weight:700;">Special</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for {{i.Validity}}))</h6>	  
+			<h3 class="mt-3 mb-5 text-center" style="font-weight:700;">₹ {{i.Amount_with_ad}}</h3>	  
+	   <div class="row">
+		<hr class="offer2line">			   
+			   <div class="sub_pos">	
+				 				
+				<div class="col-9 sub_chi1">	
+					{% if i.value1 == None %}
+				  
+					{% else %}			
+				  <h6 style="color:#6E717A;" class="px-2">Profiles View</h6>
+				  {% endif %}
+	
+				  {% if i.value2 == None %}
+				  
+				  {% else %}
+				  <h6 style="color:#6E717A;" class="px-2">Profiles Request</h6>
+				  {% endif %}
+	
+				  {% if i.value3 == None %}
+				  
+				  {% else %}
+				  <h6 style="color:#6E717A;">Profiles Highlight</h6>
+				  {% endif %}
+				</div>	  
+				  <div class="col-3 sub_chi2">
+					{% if i.value1 == None %}
+				  
+					{% else %}	
+					<h6 class="text-end pr-5" style="color:#6E717A;"><span style="color:black;">{{i.value1}}</span>(Day)</h6>
+					{% endif %}
+	
+					{% if i.value2 == None %}
+				  
+					{% else %}
+					<h6 class="text-end px-2">{{i.value2}}</h6>
+					{% endif %}
+	
+					{% if i.value2 == None %}
+				  
+					{% else %}
+					<h6 class="text-end " style="color:#27AE60;">{{i.value3}}</h6>
+					{% endif %}
+				  </div>					  
+			  </div>			  
+			</div>
+			<hr class="offer3line">  		  
+			<div class="edittools">
+				<a href="/subedit/{{key.id}}/{{i.id}}"><button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button></a>     		
+				<form method ="POST" style="    display: contents;">
+					{% csrf_token %}
+				<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>	
+				</form>	
+				</div>		  
+		</div>
+		  
+		</div>
+	  </div>
+{% endif %}
+{% endfor %}
+	  <div class="row my-4">	
+		<div class="col-md-12">
+			<h5 class="Countr">
+				USA -  multiple Countries
+			</h5>
+		</div>  
+		<div  class="sub_sec2 mb-5">	  
+		<div class="sub_par1">	  
+			<h4 class="my-3 text-center" style="color:#27AE60;font-weight:700;">Trial</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for 15 days)</h6>	  
+			<h3 class="mt-3 mb-5 text-center"style = "color:#27AE60;">Free</h3>	 
+			<hr class="offer1line"> 
+			<h6 class="text-center" style="color:#6E717A;">Just Profile View Only</h6>
+			<hr class="offer11line"> 
+		<div class="edittools free">
+			<button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button>        		
+			<button class="trassh"><i class="bi bi-trash trashh"></i></button>		
+		</div>	
+		</div>
+	  
+		  <div class="sub_par2 ">	  
+			<h4 class="my-3 text-center" style="color:#56CCF2;font-weight:700;">Basic</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for 1 Month)</h6>	  
+			<h3 class="mt-3 mb-5 text-center" style="font-weight:700;">₹ 1,500</h3>	  
+			<div class="row">	 
+				<hr class="offer2line">  
+			  <div class="sub_pos">
+				 			  
+				<div class="col-9 sub_chi1">	
+					{% if i.value1 == None %}
+				  
+					{% else %}			
+				  <h6 style="color:#6E717A;" class="px-2">Profiles View</h6>
+				  {% endif %}
+	
+				  {% if i.value2 == None %}
+				  
+				  {% else %}
+				  <h6 style="color:#6E717A;" class="px-2">Profiles Request</h6>
+				  {% endif %}
+	
+				  {% if i.value3 == None %}
+				  
+				  {% else %}
+				  <h6 style="color:#6E717A;">Profiles Highlight</h6>
+				  {% endif %}
+				</div>	  
+				  <div class="col-3 sub_chi2">
+					{% if i.value1 == None %}
+				  
+					{% else %}	
+					<h6 class="text-end pr-5" style="color:#6E717A;"><span style="color:black;">{{i.value1}}</span>(Day)</h6>
+					{% endif %}
+	
+					{% if i.value2 == None %}
+				  
+					{% else %}
+					<h6 class="text-end px-2">{{i.value2}}</h6>
+					{% endif %}
+	
+					{% if i.value2 == None %}
+				  
+					{% else %}
+					<h6 class="text-end " style="color:#27AE60;">{{i.value3}}</h6>
+					{% endif %}
+				  </div>				  
+			  </div>
+			</div>
+			<hr class="offer3line">  		  
+			<div class="edittools">
+				<a href="/subedit/{{key.id}}/{{i.id}}"><button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button></a>     		
+				<button class="trassh"><i class="bi bi-trash trashh"></i></button>		
+			</div>		  
+		</div>
+	  
+		  <div class="sub_par3">	  
+			<h4 class="my-3 text-center" style="color:#F2994A;font-weight:700;">Standard</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for 3 Months)</h6>	  
+			<h3 class="mt-3 mb-5 text-center" style="font-weight:700;">₹ 2,500</h3>	  
+			<div class="row">	
+				<hr class="offer2line">  
+			  <div class="sub_pos">
+				
+			  <div class="col-9 sub_chi1">				
+			  <h6 style="color:#6E717A;" >Profiles View</h6>
+			  <h6 style="color:#6E717A;" >Profiles Request</h6>
+			  </div>	  
+			  <div class="col-3 sub_chi2">
+				<h6 class="text-end " style="color:#6E717A;"><span style="color:black;">20</span>(Day)</h6>
+				<h6 class="text-end ">40</h6>
+			  </div>			  
+			  </div>	  			  			  
+			</div>	
+			<hr class="offer3line">  	  
+			<div class="edittools">
+				<button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button>        		
+				<button class="trassh"><i class="bi bi-trash trashh"></i></button>		
+			</div>		  </div>
+	  
+		  <div class="sub_par4">	  
+			<h4 class="my-3 text-center" style="color:#2F80ED;font-weight:700;">Premium</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for 6 Months)</h6>	  
+			<h3 class="mt-3 mb-5 text-center" style="font-weight:700;">₹ 3,500</h3>	  
+			<div class="row">	
+				<hr class="offer2line">		   
+			   <div class="sub_pos">
+			 					
+			  <div class="col-9 sub_chi1">				
+			  <h6 style="color:#6E717A;" >Profiles View</h6>
+			  <h6 style="color:#6E717A;" >Profiles Request</h6>
+			  <h6 style="color:#6E717A;">Profiles Highlight</h6>
+			  </div>	  
+			  <div class="col-3 sub_chi2">
+				<h6 class="text-end " style="color:#6E717A;"><span style="color:black;">30</span>(Day)</h6>
+				<h6 class="text-end " >60</h6>
+				<h6 class="text-end " style="color:#27AE60;">Yes</h6>
+			  </div>			  
+			  </div>			  
+			</div>
+			<hr class="offer3line">  		  
+			<div class="edittools">
+				<button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button>        		
+				<button class="trassh"><i class="bi bi-trash trashh"></i></button>		
+			</div>		  </div>
+		  
+		  
+		  <div class="sub_par5 ">	  
+			<h4 class="my-3 text-center" style="color:#7B61FF;font-weight:700;">Special</h4>	  
+			<h6 class="my-2 text-center" style="color:#6E717A;">(Valid for 1 Year)</h6>	  
+			<h3 class="mt-3 mb-5 text-center" style="font-weight:700;">₹ 4,500</h3>	  
+	   <div class="row">
+		<hr class="offer2line">			   
+			   <div class="sub_pos">	
+				 				
+			  <div class="col-9 sub_chi1">				
+			  <h6 style="color:#6E717A;" >Profiles View</h6>
+			  <h6 style="color:#6E717A;" >Profiles Request</h6>
+			  <h6 style="color:#6E717A;">Profiles Highlight</h6>
+			  </div>	  
+			  <div class="col-3 sub_chi2">
+				<h6 class="text-end "  style="color:#6E717A;"><span style="color:black;">50</span>(Day)</h6>
+				<h6 class="text-end " >100</h6>
+				<h6 class="text-end " style="color:#27AE60;">Yes</h6>
+			  </div>			  
+			  </div>			  
+			</div>
+			<hr class="offer3line">  		  
+			<div class="edittools">
+				<button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal"><i class="bi bi-pen penn"></i></button>        		
+				<button class="trassh"><i class="bi bi-trash trashh"></i></button>		
+			</div>		  
+		</div>
+		  
+
+
+		</div>
+	  </div>
+
+
+
+	  </div>
+	</div>
+</div>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+
+<!--js -->
+<script type="text/javascript" src="{% static 'admin/js/event1.js'%}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Super Admin Dashboard (Profile Finder)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style1.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_one.css'%}">
+	<link rel="stylesheet" href="{% static 'admin/css/adduser.css'%}">
+</head>
+<body style="background-color:#f5f3fe;">
+
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+	{% include 'adminnav.html'%}
+		
+	</div>
+
+	<div class="super_adm_chi2"> 
+
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+
+
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static 'admin/images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="locl_adm_sec1 px-4 ">
+
+		<div class="pt-3">
+		  <h5 style="font-size: 22px;"><a href="/third_party_users/{{key.id}}" style="text-decoration: none;"><span style="color:#5a5050e6;">Users ></a> <span style="color:rgb(60, 35, 184);font-weight:700;">Add Users</span>  </span></h5>
+		</div>
+	  </div>
+	  
+	  <!-- over -->
+<p style="
+font-size: 22px;
+color: red;
+margin-left: 25px;
+font-weight: 700;
+">{{error}}</p>
+	  <!-- start -->
+	  <form method="POST">
+		{% csrf_token %}
+	  <div class="section px-4 py-3">
+		<div class="user px-4 py-2">
+		  <div class="row py-3">
+			<div class="col-md-4">
+			  <label class="form-label tit">First Name <span style="color: blueviolet;">*</span></label>
+			  <input type="text" name="first_name" value="{{single_third_party_user.first_name}}" id="typeText" class="form-control" placeholder="Enter">
+			</div>
+			<div class="col-md-4">
+			  <label class="form-label tit">Last Name <span style="color: blueviolet;">*</span></label>
+			  <input type="text" name="last_name" value="{{single_third_party_user.last_name}}" id="typeText" class="form-control" placeholder="Enter">
+			</div>
+			<div class="col-md-4">
+			  <label  class="form-label tit">Email ID<span style="color: blueviolet;">*</span></label>
+			  <input type="email" name="email" value="{{single_third_party_user.email}}" value="{{single_third_party_user}}" class="form-control" id="type" placeholder="name@example.com">
+			</div>
+			<div class="col-md-4 py-4">
+			  <label class="form-label tit">Phone Number <span style="color: blueviolet;">*</span></label>
+			  <input type="number" name="phone_no" value="{{single_third_party_user.phone_no}}" id="typeText" class="form-control" placeholder="Enter">
+			</div>
+			<div class="col-md-4 py-4">
+				<label class="form-label tit">Password <span style="color: blueviolet;">*</span></label>
+				<input type="password" name="password" value="{{single_third_party_user.password}}"  id="typeText" class="form-control" placeholder="Enter">
+			  </div>
+		  </div>
+
+		  <div class="access ">
+			<h5 style="font-weight: 600;color: #2b3674;">Access Privileges</h5>
+		  </div>
+			<div class="row">
+			  <div class="col-md-3">
+				{% if "all" in single_third_party_user.access_privilage %}
+				  <div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="all" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >All</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="all" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >All</label>
+				  </div>
+				{% endif %}
+				{% if "Dashboard Access and Report" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Dashboard Access and Report" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Dashboard Access and Report</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Dashboard Access and Report" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Dashboard Access and Report</label>
+				  </div>
+				{% endif %}
+				{% if "Edit public Users" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+				  <input class="form-check-input" checked type="checkbox" value="Edit public Users" name="access_privilage" id="flexCheckChecked">
+				  <label class="form-check-label tit1" >Edit public Users</label>
+				</div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Edit public Users" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Edit public Users</label>
+				  </div>
+				  {% endif %}
+				  {% if "Add Notary" in single_third_party_user.access_privilage %}
+				  <div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Add Notary" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Add Notary</label>
+				  </div>
+				  {% else %}
+				  <div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Add Notary" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Add Notary</label>
+				  </div>
+				  {% endif %}
+				{% if "Edit Notary" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Edit Notary" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Edit Notary</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Edit Notary" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Edit Notary</label>
+				  </div>
+				{% endif %}
+				{% if "Edit Local Admin" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Edit Local Admin" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Edit Local Admin</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Edit Local Admin" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Edit Local Admin</label>
+				  </div>
+				{% endif %}
+				{% if "Add Sales User" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Add Sales User" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add Sales User</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Add Sales User" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add Sales User</label>
+				  </div>
+				{% endif %}
+				{% comment %} {% if "Delete Sales User" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Delete Sales User" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Sales User</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Delete Sales User" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Sales User</label>
+				  </div>
+				{% endif %} {% endcomment %}
+				
+			  </div>
+			  <div class="col-md-3">
+				{% if "Download All Report" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Download All Report" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >Download All Report</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Download All Report" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >Download All Report</label>
+				  </div>
+				{% endif %}
+				{% if "Add Public Users" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Add Public Users" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Add Public Users</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Add Public Users" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Add Public Users</label>
+				  </div>
+				{% endif %}
+				{% if "Delete public Users" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Delete public Users" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Delete public Users</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Delete public Users" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Delete public Users</label>
+				  </div>
+				{% endif %}
+				{% if "Delete Notary" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Delete Notary" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Notary</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Delete Notary" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Notary</label>
+				  </div>
+				{% endif %}
+				{% if "Add Local Admin" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Add Local Admin" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add Local Admin</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Add Local Admin" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add Local Admin</label>
+				  </div>
+				{% endif %}
+				{% if "Delete Local Admin" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Delete Local Admin" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Local Admin</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Delete Local Admin" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Local Admin</label>
+				  </div>
+				{% endif %}
+				{% if  "Edit Sales User" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Edit Sales User" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Edit Sales User</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Edit Sales User" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Edit Sales User</label>
+				  </div>
+				{% endif %}
+				{% if "Add Ad Provider" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Add Ad Provider"  name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Add Ad Provider</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Add Ad Provider"  name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Add Ad Provider</label>
+				  </div>
+				{% endif %}
+				
+			  </div>
+			  <div class="col-md-3">
+				{% if "Edit Ad Provider" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Edit Ad Provider" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >Edit Ad Provider</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Edit Ad Provider" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >Edit Ad Provider</label>
+				  </div>
+				{% endif %}
+				{% if "delete Ad Provider" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="delete Ad Provider" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >delete Ad Provider</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="delete Ad Provider" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >delete Ad Provider</label>
+				  </div>
+				{% endif %}
+				{% if "Delete Sales User" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2"> 
+					<input class="form-check-input" checked type="checkbox" value="Delete Sales User" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Sales User</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2"> 
+					<input class="form-check-input" type="checkbox" value="Delete Sales User" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Sales User</label>
+				  </div>
+				{% endif %}
+				{% if "Access Emara Coin" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Access Emara Coin" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Access Emara Coin</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Access Emara Coin" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Access Emara Coin</label>
+				  </div>
+				{% endif %}
+				{% if "Access Commission Calculator" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Access Commission Calculator" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Access Commission Calculator</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Access Commission Calculator" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Access Commission Calculator</label>
+				  </div>
+				{% endif %}
+				
+				{% comment %} <div class="form-check py-2">
+				  <input class="form-check-input" type="checkbox" value="Email Template Access"  name="access_privilage" id="flexCheckChecked">
+				  <label class="form-check-label tit1" >Email Template Access</label>
+				</div> {% endcomment %}
+				{% if "Complaint List Access" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Complaint List Access" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Complaint List Access</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Complaint List Access" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Complaint List Access</label>
+				  </div>
+				{% endif %}
+				{% if "Edit / Add/Delete Drop Down Values" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Edit / Add/Delete Drop Down Values" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Edit / Add/Delete Drop Down Values</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Edit / Add/Delete Drop Down Values" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Edit / Add/Delete Drop Down Values</label>
+				  </div>
+				{% endif %}
+				{% if "Add Users" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Add Users" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add Users</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Add Users" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add Users</label>
+				  </div>
+				{% endif %}
+				
+
+			  </div>
+			  <div class="col-md-3">
+				{% if "Edit Users" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Edit Users" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >Edit Users</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Edit Users" name="access_privilage" id="flexCheckDefault">
+					<label class="form-check-label tit1" >Edit Users</label>
+				  </div>
+				{% endif %}
+				{% if "Delete Users" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Delete Users" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Users</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Delete Users" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Delete Users</label>
+				  </div>
+				{% endif %}
+				{% if "Add new Subscription" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Add new Subscription" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add new Subscription</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Add new Subscription" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add new Subscription</label>
+				  </div>
+				{% endif %}
+				{% if "Edit Subscription" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Edit Subscription" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Edit Subscription</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Edit Subscription" name="access_privilage" id="flexCheckChecked" >
+					<label class="form-check-label tit1" >Edit Subscription</label>
+				  </div>
+				{% endif %}
+				{% if "Delete Subscription" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Delete Subscription" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Delete Subscription</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Delete Subscription" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Delete Subscription</label>
+				  </div>
+				{% endif %}
+				{% if "Add private investigator" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Add private investigator" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add private investigator</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Add private investigator" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add private investigator</label>
+				  </div>
+				{% endif %}
+				{% if "edit private investigator" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="edit private investigator" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >edit private investigator</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="edit private investigator" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >edit private investigator</label>
+				  </div>
+				{% endif %}
+				{% if "delete private investigator" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="delete private investigator" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >delete private investigator</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="delete private investigator" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >delete private investigator</label>
+				  </div>
+				{% endif %}
+				{% if "Add ad distributor" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="Add ad distributor" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add ad distributor</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="Add ad distributor" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >Add ad distributor</label>
+				  </div>
+				{% endif %}
+				{% if "edit ad distributor" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="edit ad distributor" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >edit ad distributor</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="edit ad distributor" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >edit ad distributor</label>
+				  </div>
+				{% endif %}
+				{% if "delete ad distributor" in single_third_party_user.access_privilage %}
+				<div class="form-check py-2">
+					<input class="form-check-input" checked type="checkbox" value="delete ad distributor" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >delete ad distributor</label>
+				  </div>
+				{% else %}
+				<div class="form-check py-2">
+					<input class="form-check-input" type="checkbox" value="delete ad distributor" name="access_privilage" id="flexCheckChecked">
+					<label class="form-check-label tit1" >delete ad distributor</label>
+				  </div>
+				{% endif %}
+
+				
+			  </div>
+{% if single_third_party_user == "" %}
+<div class="prof_personal_savefilt1 py-4 mb-5">
+	<button class="prof_personal_filbtn1 my-3" type="reset">Cancel</button>
+	<button name="add" class="prof_personal_filbtn2 my-3" type="submit">Create</button>
+  </div>
+{% else %}
+<div class="prof_personal_savefilt1 py-4 mb-5">
+	<button class="prof_personal_filbtn1 my-3" type="reset">Cancel</button>
+	<button name="edit" value="{{single_third_party_user.id}}" class="prof_personal_filbtn2 my-3" type="submit">Create</button>
+  </div>
+{% endif %}
+			  
+
+			</div>
+
+		</div>
+	  </div>
+	</form>
+	
+	</div>
+	
+</div>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+
+<!--js -->
+<script type="text/javascript" src="{% static 'admin/js/event1.js'%}"></script>
+
+
+</body>
+</html>

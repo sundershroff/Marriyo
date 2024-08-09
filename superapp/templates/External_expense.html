@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Super Admin Dashboard (Profile Finder)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style1.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_one.css'%}">
+	<link rel="stylesheet" href="{% static 'admin/css/main.css'%}">
+	  
+	<style>
+		.prof_personal_filt i{
+  font-size:1.4em;
+  color:black;
+}
+.prof_personal_filt2 label{
+  color:#2B3674;
+  font-weight:500;
+ font-size:1em;
+}
+.prof_personal_filt2 input{
+  padding:13px 3px;
+}
+.prof_personal_savefilt1 a{
+  text-align:center;
+  color:#7B61FF;
+  font-weight:500;
+  text-decoration:none;
+}
+.prof_personal_savefilt1 a:hover{
+  text-decoration:underline;
+}
+.prof_personal_filbtn1{
+color:#7B61FF;
+transition:0.5s;
+  border:1px solid #7B61FF;
+  background:white;
+}
+
+.prof_personal_filbtn2{
+  background: linear-gradient(63deg,blue,#b772b7 );
+  color:white;
+  transition:0.5s;
+	border:1px solid white;
+}
+
+.prof_personal_savefilt1 button{
+   border-radius:10px;
+  padding:7px 60px;
+}
+
+.prof_personal_filbtn2:hover{
+  background:white;
+  transition:0.5s;
+  color:black;
+  border:1px solid black;
+}
+.prof_personal_filbtn1:hover{
+  background:#7B61FF;
+  transition:0.5s;
+  color:white;
+
+}
+
+.prof_personal_filt2 label{
+  color:#2B3674;
+  font-weight:600;
+  font-size:1em;
+}
+#bbn{
+border: none;
+background-color: white;
+color: #303136;
+}
+#bb1 {
+  margin-top: 250px;
+  margin-left: 500px;
+  padding: 10px 15px 10px 15px;
+  background: linear-gradient(63deg,blue,#b772b7 );
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+input#flexCheckChecked {
+  padding: 0px 0px 0px 0px;
+}
+button.btn.footer1 {
+  background-color: #7b61ff;
+  color: white;
+  font-weight: 600;
+}
+button.btn.footer {
+  border: 1px solid gainsboro;
+  color: #7b61ff;
+  font-weight: 700;
+}
+.local_admin_drag_area {
+	border: 2px dashed rgba(110, 113, 122, 0.4);
+	height: 240px;
+	width: 100%;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	cursor: pointer;
+  }
+
+  .local_admin_drag_area header {
+	font-weight: 500;
+	color: rgba(110, 113, 122, 0.9);
+	margin: 10px 0;
+  }
+
+  .local_admin_drag_area i {
+	color: rgba(123, 97, 255, 1);
+	font-size: 2em;
+	padding: 20px 30px;
+	background-color: rgba(123, 97, 255, 0.1);
+	border-radius: 10px;
+  }
+
+  .local_admin_drag_area img {
+	height: 250px;
+	width: 250px;
+  }
+
+	</style>
+
+</head>
+<body style="background-color:#f5f3fe;">
+
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+	{% include 'adminnav.html'%}
+	</div>
+
+	<div class="super_adm_chi2"> 
+
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+
+
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static 'admin/images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+			
+		</div>
+		
+	</div>
+
+    <div class="locl_adm_sec1 px-4 my-4">
+
+		<div>
+		  <h3><span style="color:rgb(58, 58, 61);font-weight:700;font-size: 20px;">External Expenses </span></h3>
+		</div>
+  
+		<div class="locl_adm_form">
+		  <form>
+		  
+		  <div class="locl_adm_align">
+			<input type="text" autofocus placeholder="search">
+			<i class="fa-solid fa-magnifying-glass"></i>
+		  </div>
+		  
+		  </form>
+		  <button data-bs-toggle="modal" data-bs-target="#filter_modall">Filter <i class="fa-solid fa-filter"></i></button>
+		  <button data-bs-toggle="modal" data-bs-target="#filter_modal">Add New <i class="fa-solid fa-circle-plus"></i></button>
+		</div>
+		
+	  </div>
+	  <!-- over -->
+  
+   <!-- modal -->
+ <div class="modal fade modal-md" id="filter_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+	  <div class="modal-content">
+		<div class="modal-header prof_personal_filt">
+		  <h4 class="modal-title" id="exampleModalLabel" style="font-weight:700; font-size: 18px;" >External Extenses</h4>
+		  <button type="button" data-bs-dismiss="modal" aria-label="Close" id="bbn"><i class="fas fa-times-circle" ></i></button>
+		</div>
+		<div class="modal-body prof_personal_filt2 px-5">
+		   
+		   <form method="POST" enctype="multipart/form-data" >
+		 {% csrf_token %}
+			 <div class="my-3">
+			  <label for="exampleFormControlInput1" class="form-label">Details</label>
+			  <input type="text" name="details" class="form-control" placeholder="Enter">
+			 </div>
+			
+			 <div class="my-4">
+			  <label for="exampleFormControlInput1" class="form-label">To</label>
+			   <input type="text" name="to" class="form-control" placeholder="Enter">
+			 </div>
+  
+					<div class="my-4">
+					  <label class="form-label tit">Date</label>
+					  <input type="date" name="date" placeholder="Select" class="form-control py-2">
+			 </div>
+  
+			   <div class="my-4">
+			  <label for="exampleFormControlInput1" class="form-label">Currency</label>
+			   <select name="currency" class="form-select py-3">
+				<option value="INR">INR</option>
+				<option value="USD">USD</option>
+			  </select>
+			 </div>
+  
+			 <div class="my-3">
+			  <label for="exampleFormControlInput1" class="form-label">Amount</label>
+			  <input type="text" name="amount" class="form-control" placeholder="Enter ">
+			 </div>
+  
+			 <div class="my-4">
+			  <label for="exampleFormControlInput1" class="form-label">Ferquency</label>
+			   <select name="frequency" class="form-select py-3">
+				<option value="Week">Week</option>
+				<option value="Month">Month</option>
+				<option value="Year">Year</option>
+			  </select>
+			 </div>
+  
+			 <div class="py-3">
+			  <label class="form-label">ID Card<span>*</span></label>
+		  <div class="local_admin_drag_area" id="uploadArea">
+			<div class="icon"><i class="fa-solid  fa-arrow-up-from-bracket"></i></div>
+			<h6 class="pt-4" style="font-size: 18px;">Drag and drop or <u class="text-primary">browse</u> your Ivoice  </h6>
+			<h6 class="text-center text-muted pt-2" style="opacity: 0.5;">Only Doc files with max size 3MB</h6>
+			<input type="file" name="attachment" id="fileInput" style="
+			width: 80%;
+			height: 23%;
+			position: absolute;
+			opacity: 0%;
+		">
+		  </div>
+			</div>
+			 <div class="py-1">
+			 </div>  
+		</div>
+		<div class="modal-footer " style="    background-color: #f9f9f9;">
+		  <button type="button" class="btn footer " data-bs-dismiss="modal">Cancel</button>
+		  <button type="submit" class="btn footer1">submit</button>
+		</div>
+	</form>
+
+	  </div>
+	</div>
+  </div>
+
+
+	  <!-- start -->
+	  <div class="locl_adm_sec2 my-5">
+  
+		<div class="locl_adm_table px-3">
+  
+		  <table>
+			<thead>
+			  <tr>
+				<th>#No</th>
+				<th>Details</th>
+				<th>To</th>
+				<th>Date</th>
+				<th>Currency</th>
+				<th>Amount</th>
+				<th>Attachment</th>
+				<th>Actions</th>
+				
+			  </tr>
+			</thead>
+			 <tbody>
+				{% for i in all_external_expenses %}
+				
+			  <tr>
+			   <td data-label = "#No">{{forloop.counter}}</td>
+			   <td data-label = "Details">{{i.details}}</td>
+			   <td data-label = "To">{{i.to}}</td>
+			   <td data-label = "Date">{{i.date}}</td>
+			   <td data-label = "Currency">{{i.currency}}</td>
+			   <td data-label = "Amount">{{i.amount}}</td>
+			   <td data-label = "Attachment">
+				<div class="submain1">
+				  <label for="myfile" style="cursor: pointer;">
+					<i class="fa-solid fa-paperclip" style="color:#7B61FF; margin-right: 5px;"></i>
+					<span class="att" style="color:#7B61FF;">Attachment</span>
+				  </label>
+				  <form action="/action_page.php">
+					<input type="file" id="myfile" name="myfile" style="display: none;">
+				  </form>
+				</div>
+			   </td>
+			   <td data-label = "Actions">
+				<button data-bs-toggle="modal" data-bs-target="#exampleModal{{forloop.counter}}" style="background-color: transparent;border: 0px;"> 
+				<i class="fa-solid fa-ellipsis-vertical locl_adm_action"></i>
+			</button>
+		</td>
+			  </tr>
+			  <div class="modal fade modal-md px-4" id="exampleModal{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+				<div class="modal-dialog modal-dialog-centered">
+				  <div class="modal-content">
+					<div class="modal-header border-0">
+				
+					  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body locl_adm_modal1">
+			  
+					  <ul>
+						{% comment %} <li><a href="">View Details</a> </li> {% endcomment %}
+						<li><button data-bs-toggle="modal" data-bs-target="#filter_modal{{forloop.counter}}" style="background-color: transparent;border: 0px;"><a>Edit</a></button></li>
+						<form method="POST">
+							{% csrf_token %}
+						<li><button type="submit" name="delete" value="{{i.id}}" style="background-color: transparent;border: 0px;"><a style="color:red;">Delete</a> </button></li>
+					  </form>
+					  </ul>
+					
+					</div>
+				   
+				  </div>
+				</div>
+			  </div>
+			  <!-- edit model -->
+			  <div class="modal fade modal-md" id="filter_modal{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
+				  <div class="modal-content">
+					<div class="modal-header prof_personal_filt">
+					  <h4 class="modal-title" id="exampleModalLabel" style="font-weight:700; font-size: 18px;" >External Extenses</h4>
+					  <button type="button" data-bs-dismiss="modal" aria-label="Close" id="bbn"><i class="fas fa-times-circle" ></i></button>
+					</div>
+					<div class="modal-body prof_personal_filt2 px-5">
+					   
+					   <form method="POST" enctype="multipart/form-data" >
+					 {% csrf_token %}
+						 <div class="my-3">
+						  <label for="exampleFormControlInput1" class="form-label">Details</label>
+						  <input type="text" name="details" value="{{i.details}}" class="form-control" placeholder="Enter">
+						 </div>
+						
+						 <div class="my-4">
+						  <label for="exampleFormControlInput1" class="form-label">To</label>
+						   <input type="text" name="to" value="{{i.to}}" class="form-control" placeholder="Enter">
+						 </div>
+			  
+								<div class="my-4">
+								  <label class="form-label tit">Date</label>
+								  <input type="date" value="{{i.date}}" name="date" placeholder="Select" class="form-control py-2">
+						 </div>
+			  
+						   <div class="my-4">
+						  <label for="exampleFormControlInput1" class="form-label">Currency</label>
+						   <select name="currency" class="form-select py-3">
+							<option value="{{i.currency}}">{{i.currency}}</option>
+							<option value="INR">INR</option>
+							<option value="USD">USD</option>
+						  </select>
+						 </div>
+			  
+						 <div class="my-3">
+						  <label for="exampleFormControlInput1" class="form-label">Amount</label>
+						  <input type="text" value="{{i.amount}}" name="amount" class="form-control" placeholder="Enter ">
+						 </div>
+			  
+						 <div class="my-4">
+						  <label for="exampleFormControlInput1" class="form-label">Ferquency</label>
+						   <select name="frequency" class="form-select py-3">
+							<option value="{{i.frequency}}">{{i.frequency}}</option>
+							<option value="Week">Week</option>
+							<option value="Month">Month</option>
+							<option value="Year">Year</option>
+						  </select>
+						 </div>
+			  
+						 <div class="py-3">
+						  <label class="form-label">ID Card<span>*</span></label>
+					  <div class="local_admin_drag_area" id="uploadArea">
+						<div class="icon"><i class="fa-solid  fa-arrow-up-from-bracket"></i></div>
+						<h6 class="pt-4" style="font-size: 18px;">Drag and drop or <u class="text-primary">browse</u> your Ivoice  </h6>
+						<h6 class="text-center text-muted pt-2" style="opacity: 0.5;">Only Doc files with max size 3MB</h6>
+						<input type="file" name="attachment" id="fileInput" style="
+						width: 80%;
+						height: 23%;
+						position: absolute;
+						opacity: 0%;
+					">
+					  </div>
+						</div>
+						 <div class="py-1">
+						 </div>  
+					</div>
+					<div class="modal-footer " style="    background-color: #f9f9f9;">
+					  <button type="button" class="btn footer " data-bs-dismiss="modal">Cancel</button>
+					  <button type="submit" name="edit" value="{{i.id}}" class="btn footer1">submit</button>
+					</div>
+				</form>
+			
+				  </div>
+				</div>
+			  </div>
+			
+  {% endfor %}
+			</tbody>
+		  </table>
+  
+		  <hr>
+		  <!-- <div class="col-md-12 "> -->
+			<h6 class="totalamt"><span class="tol" style="padding: 0px 25px 0px 0px;">Total</span><span class="inr" style="padding: 0px 21px 0px 0px">INR  10,000</span><span class="usd" style="padding: 0px 21px 0px 0px">USD  10,000</span></h6>
+		  <!-- </div> -->
+  
+		  
+		</div>
+		
+	  </div>
+  
+	
+	</div>
+	
+</div>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+
+<!-- modal -->
+<div class="modal fade modal-md" id="filter_modall" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header prof_personal_filt">
+          <h4 class="modal-title" id="exampleModalLabel" style="font-weight:700;" >Filter</h4>
+          <button type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times-circle" style="color:black;"></i></button>
+        </div>
+        <div class="modal-body prof_personal_filt2">
+           
+           <form method="post" action="#">
+         
+             <div class="my-3">
+              <label for="exampleFormControlInput1" class="form-label">ID</label>
+              <input type="text" name="" class="form-control">
+             </div>
+  
+             <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <input type="text" name="" class="form-control">
+             </div>
+            
+             <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">Email ID</label>
+               <input type="text" name="" class="form-control">
+             </div>
+  
+                    <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+               <input type="text" name="" class="form-control">
+             </div>
+  
+  
+                    <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">Locations</label>
+               <select class="form-select py-3">
+                <option selected>Select</option>
+              </select>
+             </div>
+  
+                    <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">Status</label>
+               <select class="form-select py-3">
+                <option selected>Select</option>
+              </select>
+             </div>
+
+  
+             <div class="prof_personal_savefilt1 text-center mb-5">
+               <button class="prof_personal_filbtn1 my-3" type="reset">Reset</button>
+               <button class="prof_personal_filbtn2 my-3" type="submit">Submit</button>
+             </div>
+             <div class="py-1">
+        
+             </div>  
+  
+           </form>
+
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+
+
+<!--js -->
+<script type="text/javascript" src="{% static 'admin/js/event1.js'%}"></script>
+
+
+</body>
+</html>

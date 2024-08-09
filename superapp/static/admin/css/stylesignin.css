@@ -1,0 +1,210 @@
+*{
+	margin:0;
+	box-sizing:border-box;
+}
+
+.super_login{
+	background-image:url("/static/admin/images/super_loginpg.png");
+	height:100vh;
+	background-repeat:no-repeat;
+	background-position:center;
+    background-size:cover;
+
+}
+
+.super_login_sec1{
+	background-color:white;
+
+	border-radius:10px;
+}
+
+.super_login_sec1{
+	padding:30px 80px;
+	box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.super_login_sec1 div:nth-child(1) p{
+	font-size:0.8em;
+	word-spacing:2px;
+}
+
+.super_login_part1{
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+    align-items:center;
+    row-gap:25px;
+    
+}
+
+.super_login_form{
+	display:flex;
+    flex-wrap:wrap;
+    flex-direction:column;
+
+}
+
+.super_login_part1 img{
+	width:130px;
+	height:60px;
+}
+.super_login_checkbox{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	flex-wrap: wrap;
+	gap:5px;
+}
+
+.super_login_checkbox a{
+  font-size:0.9em;
+  text-decoration:none;
+  font-weight:500;
+  color:#7B61FF;
+}
+
+.super_login_checkbox p{
+	display:inline;
+}
+
+.super_login_sec1 form div{
+	margin:18px  0;
+}
+
+.super_login_sec1 form{
+	width:300px;
+}
+
+.super_login{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+
+
+.super_login_form label{
+	font-weight:500;
+	color:#2B3674;
+	font-size:0.9em;
+}
+
+.super_login_form input[type="email"]{
+   border-radius:4px;
+   padding:5px 3px;
+   width:100%;
+   font-size:0.9em;
+   border:1px solid rgba(110, 113, 122, 0.5);
+}
+
+
+.super_login_form input[type="password"]{
+   border-radius:4px;
+   padding:5px 3px;
+   width:100%;
+   font-size:0.9em;
+   border:1px solid rgba(110, 113, 122, 0.5);
+}
+
+.super_login_form input[type="submit"]{
+	background-color:#7B61FF;
+	font-weight:500;
+	color:white;
+	border: none;
+	width:100%;
+	transition:0.5s;
+   font-size:0.9em;
+	border-radius:10px;
+	padding:8px 0;
+}
+
+.super_login_form input[type="submit"]:hover{
+	transition:0.5s;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/*checkbox*/
+/* The container */
+.super_container {
+  display: block;
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.super_container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.super_checkmark  {
+  position: absolute;
+  top:0;
+  left:0;
+  height: 17px;
+  border-radius:5px;
+  width: 17px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.super_container:hover input ~  .super_checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.super_container input:checked ~ .super_checkmark  {
+  background-color: #7B61FF;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.super_checkmark:after {
+  content: "";
+  position: absolute;
+  display:none;
+}
+
+/* Show the checkmark when checked */
+.super_container input:checked ~ .super_checkmark:after {
+  display: block;
+}
+
+ .super_container .super_checkmark:after {
+  left:5px;
+
+  top:1px;
+  width: 6px;
+  height: 11px;
+  border:1px solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+@media(max-width:575px){
+	.super_login_sec1 form{
+	width:100%;
+  }
+  .super_login_sec1{
+  	padding:25px 30px;
+  }
+  .super_login_checkbox label{
+  	font-size:0.8em;
+  }
+  .super_login_checkbox a{
+  	font-size:0.8em;
+  }
+  .super_login{
+  	padding:20px;
+  }
+}

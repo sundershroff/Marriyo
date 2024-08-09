@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Super Admin Dashboard (Profile Finder)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style1.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_one.css'%}">
+	<link rel="stylesheet" href="{% static 'admin/css/account.css'%}">
+</head>
+<body style="background-color:#f5f3fe;">
+
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+	{% include 'adminnav.html' %}
+		
+	</div>
+
+	<div class="super_adm_chi2"> 
+
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+
+
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static 'admin/images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="locl_adm_sec1 px-4 ">
+
+		<div class="pt-3">
+		  <h5 style="font-size: 20px;"><a href="/private_investigator/{{key.id}}" style="text-decoration: none;"><span style="color:#5a5050e6;">Private Investigator ></a> <span style="color: rgb(102 71 255);font-weight:700;">Settings</span>  </span></h5>
+		</div>
+	  </div>
+	  
+	  <!-- over -->
+
+	  <!-- start -->
+	  <div class="section px-4 py-3">
+		<div class="use px-2">
+			<div class="row">
+				<form method="POST" style="display: contents;">
+				{% csrf_token %}
+			  <div class="col-md-8 bg-white">
+				<div class="add px-3 py-3 ">
+				   <h6 class="amt pt-3"><a href="/pi_settings/{{key.id}}" style="text-decoration: none;"><span class=""style="color: dimgray;">Amount Settings</a></span>  &nbsp;&nbsp;<span class="atm1" >Performance Settings </span></h6>
+					<div class="row py-2">
+					  <div class="col-md-6 ">
+						<label for="exampleFormControlInput1" class="form-label tit">Performence Calculation Period</label>
+						<select name="Calculation_Period" class="form-select ">
+						 <option value="i year">1 year</option>
+					   </select>
+					  </div>
+					  </div>
+					  <div class="row  py-2">
+					  <div class="col-md-6  ">
+						<label class="form-label tit">Default Amount (INR) <span style="color: blueviolet;">*</span> </label>
+						<input type="text" name="default_amount" id="typeText" class="form-control"  placeholder="₹ Enter Amount"  >
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <span class="star" onclick="rate(1)"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate(2)"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate(3)"><i class="fas fa-star"></i></span>
+						  
+						</div>
+					  </div>
+					</div>
+					  <div class="row py-2">
+					  <div class="col-md-6">
+						<label class="form-label tit">50%>Good Review(INR) <span style="color: blueviolet;">*</span></label>
+					  <input type="text" name="fifty_Good_Review" id="typeText" class="form-control" placeholder="₹ Enter Amount">
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						</div>
+					  </div>
+					</div>
+
+					<div class="row py-2">
+					  <div class="col-md-6">
+						<label class="form-label tit">80%>Good Review(INR) <span style="color: blueviolet;">*</span></label>
+					  <input type="text" name="eighty_Good_Review" id="typeText" class="form-control" placeholder="₹ Enter Amount">
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						</div>
+					  </div>
+					</div>
+
+					<div class="row py-2">
+					  <div class="col-md-6">
+						<label class="form-label tit">50%>Bad Review(INR) <span style="color: blueviolet;">*</span></label>
+					  <input type="text" name="fifty_bad_Review" id="typeText" class="form-control" placeholder="₹ -Enter Amount">
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <div class="edu"><span class="equal ">-</span></div>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  
+						</div>
+					  </div>
+					</div>
+
+					<div class="row py-2">
+					  <div class="col-md-6">
+						<label class="form-label tit">80%>Bad Review(INR) <span style="color: blueviolet;">*</span></label>
+					  <input type="text" name="eighty_bad_Review" id="typeText" class="form-control" placeholder=" ₹ - Enter Amount">
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <div class="edu"><span class="equal ">-</span></div>
+						  <span class="star" onclick="rate(1)"><i class="fas fa-star"></i></span>
+						 
+						</div>
+					  </div>
+					</div>
+					<hr>                        
+
+					<div class="row  py-2">
+					  <div class="col-md-6  ">
+						<label class="form-label tit">Default Amount (USD) <span style="color: blueviolet;">*</span> </label>
+						<input type="text" id="typeText" class="form-control"  placeholder="$ Enter Amount" >
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <span class="star" onclick="rate(1)"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate(2)"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate(3)"><i class="fas fa-star"></i></span>
+						  
+						</div>
+					  </div>
+					</div>
+					  <div class="row py-2">
+					  <div class="col-md-6">
+						<label class="form-label tit">50%>Good Review(USD) <span style="color: blueviolet;">*</span></label>
+					  <input type="text" id="typeText" class="form-control" placeholder="$ Enter Amount">
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						</div>
+					  </div>
+					</div>
+
+					<div class="row py-2">
+					  <div class="col-md-6">
+						<label class="form-label tit">80%>Good Review(USD) <span style="color: blueviolet;">*</span></label>
+					  <input type="text" id="typeText" class="form-control" placeholder="$ Enter Amount">
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						</div>
+					  </div>
+					</div>
+
+					<div class="row py-2">
+					  <div class="col-md-6">
+						<label class="form-label tit">50%>Bad Review(USD) <span style="color: blueviolet;">*</span></label>
+					  <input type="text" id="typeText" class="form-control" placeholder="$ - Enter Amount">
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <div class="edu"><span class="equal ">-</span></div>
+						  <span class="star" onclick="rate()"><i class="fas fa-star"></i></span>
+						  
+						</div>
+					  </div>
+					</div>
+
+					<div class="row py-2">
+					  <div class="col-md-6">
+						<label class="form-label tit">80%>Bad Review(USD) <span style="color: blueviolet;">*</span></label>
+					  <input type="text" id="typeText" class="form-control" placeholder="$ - Enter Amount">
+					  </div>
+					  <div class="col-md-6 ">
+						<div class="star-container">
+						  <div class="edu"><span class="equal ">=</span></div>
+						  <div class="edu"><span class="equal ">-</span></div>
+						  <span class="star" onclick="rate(1)"><i class="fas fa-star"></i></span>
+						 
+						</div>
+					  </div>
+					</div>
+
+					<div class="prof_personal_savefilt1 mb-5 mt-3">
+					  <button class="prof_personal_filbtn1 my-3" type="reset">Cancel</button>
+					  <button class="prof_personal_filbtn2 " type="submit">Create</button>
+					  
+					</div>
+				  </div>
+				</form>
+			  </div>
+			  <div class="col-md-4 and ">
+				  <div class="addd px-4 py-3 ">
+					  <h6 class="pt-3" style="font-weight: 700;">Performence Settings</h6>
+					  <div class="pt-5">
+					  <h5 class="defa " style="font-weight: 700;">INR</h5>
+					  <h6 class=""> <span style="color: #a4a7ac;font-weight: 400;">Default Amount:</span> <span>{{pi_performance_calc.default_amount}}.00</span></h6>
+					</div>
+					  <div class="admin my-4 ">
+						<h6 class="bor px-3" > <span style="font-weight: 700;   font-size: 20px;" >50%>Good Review</span>  <span style="font-size:26px; font-weight: 700;">{{pi_performance_calc.fifty_Good_Review}}.00 </span></h6>
+					  </div>
+					  <div class="admin my-4 ">
+						<h6 class="bor px-3" > <span style="font-weight: 700;   font-size: 20px;" >80%>Good Review</span>  <span style="font-size:26px; font-weight: 700;">{{pi_performance_calc.eighty_Good_Review}}.00 </span></h6>
+					  </div>
+
+					  <div class="admin my-4 ">
+						<h6 class="bor px-3" > <span style="font-weight: 700;   font-size: 20px;" >50%>Bad Review</span>  <span style="font-size:26px; font-weight: 700;">-{{pi_performance_calc.fifty_bad_Review}}.00 </span></h6>
+					  </div>
+					  <div class="admin my-4 ">
+						<h6 class="bor px-3" > <span style="font-weight: 700;   font-size: 20px;" >80%>Bad Review</span>  <span style="font-size:26px; font-weight: 700;">-{{pi_performance_calc.eighty_bad_Review}}.00 </span></h6>
+					  </div>
+					  <!-- <div class="admin my-4 ">
+						<h6 class="bor px-3" > <span style="font-weight: 700;   font-size: 22px;" >50%>Good Review</span>  <span style="font-size:30px; font-weight: 700;">1200.00 </span></h6>
+					  </div> -->
+					  <div class="pt-3">
+						<h5 class="defa " style="font-weight: 700;">USD</h5>
+						<h6 class=""> <span style="color: #a4a7ac;font-weight: 400;">Default Amount:</span> <span>1,000.00</span></h6>
+					  </div>
+						<div class="admin mt-4 ">
+						  <h6 class="bor px-3" > <span style="font-weight: 700;   font-size: 20px;" >50%>Good Review</span>  <span style="font-size:26px; font-weight: 700;">1,200.00 </span></h6>
+						</div>
+						<div class="admin  mt-4 ">
+						  <h6 class="bor px-3" > <span style="font-weight: 700;   font-size: 20px;" >80%>Good Review</span>  <span style="font-size:26px; font-weight: 700;">1,500.00 </span></h6>
+						</div>
+
+						<div class="admin   mt-4">
+						  <h6 class="bor px-3" > <span style="font-weight: 700;   font-size: 20px;" >50%>Bad Review</span>  <span style="font-size:26px; font-weight: 700;">-200.00 </span></h6>
+						</div>
+						<div class="admin   mt-4">
+						  <h6 class="bor px-3" > <span style="font-weight: 700;   font-size: 20px;" >80%>Bad Review</span>  <span style="font-size:26px; font-weight: 700;">-500.00 </span></h6>
+						</div>
+
+				  </div>
+			  </div>
+			</div>
+		</div>
+	  </div>
+
+	
+	</div>
+	
+</div>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+
+<!--js -->
+<script type="text/javascript" src="{% static 'admin/js/event1.js'%}"></script>
+
+<script>
+	let currentRating = 0;
+  
+	function rate(rating) {
+	  // Apply blurred effect progressively from right to left
+	  const stars = document.querySelectorAll('.star');
+	  for (let i = stars.length - 1; i >= 0; i--) {
+		if (i >= rating) {
+		  stars[i].classList.remove('star-blurred');
+		} else {
+		  stars[i].classList.add('star-blurred');
+		}
+	  }
+  
+	  currentRating = rating;
+	}
+  </script>
+  
+</body>
+</html>

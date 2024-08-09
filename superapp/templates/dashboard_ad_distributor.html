@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Super Admin Dashboard (Profile Finder)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css'%}">
+</head>
+<body style="background-color:rgba(0, 0, 255, 0.1);">
+
+
+
+
+<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static  'images/logo.png'%}">
+
+	{% include 'adminnav.html' %}
+	</div>
+
+	<div class="super_adm_chi2"> 
+
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+
+
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static  'images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+			
+		</div>
+		
+	</div> 
+   
+    <div class="p-4">
+    	
+    
+	<div class="super_adm_head1 my-3">
+
+		
+			<h4 style="font-weight:700;">Dashboard</h4>
+
+
+
+        <form class="mx-3">
+        	<div>
+        		<input type="date" class="form-control">
+        	</div>
+        	<div>
+        		<button>Download Report  <i class="fa-solid fa-file-excel"></i></button>
+        	</div>        	
+        </form>
+
+	</div>
+
+	<div class="super_adm_amtshw my-4">
+
+		<div class="super_adm_amt">
+			<i class="fa-solid fa-dollar-sign"></i>
+			<h3>30,000-INR 16,000-USD</h3>
+			<h5>Total Revenue</h5>
+		</div>
+
+		<div class="super_adm_amt">
+			<i class="fa-solid fa-dollar-sign"></i>
+			<h3>30,000-INR 16,000-USD</h3>
+			<h5>Total Expenses</h5>
+		</div>
+
+		<div class="super_adm_amt">
+			<i class="fa-solid fa-dollar-sign"></i>
+			<h3>30,000-INR 16,000-USD</h3>
+			<h5>Balance Sheet</h5>
+			<h6 style="color:red;border-radius:10px;padding:10px;background: rgba(255, 255, 255, 0.40);font-weight:700; width:25%;margin:auto;">Loss</h6>
+		</div>
+		
+	</div>
+
+	<div class="super_adm_userdet">
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-users" style="color:rgba(123, 97, 255, 1);background-color:rgba(123, 97, 255, 0.1);"></i>
+			</div>
+
+			<div>
+				<h5 style="color:rgba(123, 97, 255, 1);font-weight:700">{{profile_manager|length}}</h5>
+				<h6>Local Admins</h6>
+			</div>
+			
+		</div>
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-users" style="color:rgba(235, 87, 87, 1);background-color:rgba(235, 87, 87, 0.1);"></i>
+			</div>
+
+			<div>
+				<h5 style="color:rgba(235, 87, 87, 1);font-weight:700;">{{profile_finder|length}}</h5>
+				<h6>Profile Finder</h6>
+			</div>
+			
+		</div>
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-users" style="color:rgba(52, 168, 83, 1);background-color:rgba(52, 168, 83, 0.1);"></i>
+			</div>
+
+			<div>
+				<h5 style="color:rgba(52, 168, 83, 1);font-weight:700;">{{sales_manager|length}}</h5>
+				<h6>Salespersons</h6>
+			</div>
+			
+		</div>
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-users" style="color:rgba(103, 80, 163, 1);background-color:rgba(103, 80, 163, 0.1);"></i>
+			</div>
+
+			<div>
+				<h5 style="color:rgba(103, 80, 163, 1);font-weight:700;">{{hiring_manager|length}}</h5>
+				<h6>Hiring Manager</h6>
+			</div>
+			
+		</div>
+		
+
+
+
+		<div class="super_adm_det">
+
+			<div> 
+				<i class="fa-solid fa-users super_adm_user1" style="background-color:rgba(251, 188, 5, 0.1);color:rgba(251, 188, 5, 1);"></i>
+			</div>
+
+			<div>
+				<h5 style="color:rgba(251, 188, 5, 1);font-weight:700;">{{private_investigator|length}}</h5>
+				<h6>Private Investigator</h6>
+			</div>
+			
+		</div>
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-users" style="background-color:rgba(43, 54, 116, 0.1);color:rgba(43, 54, 116, 1);"></i>
+			</div>
+
+			<div>
+				<h5 style="color:rgba(43, 54, 116, 1);font-weight:700;">{{ad_provider|length}}</h5>
+				<h6>Ad Provider</h6>
+			</div>
+			
+		</div>
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-users" style="background-color:rgba(66, 133, 244, 0.1);color:rgba(66, 133, 244, 1);"></i>
+			</div>
+
+			<div>
+				<h5 style="color:rgba(66, 133, 244, 1);font-weight:700;">{{ad_distributor|length}}</h5>
+				<h6>Ad Distributor</h6>
+			</div>
+			
+		</div>
+
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-comment-dots" style="color:rgba(43, 54, 116, 1);background-color:rgba(43, 54, 116, 0.1);"></i>
+			</div>
+
+			<div>
+				<h5 style="color:rgba(43, 54, 116, 1);font-weight:700;">38</h5>
+				<h6>Complaints</h6>
+			</div>
+			
+		</div>
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-dollar-sign" style="background-color:rgba(114, 199, 216, 0.1);padding:14px 16px;color:rgba(114, 199, 216, 1);"></i>
+			</div>
+
+			<div>
+				<h5>36,000-INR <br>
+				  16,000-USD</h5>
+				<h6>Total Subscription</h6>
+			</div>
+			
+		</div>
+		
+
+
+
+
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-users" style="background-color:rgba(17, 106, 97, 0.1);color:rgba(17, 106, 97, 1);"></i>
+			</div>
+
+			<div>
+				<h5 style="color:rgba(17, 106, 97, 1);font-weight:700;">300</h5>
+				<h6>Advertisement (Distributor)</h6>
+			</div>
+			
+		</div>
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-dollar-sign" style="background-color:rgba(114, 199, 216, 0.1);padding:14px 16px;color:rgba(114, 199, 216, 1);"></i>
+			</div>
+
+			<div>
+				<h5>18,000-INR <br>
+				12,000-USD</h5>
+				<h6>Total External Expenses</h6>
+			</div>
+			
+		</div>
+
+		<div class="super_adm_det">
+
+			<div>
+				<i class="fa-solid fa-dollar-sign" style="background-color:rgba(114, 199, 216, 0.1);padding:14px 16px;color:rgba(114, 199, 216, 1);"></i>
+			</div>
+
+			<div>
+				<h5>25,000-INR <br>
+				50,000-USD</h5>
+				<h6>Total Taxes</h6>
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="my-5">
+
+		<h4>Users Status</h4>
+
+		<div class="super_adm_route my-4">
+			<a href="/Dashboard_profile_finder/{{key.id}}" >Profile Finder</a>
+			<a href="/Dashboard_hiring_manager/{{key.id}}">Hiring Manager</a>
+			<!-- <a href="/Dashboard_regional_manager/{{key.id}}">Regional Manager</a> -->
+			<a href="/Dashboard_ad_provider/{{key.id}}">Ad Provider</a>
+			<a href="/dashboard_ad_distributor/{{key.id}}" >Ad Distributor</a>
+			<a href="/dashboard_profile_manager/{{key.id}}">Profile Manager</a>
+			<a href="/dashboard_sales_person/{{key.id}}">Sales Person</a>
+			<a href="/dashboard_private_investigator/{{key.id}}">Private Investigator </a>
+			<button data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            <ul class="dropdown-menu">
+                <!-- <li><a class="dropdown-item" href="/dashboard_private_investigator/{{key.id}}" style="
+                    font-family: sans-serif;
+                    font-weight: 600;
+                    font-size: 20px;
+                ">Private Investigator</a></li> -->
+                <li><a class="dropdown-item" href="/dashboard_affiliate_marketing/{{key.id}}" style="
+                    font-family: sans-serif;
+                    font-weight: 600;
+                    font-size: 20px;
+                ">Affiliate Marketing</a></li>
+              </ul>
+				</div>
+		
+		
+	</div>
+    
+
+    <!-- start -->
+	<div class="my-5 super_adm_part1">
+
+		<div class="super_adm_tabhed">
+			<div class="super_adm_tab1">
+				<h6>Recently Ad Distributor Profiles</h6>
+				<button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+			</div>
+			<div class="super_adm_tab2 my-4">
+
+				<table>
+					<thead>
+						<tr>
+							<th>User Name</th>
+							<th>Date Of Created</th>
+							<th>Location</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for i in ad_distributor1 %}
+						
+						<tr>
+							<td><img src="{{i.profile_picture}}"> {{i.first_name}} {{i.last_name}}</td>
+							<td>{{i.created_date}}</td>
+							<td>{{i.office_country}}</td>
+						</tr>
+						{% endfor %}
+
+					</tbody>
+				</table>
+
+				<div class="p-2 bg-white my-3" style="border-radius: 10px;width:100%;">
+					<h6 class="my-2"><a href="#">View All</a></h6>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="super_adm_tabhed1">
+			<div class="super_adm_tab1">
+				<h6>Ad Distributor By Age Group</h6>
+				<button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+			</div>
+
+
+			<div class="super_adm_ageper my-4">
+
+				<div class="super_adm_ageper1">
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<div style="text-align:center;" class="my-4">
+						<h6 style="font-weight:700;">40%</h6>
+						<h6 style="color:#6E717A;">25-30</h6>
+					</div>
+				</div>
+				<div class="super_adm_ageper1">
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<div style="text-align:center;" class="my-4">
+						<h6 style="font-weight:700;">25%</h6>
+						<h6 style="color:#6E717A;">35-45</h6>
+					</div>
+				</div>
+				<div class="super_adm_ageper1">
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<div style="text-align:center;" class="my-4">
+						<h6 style="font-weight:700;">20%</h6>
+						<h6 style="color:#6E717A;">45-55</h6>
+					</div>
+				</div>
+				<div class="super_adm_ageper1">
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<i class="fa-solid fa-person"></i><br>
+					<div class="my-2"></div>
+					<div style="text-align:center;" class="my-4">
+						<h6 style="font-weight:700;">15%</h6>
+						<h6 style="color:#6E717A;">55+</h6>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	<!-- over -->
+    
+    <!-- start -->
+	<div class="super_adm_part2 my-5">
+    
+		<div class="super_adm_gender">
+
+			<div class="super_adm_head2">
+
+				<h6 style="font-weight:700;" id="super_admin_Section1">By Gender</h6>
+				<button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+				
+			</div>
+
+			<div class="super_adm_cont2 my-4">
+
+				<div>
+					<div class="contain">
+	                  <div class="circle">
+	                 	<div></div>
+	                  </div> 
+                    </div>
+				</div>
+
+				<div class="super_adm_genfm">
+					<i class="fa-solid fa-person" style="color:#1D2182;"></i>
+				`
+						<div>
+							<h6 class="maleper" style="font-weight:700;">0</h6>
+							<h6 style="font-weight:400;">Male</h6>
+						</div>
+				
+				</div>
+
+				<div class="super_adm_genfm">
+					<i class="fa-solid fa-person-dress" style="color:#FF8DDF;"></i>
+					
+						<div>
+							<h6 class="femaleper" style="font-weight:700;">0</h6>
+							<h6 style="font-weight:400;">Female</h6>
+						</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+
+		<div>
+			<div class="super_adm_loadingper">
+				
+				<div class="super_adm_head3">
+
+					<h6 style="font-weight:700;">By Educations</h6>
+				   <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+
+				</div>
+
+				<div class="super_adm_cont3 my-4" >
+
+					<div class="super_adm_load">
+
+						<div>
+							<h6 style="font-size:0.9em;">National Diploma</h6>
+						</div>
+
+						<div class="super_adm_load_color">
+							<div class="super_adm_load_percent1">
+								
+							</div>
+						</div>
+
+						<div>
+							<h6 style="font-weight:700px" class="super_adm_loaadval1">24%</h6>
+						</div>
+						
+					</div>
+
+
+					<div class="super_adm_load">
+
+						<div>
+							<h6 style="font-size:0.9em;">Bachelor's Degree</h6>
+						</div>
+
+						<div class="super_adm_load_color">
+							<div class="super_adm_load_percent2">
+								
+							</div>
+						</div>
+
+						<div>
+							<h6 style="font-weight:700px" class="super_adm_loaadval1">65%</h6>
+						</div>
+						
+					</div>
+
+					<div class="super_adm_load">
+
+						<div>
+							<h6 style="font-size:0.9em;">Doctoral Degree</h6>
+						</div>
+
+						<div class="super_adm_load_color">
+							<div class="super_adm_load_percent3">
+								
+							</div>
+						</div>
+
+						<div>
+							<h6 style="font-weight:700px" class="super_adm_loaadval1">35%</h6>
+						</div>
+						
+					</div>
+
+				
+
+
+					
+				</div>
+
+			</div>
+		</div>
+		
+	</div>
+	<!-- over -->
+
+    <div class="super_adm_part3 my-5">
+
+        <div class="super_adm_head4">
+            <h6 style="font-weight:700;">Ad Distributor Emra Coin</h6>
+           <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        </div>
+   
+        <div class="super_adm_foottab1 my-4">
+   
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Coins</th>
+                        <th>Currency</th>
+                        <th>Amount</th>
+                        <th>Withdraw Date</th>
+                        <th>Withdraw Amount</th>
+                        
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+                        <td>20</td>
+                        <td>USD</td>
+                        <td>1,181.87</td>
+                        <td>2020-06-07</td>
+                        <td>1,000.00</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+                        <td>20</td>
+                        <td>USD</td>
+                        <td>1,181.87</td>
+                        <td>2020-06-07</td>
+                        <td>1,000.00</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+                        <td>20</td>
+                        <td>USD</td>
+                        <td>1,181.87</td>
+                        <td>2020-06-07</td>
+                        <td>1,000.00</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+                        <td>20</td>
+                        <td>USD</td>
+                        <td>1,181.87</td>
+                        <td>2020-06-07</td>
+                        <td>1,000.00</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+                        <td>20</td>
+                        <td>USD</td>
+                        <td>1,181.87</td>
+                        <td>2020-06-07</td>
+                        <td>1,000.00</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+                        <td>20</td>
+                        <td>USD</td>
+                        <td>1,181.87</td>
+                        <td>2020-06-07</td>
+                        <td>1,000.00</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+                        <td>20</td>
+                        <td>USD</td>
+                        <td>1,181.87</td>
+                        <td>2020-06-07</td>
+                        <td>1,000.00</td>
+                    </tr>
+                </tbody>
+            </table>
+   
+            <div class="p-2 bg-white my-3" style="border-radius: 10px;width:100%;">
+                       <h6 class="my-2"><a href="#">View All</a></h6>
+                   </div>
+            
+        </div>
+   
+        <div class="my-4 super_adm_foottab2">
+            
+         <div class="super_adm_footercards">
+   
+             <div class="super_adm_cards">
+                 <img src="{% static 'admin/images/girl1.png'%}">
+   
+                 <h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+                 <h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+                 <h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+                 <h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+                 <h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+                 <h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+   
+   
+             </div>
+   
+             <div class="super_adm_cards">
+                 <img src="{% static 'admin/images/girl1.png'%}">
+   
+                 <h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+                 <h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+                 <h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+                 <h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+                 <h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+                 <h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+   
+   
+             </div>
+   
+   
+             <div class="super_adm_cards">
+                 <img src="{% static 'admin/images/girl1.png'%}">
+   
+                 <h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+                 <h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+                 <h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+                 <h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+                 <h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+                 <h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+   
+   
+             </div>
+   
+             <div class="super_adm_cards">
+                 <img src="{% static 'admin/images/girl1.png'%}">
+   
+                 <h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+                 <h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+                 <h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+                 <h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+                 <h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+                 <h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+   
+   
+             </div>
+   
+             <div class="super_adm_cards">
+                 <img src="{% static 'admin/images/girl1.png'%}">
+   
+                 <h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+                 <h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+                 <h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+                 <h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+                 <h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+                 <h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+   
+   
+             </div>
+   
+             <div class="super_adm_cards">
+                 <img src="{% static 'admin/images/girl1.png'%}">
+   
+                 <h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+                 <h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+                 <h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+                 <h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+                 <h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+                 <h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+   
+   
+             </div>
+             
+         </div>
+   
+         <div class="super_adm_lastfooter my-4">
+               <button>View All</button>
+         </div>
+       
+        </div>
+           
+       </div>
+
+  <!-- start -->
+	<div class="super_adm_part3 my-5">
+
+     <div class="super_adm_head4">
+     	<h6 style="font-weight:700;">Ad Distributor Subscription</h6>
+	    <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+     </div>
+
+     <div class="super_adm_foottab1 my-4">
+
+     	<table class="table">
+     		<thead>
+     			<tr>
+     				<th>User Name</th>
+     				<th>Coins</th>
+     				<th>Currency</th>
+     				<th>Amount</th>
+     				<th>Withdraw Date</th>
+     				<th>Withdraw Amount</th>
+     				
+     		</thead>
+     		<tbody>
+     			<tr>
+     				<td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+     				<td>20</td>
+     				<td>USD</td>
+     				<td>1,181.87</td>
+     				<td>2020-06-07</td>
+     				<td>1,000.00</td>
+     			</tr>
+     			<tr>
+     				<td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+     				<td>20</td>
+     				<td>USD</td>
+     				<td>1,181.87</td>
+     				<td>2020-06-07</td>
+     				<td>1,000.00</td>
+     			</tr>
+     			<tr>
+     				<td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+     				<td>20</td>
+     				<td>USD</td>
+     				<td>1,181.87</td>
+     				<td>2020-06-07</td>
+     				<td>1,000.00</td>
+     			</tr>
+     			<tr>
+     				<td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+     				<td>20</td>
+     				<td>USD</td>
+     				<td>1,181.87</td>
+     				<td>2020-06-07</td>
+     				<td>1,000.00</td>
+     			</tr>
+     			<tr>
+     				<td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+     				<td>20</td>
+     				<td>USD</td>
+     				<td>1,181.87</td>
+     				<td>2020-06-07</td>
+     				<td>1,000.00</td>
+     			</tr>
+     			<tr>
+     				<td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+     				<td>20</td>
+     				<td>USD</td>
+     				<td>1,181.87</td>
+     				<td>2020-06-07</td>
+     				<td>1,000.00</td>
+     			</tr>
+     			<tr>
+     				<td><img src="{% static 'admin/images/girl4.png'%}"> <span style="margin-left:20px;">Rishi</span></td>
+     				<td>20</td>
+     				<td>USD</td>
+     				<td>1,181.87</td>
+     				<td>2020-06-07</td>
+     				<td>1,000.00</td>
+     			</tr>
+     		</tbody>
+     	</table>
+
+     	<div class="p-2 bg-white my-3" style="border-radius: 10px;width:100%;">
+					<h6 class="my-2"><a href="#">View All</a></h6>
+				</div>
+     	
+     </div>
+
+     <div class="my-4 super_adm_foottab2">
+     	
+      <div class="super_adm_footercards">
+
+      	<div class="super_adm_cards">
+      		<img src="{% static 'admin/images/girl1.png'%}">
+
+      		<h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+      		<h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+      		<h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+      		<h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+      		<h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+      		<h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+
+
+      	</div>
+
+      	<div class="super_adm_cards">
+      		<img src="{% static 'admin/images/girl1.png'%}">
+
+      		<h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+      		<h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+      		<h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+      		<h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+      		<h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+      		<h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+
+
+      	</div>
+
+
+      	<div class="super_adm_cards">
+      		<img src="{% static 'admin/images/girl1.png'%}">
+
+      		<h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+      		<h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+      		<h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+      		<h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+      		<h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+      		<h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+
+
+      	</div>
+
+      	<div class="super_adm_cards">
+      		<img src="{% static 'admin/images/girl1.png'%}">
+
+      		<h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+      		<h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+      		<h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+      		<h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+      		<h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+      		<h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+
+
+      	</div>
+
+      	<div class="super_adm_cards">
+      		<img src="{% static 'admin/images/girl1.png'%}">
+
+      		<h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+      		<h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+      		<h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+      		<h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+      		<h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+      		<h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+
+
+      	</div>
+
+      	<div class="super_adm_cards">
+      		<img src="{% static 'admin/images/girl1.png'%}">
+
+      		<h6><strong>User Name :</strong> <span style="font-weight:700;color:#6E717A;">Rishi</span></h6>
+      		<h6><strong>Coins :</strong> <span style="font-weight:700;color:#6E717A;">20</span></h6>
+      		<h6><strong>Currency :</strong> <span style="font-weight:700;color:#6E717A;">USD</span></h6>
+      		<h6><strong>Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,181.87</span></h6>
+      		<h6><strong>Withdraw Date :</strong> <span style="font-weight:700;color:#6E717A;">2020-06-07</span></h6>
+      		<h6><strong>Withdraw Amount :</strong> <span style="font-weight:700;color:#6E717A;">1,000.00</span></h6>
+
+
+      	</div>
+      	
+      </div>
+
+      <div class="super_adm_lastfooter my-4">
+      	  <button>View All</button>
+      </div>
+    
+     </div>
+		
+	</div>
+	<!-- over -->
+	</div>		
+	</div>
+	
+</div>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+<!--js -->
+<script type="text/javascript" src="{% static 'admin/js/event.js'%}"></script>
+
+
+</body>
+</html>

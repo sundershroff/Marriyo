@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tab(Super User)</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- BS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<!--nav bar icon-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.css" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_tab.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_tab.css'%}">
+</head>
+<body style="background-color:  #f5f3fe;">	<div class="super_adm_par">
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+	<img src="{% static 'admin/images/logo.png'%}">
+	{% include 'adminnav.html'%}
+	</div>
+	<div class="super_adm_chi2">
+		<div class="super_adm_head">
+		<div class="super_adm_cont1">
+			<div><i class="fa-regular fa-bell"></i></div>
+			<div class="super_adm_cont1_cur" id="super_adm_event1"><img src="{% static 'admin/images/girl3.png'%}"><i class="fa-solid fa-caret-down"></i></div>
+		</div>
+		</div>
+
+  <!-- start -->
+  <div>
+	<h4 class="mainhead px-4 py-3">Dropdown Values</h4>
+  </div>
+  <div class="locl_adm_sec1 px-4 my-4">
+   <div>
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs">
+			<li class="nav-item"><a class="nav-link active tabb" data-bs-toggle="tab" href="#Country&Cities">Country & Cities</a></li>
+			<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Currency">Currency</a></li>
+			<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#MaritalStatus">Marital Status</a></li>
+			<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#PhysicalStatus">Physical Status</a></li>
+			<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Cast">Cast</a></li>
+			<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#typeofrelation">Type of relation</a></li>
+			<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Education">Education</a></li>
+			<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#JobPosition">Job Position</a></li>
+			<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#SalaryRange">Salary Range</a></li>
+			<div class="dropdown my-2 mx-4">
+			  <button class="dropp btn btn-block" data-bs-toggle="dropdown" aria-expanded="false">
+				<i class="fas fa-ellipsis-vertical"></i>
+			  </button>
+			  <ul class="dropdown-menu">
+				<li><span class="dropdown-item"><a class="nav-link" data-bs-toggle="tab" href="#Interest">Interest</a></span></li>
+				<li><span class="dropdown-item"><a class="nav-link" data-bs-toggle="tab" href="#NoInterest">No Interest</a></span></li>
+				<li><span class="dropdown-item"><a class="nav-link" data-bs-toggle="tab" href="#Complexion">Complexion</a></span></li>
+				<li><span class="dropdown-item"><a class="nav-link" data-bs-toggle="tab" href="#FoodTaste">Food Taste</a></span></li>
+				<li><span class="dropdown-item"><a class="nav-link" data-bs-toggle="tab" href="#Organs">Organs</a></span></li>
+				<li><span class="dropdown-item"><a class="nav-link" data-bs-toggle="tab" href="#FamilyStatus">Family Status</a></span></li>
+			  </ul>
+			</div>
+	  </ul>
+	  
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+	  <!-- Countries Tab -->
+	  <div class="tab-pane container active" id="Country&Cities">
+		<div class="addsea py-4">
+		
+			<div><h4><span class="countrycit">{{country_dropdown|length}} </span><span class="count">Countries</span></h4></div>    
+
+			<div class="locl_adm_form">
+			<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+			<button data-bs-toggle="modal" data-bs-target="#Addnew1">Add New <i class="bi bi-plus-circle"></i></button>
+			</div>
+			</div>
+	  <div class="row firstrow">
+		{% for i in country_dropdown %}
+		
+		
+		<div class="col-lg-4 col-md-6 col-sm-12 t1">
+			<h5 class="conname">{{i.country}}</h5>
+			<h6><span class="cityno">{{i.citiess|length}} </span><span class="CitiesAva">Cities Avaliable</span></h6>
+			<button class="peen" data-bs-toggle="modal" data-bs-target="#cityModal{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>        
+					   <form method="POST" style="display:contents;">
+						{% csrf_token %}
+			<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+					   </form>
+	   </div>
+	   <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+	   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+	$('#cityModal1').modal('show');
+</script> -->
+	   <!-- The Modal Edit-->
+<div class="modal fade" id="cityModal{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Country & City</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST" id="edit_city_country">
+					{% csrf_token %}
+				<label for="exampleFormControlInput1" class="form-label">Country</label>
+				<select id="countryone{{forloop.counter}}" class="form-select" name="edit_country" onchange="fun3.call(this,event)" aria-label="Default select example">
+					{% for j in all %}
+				  <option value="{{i.country}}">{{i.country}}</option>
+				  <option value="{{j.name}}">{{j.name}}</option>
+				  {% endfor %}
+				</select>
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Cities(Multiple)</label>
+					<select id="res4{{forloop.counter}}" class="form-select" name="edit_cities" aria-label="Default select example"> 
+						<!-- <script>
+							stat = {{ states|safe }};
+						ttt = stat[0].states;
+						for (i=0;i<ttt.length;i++){
+						   tt = ttt[i].name;
+						   document.write("<option value="tt">"+tt+"</option>");
+						}
+					  </script> -->
+					</select>
+				</form>
+					<div class="samp pt-3">
+						<form action="" method="POST" id="delete_cities_a" style="display: contents;">
+							{% csrf_token %}
+						{% for j in i.citiess %}
+						<input type="hidden" name="delete_cities" id="">
+						<input type="hidden" name="id" value="{{i.id}}" id="">
+						<div id="dele{{forloop.counter}}"><span class="cities"> {{j}} <button type="submit" name="cityvalue" value="{{forloop.counter0}}" class="drox{{forloop.counter}}" style="border: none;background-color: transparent;color: #EB5757;">x</button></span></div>
+						
+						{% endfor %}
+						</form>
+					</div>
+				
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				
+				<button class="button.prof_personal_filbtn2" type="submit" name="add_city" value="{{i.id}}"  onclick="addcity1()" id="addcity">Add City</button>
+				<button class="button.prof_personal_filbtn2" name="edit" value={{i.id}} type="button" id="">submit</button>
+
+			<!-- </form> -->
+			<script>
+				function delete_cities1(){
+					document.getElementById("delete_cities_a").submit()
+				}
+			</script>
+			<script>
+				function addcity1(){
+					document.getElementById("edit_city_country").submit()
+				}
+			</script>
+			<script>
+				$(document).ready(function() {   
+					$(".droxx").click(function(){
+						$("#dele").hide();
+					  }); 
+					// \--------------------------------------------------------/
+					//         Function to add a city to the first modal
+					// /--------------------------------------------------------\ 
+					
+							function addCityToFirstModal() {
+								// alert("hi");
+								// var cityName = $('#res4{{forloop.counter}}').val(); // Get the city name from the input in the first modal
+								
+								if (cityName) { // Check if the input is not empty
+									// Create the city element with a cancel button and append it to the .samp div in the first modal
+									var cityElement = '<div><span class="cities">' + cityName + ' <button type="button" class="">x</button></span></div>';
+									$('.samp').append(cityElement);
+									// Add a click event handler to the cancel button
+									$('.drox').on('click', function() {
+										$(this).closest('div').remove(); // Remove the city element when the cancel button is clicked
+									});
+									$('#cityInput').val(''); // Clear the input field in the first modal
+								}
+							}
+							// Bind the function to the "Add City" button in the first modal
+							$('#addCityButton').on('click', function(event) {
+								event.preventDefault(); // Prevent form submission
+								addCityToFirstModal(); // Call the function to add the city in the first modal
+							});
+					
+							// Bind the function to add city when Enter key is pressed in the input field in the first modal
+							$('#cityInput').on('keyup', function(event) {
+								if (event.keyCode === 13) { // Check if the Enter key (key code 13) is pressed
+									addCityToFirstModal(); // Call the function to add the city in the first modal
+								}
+							});
+				)};
+					
+			</script>
+
+			</div>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab edit  Country & City End--> 
+  <script type="text/javascript">
+	
+	a = document.getElementById("countryone{{forloop.counter}}").value;
+	c = {{ country|safe }};
+	position =c.indexOf(a);
+	stat = {{ states|safe }};
+	ttt = stat[position].states;
+	tt = "<select>";
+	for (i=0;i<ttt.length;i++){
+	   tt += "<option>"+ttt[i].name+"</option>";
+	}
+	tt+="</select>";
+		  document.getElementById("res4{{forloop.counter}}").innerHTML=tt;
+	
+	</script>
+
+	   {% endfor %}
+		
+	</div>
+	</div>
+	<!-- Countries Tab End -->
+
+		<!-- Currency Tab -->
+		<div class="tab-pane container fade" id="Currency">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{currency_dropdown|length}}</span><span class="count">Currency</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#CurrencyAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in currency_dropdown %}
+				
+			
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="Currenc">
+				 <h5 class="conname">{{i.country}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editcurrency"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>
+				</div> 
+			</div>
+			  <!-- Modal Currency Edit-->
+	<div class="modal fade" id="editcurrency" tabindex="-1" aria-labelledby="exampleModalcurrency{{forloop.counter}}" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalcurrency{{forloop.counter}}">Edit Currency</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form action="" method="POST">
+			<div class="modal-body px-4">
+				<label for="exampleFormControlInput1" class="form-label">Country</label>
+				<select class="form-select" name="currency_country" aria-label="Default select example">
+					{% for j in all %}
+				  <option value="{{i.country}}">{{i.country}}</option>
+				  <option value="{{j.name}}">{{j.name}}</option>
+				  {% endfor %}
+				</select>
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Currency</label>
+					<input class="form-select" type="text" name="currency" value="{{i.currency}}" id="">
+				</div>
+			</div>
+			<input type="hidden" name="currency_currency" value="{{i.id}}" id="">
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" name="edit" value = {{i.id}} type="submit" id="">Update</button>
+				{% comment %} addCityButton {% endcomment %}
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+
+  <!-- Modal For Tab Currency End--> 
+
+<!-- Modal For MaritalStatus Tab Start--> 
+
+			{% endfor %}
+		</div>
+	</div>
+		<!-- Currency Tab End -->
+
+	<!-- MaritalStatus Tab Start -->
+		<div class="tab-pane container fade" id="MaritalStatus">
+				<div class="addsea py-4">
+					<div><h4><span class="countrycit">{{marital_status_dropdown|length}} </span><span class="count">Marital Status</span></h4></div>    
+					<div class="locl_adm_form">
+					<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+					<button data-bs-toggle="modal" data-bs-target="#MaritalStatusAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+					</div>
+					</div> 
+				<div class="row firstrow">
+					{% for i in marital_status_dropdown %}
+					
+				
+				<div class="col-lg-4 col-md-6 col-sm-12 t2">
+					<div class="marita">
+					 <h5 class="conname">{{i.values}}</h5>
+					</div>
+					 <div class="edittool">
+					 <button class="peen" data-bs-toggle="modal" data-bs-target="#editMaritalStatus{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+					 <form method="POST" style="display:contents;">
+						{% csrf_token %}
+			<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+					   </form>
+					</div> 
+				</div>
+
+				  <!-- The Modal Edit-->
+  <div class="modal fade" id="editMaritalStatus{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Marital Status</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Value</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="Married">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" name="edit" value={{i.id}} type="submit" id="">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+ <!-- Modal For MaritalStatus Tab End--> 
+
+				{% endfor %}
+			</div>
+		</div>
+		<!-- MaritalStatus Tab End -->
+
+			<!-- PhysicalStatus Tab Start -->
+		<div class="tab-pane container fade" id="PhysicalStatus">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{physical_status_dropdown|length}}</span><span class="count">Physical Status </span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#PhysicalAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in physical_status_dropdown %}
+				
+				
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="Physica">
+				 <h5 class="conname">{{i.values}} </h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editPhysicalStatus{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editPhysicalStatus{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Physical Status</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form method="POST">
+	{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="Healthy person">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" name="edit" value={{i.id}} type="submit" id="addCityButton">submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab Physical Status End-->
+
+			{% endfor %}
+		</div>
+		</div>
+		<!-- PhysicalStatus Tab End -->
+		<!-- Cast Tab Start -->
+		<div class="tab-pane container fade" id="Cast">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{cast|length}} </span><span class="count">Cast</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#CastAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in cast %}
+				
+				
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="Cas">
+				 <h5 class="conname">{{i.values}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editCa{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editCa{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Cast</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="Value">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value={{i.id}} id="addCityButton">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+ <!-- Modal For Tab Type of Relation Start-->   
+
+			{% endfor %}
+			
+			</div>
+		</div>
+		<!-- Cast Tab End -->
+		<!-- Type of relation Tab Start -->
+		<div class="tab-pane container fade" id="typeofrelation">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{type_of_relationship|length}} </span><span class="count">Type of Relation</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#TypeofRelAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in type_of_relationship %}
+				
+				
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="TypeofRela">
+				 <h5 class="conname">{{i.values}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editrelation{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editrelation{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Type Of Relation</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="Son">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value="{{i.id}}" id="addCityButton">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab Type of Relation End--> 
+
+			{% endfor %}
+				
+		
+			</div>
+			<!-- Type of relation Tab End -->
+		</div>
+		<!-- Educational Qualification Tab Start -->
+		<div class="tab-pane container fade" id="Education">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{education|length}}  </span><span class="count">Educational Qualification</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#EducationalQualificationAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in education %}
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="Qualification">
+				 <h5 class="conname">{{i.values}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editEducationalQualification{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editEducationalQualification{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Educational Qualification</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value="{{i.values}}" class="form-control" id="cityInput" placeholder="Enter Education">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value="{{i.id}}" id="">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab EducationalQualification End-->  
+
+			{% endfor %}
+		</div>
+		</div>
+		<!-- Type of relation Tab End -->
+		<!-- Job Position Tab Start -->
+		<div class="tab-pane container fade" id="JobPosition">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{job_position|length}} </span><span class="count">Job Postion</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#JobPostionAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in job_position %}
+
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="Job">
+				 <h5 class="conname">{{i.values}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editJobPostion{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editJobPostion{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Job Position</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="Designer">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value="{{i.id}}" id="addCityButton">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab Job Position End-->
+
+			{% endfor %}
+		</div>
+		</div>
+		<!-- Job Postion Tab End -->
+		<!-- Salary Range Tab Start-->
+		<div class="tab-pane container fade" id="SalaryRange">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{salary_range|length}} </span><span class="count">SalaryRange</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#SalaryRangeAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in salary_range %}
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="Salary">
+				 <h5 class="conname">{{i.values}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editSalaryRange{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editSalaryRange{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Salary Range</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="10k-20k">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value={{i.id}} id="addCityButton">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab Salary Range End-->
+
+			{% endfor %}
+
+		</div>
+		</div>
+		<!-- Salary Range Tab Start-->
+		<!-- Interest Tab Start-->
+		<div class="tab-pane container fade" id="Interest">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{intrest|length}} </span><span class="count">Interest</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#InterestAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in intrest %}
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="Interes">
+				 <h5 class="conname">{{i.values}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editInterest{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editInterest{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Interest</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="Bachelor's Degree">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value="{{i.id}}" id="addCityButton">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab Interest End-->
+
+			{% endfor %}
+		
+		</div>
+		</div>
+		<!-- Interest Tab End-->
+		<!-- No Interest Tab Start-->
+		<div class="tab-pane container fade" id="NoInterest">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{no_intrest|length}} </span><span class="count">Non Interest</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#NoInterestAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in no_intrest %}
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="NoInteres">
+				 <h5 class="conname">{{i.values}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editNoInterest{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editNoInterest{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit No Interest</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="Bachelor's Degree">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value={{i.id}} id="addCityButton">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab No Interest End-->
+
+			{% endfor %}
+		
+		</div>
+		</div>
+		<!-- No Interest Tab End-->
+		<!-- Complexion Tab Start-->
+		<div class="tab-pane container fade" id="Complexion">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{complexion|length}} </span><span class="count">Complexion</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#ComplexionAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in complexion %}
+				
+			
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="Complexi">
+				 <h5 class="conname">{{i.values}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editComplexion{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editComplexion{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Complexion</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="Enter">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value={{i.id}} id="addCityButton">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab Complexion End-->
+
+			{% endfor %}
+		</div>
+		</div>
+		<!-- Food Taste Tab Start-->
+		<div class="tab-pane container fade" id="FoodTaste">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{food_taste|length}} </span><span class="count">Food Taste</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#FoodTasteAddnew">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+			<div class="row firstrow">
+				{% for i in food_taste %}
+				
+
+			<div class="col-lg-4 col-md-6 col-sm-12 t2">
+				<div class="Food">
+				 <h5 class="conname">{{i.values}}</h5>
+				</div>
+				 <div class="edittool">
+				 <button class="peen" data-bs-toggle="modal" data-bs-target="#editFoodTaste{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+				 <form method="POST" style="display:contents;">
+					{% csrf_token %}
+		<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+				   </form>				</div> 
+			</div>
+			  <!-- The Modal Edit-->
+  <div class="modal fade" id="editFoodTaste{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Food Taste</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value={{i.values}} class="form-control" id="cityInput" placeholder="Enter">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value={{i.id}} id="addCityButton">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For Tab Food Taste End-->
+
+			{% endfor %}
+		</div>
+		</div>
+		<!-- Food Taste Tab End-->
+		<div class="tab-pane container fade" id="Organs">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{organs|length}}   </span><span class="count">Organs</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#addorgans">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+			</div> 
+				<div class="row firstrow">
+					{% for i in organs %}
+					
+	
+				<div class="col-lg-4 col-md-6 col-sm-12 t2">
+					<div class="Food">
+					 <h5 class="conname">{{i.values}}</h5>
+					</div>
+					 <div class="edittool">
+					 <button class="peen" data-bs-toggle="modal" data-bs-target="#editorgans{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+					 <form method="POST" style="display:contents;">
+						{% csrf_token %}
+			<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+					   </form>					</div> 
+				</div>
+				  <!-- The Modal Edit-->
+  <div class="modal fade" id="editorgans{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Organs</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value="{{i.values}}" class="form-control" id="cityInput" placeholder="Enter">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value="{{i.id}}" id="addCityButton">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For organs Taste End-->
+
+				{% endfor %}
+				</div> 
+		</div>
+		<div class="tab-pane container fade" id="FamilyStatus">
+			<div class="addsea py-4">
+				<div><h4><span class="countrycit">{{familystatus|length}}  </span><span class="count">Family Status</span></h4></div>    
+				<div class="locl_adm_form">
+				<form><div class="locl_adm_align"><input type="text" autofocus placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></div></form>    
+				<button data-bs-toggle="modal" data-bs-target="#addfamilystatus">Add New <i class="bi bi-plus-circle"></i></button>
+				</div>
+				</div> 
+				<div class="row firstrow">
+					{% for i in familystatus %}
+					
+	
+				<div class="col-lg-4 col-md-6 col-sm-12 t2">
+					<div class="Food">
+					 <h5 class="conname">{{i.values}}</h5>
+					</div>
+					 <div class="edittool">
+					 <button class="peen" data-bs-toggle="modal" data-bs-target="#editfamily{{forloop.counter}}"><i class="bi bi-pen penn"></i></button>       		
+					 <form method="POST" style="display:contents;">
+						{% csrf_token %}
+			<button type="submit" name="delete" value="{{i.id}}" class="trassh"><i class="bi bi-trash trashh"></i></button>
+					   </form>					</div> 
+				</div>
+				  <!-- The Modal Edit-->
+  <div class="modal fade" id="editfamily{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Family Status</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="values" value="{{i.values}}" class="form-control" id="cityInput" placeholder="Enter">
+					<div class="samp pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" name="edit" value="{{i.id}}" id="addCityButton">Update</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  <!-- Modal For family status Taste End-->
+
+				{% endfor %}
+		</div>
+	  </div>  
+</div>
+</div>  
+</div>
+<!-- Modal For Tab Add new Country & City--> 
+<!-- The Modal Addnew-->
+<div class="modal fade" id="Addnew1">
+  <div class="modal-dialog">
+	  <div class="modal-content">
+		  <div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Add new Country & City</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <form method="POST">
+			{% csrf_token %}
+		  <div class="modal-body px-4">
+			  <label for="exampleFormControlInput1" class="form-label">Country</label>
+			  <select id="countrytwo" class="form-select" name="country" onchange="fun2.call(this,event)" aria-label="Default select example">
+				  <option selected>Select Country</option>
+				  {% for j in all %}
+                    <option value="{{j.name}}">{{j.name}}</option>
+                    {% endfor %}
+			  </select>
+			  <div class="my-4">
+				  <label for="exampleFormControlInput1" class="form-label">Cities(Multiple)</label>
+				  <select id="res3" class="form-select" multiple name="city" aria-label="Default select example">
+					<option selected>Select Cities  </option>
+					<script>
+						stat = {{ states|safe }};
+					ttt = stat[0].states;
+					for (i=0;i<ttt.length;i++){
+					   tt = ttt[i].name;
+					   document.write("<option value="tt">"+tt+"</option>");
+					}
+				  </script>
+				</select>
+				  <div class="samp2 pt-3">
+				  </div>
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			  <button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+			  <button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+		  </div>
+		</form>
+	  </div>
+  </div>
+</div>
+
+<!-- Modal For Tab Currency Start--> 
+<!-- Modal Currency Add New-->
+<div class="modal fade" id="CurrencyAddnew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Currency</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<label for="exampleFormControlInput1" class="form-label">Country</label>
+				<select class="form-select" name="country" aria-label="Default select example">
+					{% for j in all %}
+                    <option value="{{j.name}}">{{j.name}}</option>
+                    {% endfor %}
+				</select>
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Currency</label>
+					<input class="form-select" type="text" name="currency" placeholder="Type here... eg:INR" id="">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="addCityButton">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+<!-- The Modal Addnew -->
+<div class="modal fade" id="MaritalStatusAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Marital Status</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form  method="POST">
+				{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Value</label>
+					<input type="text" name="marital_status" class="form-control" id="cityInput2" placeholder="marital status">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" value="marital_status" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+<!-- Modal For Tab Physical Status--> 
+<!-- The Modal Addnew-->
+<div class="modal fade" id="PhysicalAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Physical Status</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="physical_status" class="form-control" id="cityInput2" placeholder="Value">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+<!-- Modal For Tab Cast--> 
+<!-- The Modal Addnew-->
+<div class="modal fade" id="CastAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Cast</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form method = "POST">
+				{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="cast" class="form-control" id="cityInput2" placeholder="Value">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+  <!-- The Modal Addnew-->
+<div class="modal fade" id="TypeofRelAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Type Of Relation</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form method = "POST">
+				{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="type_of_relationship" class="form-control" id="cityInput2" placeholder="Granddaughter">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+<!-- Modal For Tab EducationalQualification Start-->  
+   <!-- The Modal Addnew-->
+<div class="modal fade" id="EducationalQualificationAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add new Educational Qualification</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="education" class="form-control" id="cityInput2" placeholder="Value">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+  <!-- Modal For Tab Job Position Start-->  
+   <!-- The Modal Addnew-->
+<div class="modal fade" id="JobPostionAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Job Position</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+			
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="job_position" class="form-control" id="cityInput2" placeholder="Value">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+
+  <!-- Modal For Tab  Salary Range Start-->  
+   <!-- The Modal Addnew-->
+   <div class="modal fade" id="SalaryRangeAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Salary Range</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="salary_range" class="form-control" id="cityInput2" placeholder="Enter">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+    <!-- Modal For Tab Interest Start-->  
+   <!-- The Modal Addnew-->
+<div class="modal fade" id="InterestAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Interest</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="intrest" class="form-control" id="cityInput2" placeholder="Enter">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+ <!-- Modal For Tab Interest Start-->  
+   <!-- The Modal Addnew-->
+   <div class="modal fade" id="NoInterestAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New No Interest</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="no_intrest" class="form-control" id="cityInput2" placeholder="Enter">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+   <!-- Modal For Tab Complexion Start-->  
+   <!-- The Modal Addnew-->
+   <div class="modal fade" id="ComplexionAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Complexion</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="complexion" class="form-control" id="cityInput2" placeholder="Enter">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+     <!-- Modal For Tab Food Taste Start-->  
+   <!-- The Modal Addnew-->
+   <div class="modal fade" id="FoodTasteAddnew">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Food Taste</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="food_taste" class="form-control" id="cityInput2" placeholder="Enter">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+   <!-- The Modal Addnew-->
+   <div class="modal fade" id="addorgans">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Organs</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="organs" class="form-control" id="cityInput2" placeholder="Enter">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+   <!-- The Modal Addnew-->
+   <div class="modal fade" id="addfamilystatus">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add New Family Status</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-4">
+				<form method="POST">
+					{% csrf_token %}
+				<div class="my-4">
+					<label for="exampleFormControlInput1" class="form-label">Enter Values</label>
+					<input type="text" name="familystatus" class="form-control" id="cityInput2" placeholder="Enter">
+					<div class="samp2 pt-3">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+				<button class="button.prof_personal_filbtn2" type="submit" id="">Submit</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+  
+
+</div>
+<div class="super_adm_profie" id="super_adm_event2">
+    <div><a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a></div>
+    <div><a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a></div>
+	<div><a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a></div>
+</div>
+
+</div>
+<div class="super_adm_profie" id="super_adm_event2">
+    <div><a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a></div>
+    <div><a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a></div>
+	<div><a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a></div>
+</div>
+
+<!--\--------------------------------------------------------/
+                      Script Starting
+ /--------------------------------------------------------\-->
+ <script>
+    $(document).ready(function() {    
+// \--------------------------------------------------------/
+//         Function to add a city to the first modal
+// /--------------------------------------------------------\ 
+
+        function addCityToFirstModal() {
+            var cityName = $('#cityInput').val(); // Get the city name from the input in the first modal
+            if (cityName) { // Check if the input is not empty
+                // Create the city element with a cancel button and append it to the .samp div in the first modal
+                var cityElement = '<div><span class="cities">' + cityName + ' <button type="button" class="">x</button></span></div>';
+                $('.samp').append(cityElement);
+                // Add a click event handler to the cancel button
+                $('.drox').on('click', function() {
+                    $(this).closest('div').remove(); // Remove the city element when the cancel button is clicked
+                });
+                $('#cityInput').val(''); // Clear the input field in the first modal
+            }
+        }
+        // Bind the function to the "Add City" button in the first modal
+        $('#addCityButton').on('click', function(event) {
+            event.preventDefault(); // Prevent form submission
+            addCityToFirstModal(); // Call the function to add the city in the first modal
+        });
+
+        // Bind the function to add city when Enter key is pressed in the input field in the first modal
+        $('#cityInput').on('keyup', function(event) {
+            if (event.keyCode === 13) { // Check if the Enter key (key code 13) is pressed
+                addCityToFirstModal(); // Call the function to add the city in the first modal
+            }
+        });
+// \--------------------------------------------------------/
+//         Function to add a city to the second modal
+// /--------------------------------------------------------\    
+        function addCityToSecondModal() {
+            var cityName = $('#cityInput2').val(); // Get the city name from the input in the second modal
+            if (cityName) { // Check if the input is not empty
+                // Create the city element with a cancel button and append it to the .samp2 div in the second modal
+                var cityElement = '<div><span class="cities">' + cityName + ' <button type="button" class="drox">x</button></span></div>';
+                $('.samp2').append(cityElement);
+
+                // Add a click event handler to the cancel button
+                $('.drox').on('click', function() {
+                    $(this).closest('div').remove(); // Remove the city element when the cancel button is clicked
+                });
+
+                $('#cityInput2').val(''); // Clear the input field in the second modal
+            }
+        }
+        // Bind the function to the "Submit" button in the second modal
+        $('#SubmitCityButton2').on('click', function(event) {
+            event.preventDefault(); // Prevent form submission
+            addCityToSecondModal(); // Call the function to add the city in the second modal
+        });
+
+        // Bind the function to add city when Enter key is pressed in the input field in the second modal
+        $('#cityInput2').on('keyup', function(event) {
+            if (event.keyCode === 13) { // Check if the Enter key (key code 13) is pressed
+                addCityToSecondModal(); // Call the function to add the city in the second modal
+            }
+        });
+    }); 
+</script>
+<!--\--------------------------------------------------------/
+                      Script Ending
+ /--------------------------------------------------------\-->
+<!--js -->
+<script type="text/javascript">
+	function fun2(event){
+	a = document.getElementById("countrytwo").value;
+	{% comment %} alert(a); {% endcomment %}
+	<!--document.getElementById("res").innerHTML=a;-->
+	c = {{ country|safe }};
+	position =c.indexOf(a);
+	<!--document.getElementById("res1").innerHTML=position;-->
+	stat = {{ states|safe }};
+	ttt = stat[position].states;
+	tt = "<select>";
+	for (i=0;i<ttt.length;i++){
+	   tt += "<option>"+ttt[i].name+"</option>";
+	}
+		 tt+="</select>";
+		  document.getElementById("res3").innerHTML=tt;
+	}
+	
+	</script>
+	  
+	
+<script type="text/javascript" src="{% static 'admin/js/event1.js'%}"></script>
+</body>
+</html>

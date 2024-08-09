@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	{% load static %}
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Super Admin Dashboard (Profile Finder)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	
+	<!-- bootstrap icon link -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style1.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_one.css'%}">
+	<link rel="stylesheet" href="{% static 'admin/css/Add commition.css'%}">
+</head>
+<body style="background-color:#f5f3fe;">
+
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+{% include 'adminnav.html'%}
+		
+	</div>
+
+	<div class="super_adm_chi2"> 
+
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+
+
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static 'admin/images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+			
+		</div>
+		
+	</div>
+
+    <div class="locl_adm_sec1 px-4 my-4">
+
+		<div>
+		  <h5 style="color: #2B3674;"><span style="font-weight:600;">Commission Calculator </span></h5>
+		</div>
+  
+		<div class="locl_adm_form">
+		  <form>
+		  
+		  <div class="locl_adm_align">
+			<input type="text" autofocus placeholder="Search">
+			<i class="fa-solid fa-magnifying-glass"></i>
+		  </div>
+  
+		  </form>
+		 <a href="/Add_Commision_1/{{key.id}}/0" style="text-decoration: none;"> <button data-bs-toggle="modal" data-bs-target="#filter_modal1" style="
+			background: linear-gradient(63deg,blue,#b772b7 );
+			color: white;
+			border: 1px solid white;
+		">Add New <i class="bi bi-plus-circle"></i></button></a>
+		</div>
+		
+	  </div>
+	  <hr>
+	  <!-- over -->
+  
+	  <!-- start -->
+	  <div class="locl_adm_sec2">
+  
+		<div class="locl_adm_table px-3">
+  
+		  <table>
+			<thead>
+			  <tr>
+				<th>#No</th>
+				<th>Title</th>
+				<th>country</th>
+				<th>To Whom</th>
+				<th>For Whom</th>
+				<th>For What</th>
+				<th>Action</th>
+			  
+				
+			  </tr>
+			</thead>
+			
+			
+			 <tbody>
+				{% for i in commision_Data %}
+
+			  <tr>
+			   <td data-label = "#No">{{forloop.counter}}</td>
+			   <td data-label = "Title">{{i.title}}</td>
+			   <td data-label = "country">{{i.country}}</td>
+			   <td data-label = "To Whom">{{i.to_whom}}</td>
+			   <td data-label = "For Whom">{{i.from_whom}} </td>
+			   <td data-label = "For What">{{i.for_what}}</td>
+			   <td data-label = "Action">
+				 <a href="/Add_Commision_1/{{key.id}}/{{i.id}}" class="eme"data-bs-toggle="" data-bs-target=""><i class="bi bi-pen pen"></i></a> 
+				 <form method="POST" style="display: contents;">
+					{% csrf_token %}
+				 <button type="submit" name="delete" value="{{i.id}}" class="eme"><i class="bi bi-trash ms-1 del"></i></button>
+				</form>
+				</td>
+			  </tr>
+			  {% endfor %}
+			</tbody>
+		  </table>
+		</div>
+		
+	  </div>
+  
+	
+	</div>
+	
+</div>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+
+<!-- modal -->
+<div class="modal fade modal-md" id="filter_modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header prof_personal_filt">
+          <h6 class="modal-title" id="exampleModalLabel" style="font-weight:700;" >Add New Emera Coin</h6>
+          <button type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times-circle" style="color:black;"></i></button>
+        </div>
+        <div class="modal-body prof_personal_filt2">
+           
+           <form method="post" action="#">
+         
+            <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">Country</label>
+               <select class="form-select py-3">
+                <option selected>Select</option>
+              </select>
+             </div>
+             <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">Currency</label>
+               <select class="form-select py-3">
+                <option selected>Select</option>
+              </select>
+             </div>
+  
+             <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">1 Emera Coin=?</label>
+                <input type="text" name="" class="form-control" placeholder="Enter">
+             </div>
+             <div class="modal-footer mt-5">
+              <div class="prof_personal_savefilt1  ">
+                <button class="prof_personal_filbtn1 " type="reset">Cancel</button>
+                <button class="prof_personal_filbtn2" type="submit">Submit</button>
+              </div>
+          </div>
+             
+           </form>
+
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <!-- edit model filter_modal2-->
+  <div class="modal fade modal-md" id="filter_modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header prof_personal_filt">
+          <h6 class="modal-title" id="exampleModalLabel" style="font-weight:700;" >Edit Emera Coin</h6>
+          <button type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times-circle" style="color:black;"></i></button>
+        </div>
+        <div class="modal-body prof_personal_filt2">
+           
+           <form method="post" action="#">
+         
+            <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">Country</label>
+               <select class="form-select py-3">
+                <option selected> India</option>
+              </select>
+             </div>
+             <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">Currency</label>
+               <select class="form-select py-3">
+                <option selected>INR</option>
+              </select>
+             </div>
+  
+             <div class="my-4">
+              <label for="exampleFormControlInput1" class="form-label">1 Emera Coin=?</label>
+                <input type="text" name="" class="form-control" placeholder="Enter">
+             </div>
+             <div class="modal-footer mt-5">
+              <div class="prof_personal_savefilt1  ">
+                <button class="prof_personal_filbtn1 " type="reset">Cancel</button>
+                <button class="prof_personal_filbtn2" type="submit">Update</button>
+              </div>
+          </div>
+             
+           </form>
+
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+
+<!--js -->
+<script type="text/javascript" src="{% static 'admin/js/event1.js'%}"></script>
+
+
+</body>
+</html>

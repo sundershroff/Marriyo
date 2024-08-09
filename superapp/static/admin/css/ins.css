@@ -1,0 +1,97 @@
+/*modal*/
+.prof_personal_filt button{
+	padding:0;
+	border:none;
+	background:white !important;
+
+}
+
+.prof_personal_filt i{
+	font-size:1.4em;
+	color:black;
+}
+.prof_personal_filt2 label{
+	color:#2B3674;
+	font-weight:500;
+   font-size:1em;
+}
+.prof_personal_filt2 input{
+	padding:13px 3px;
+}
+
+
+.prof_personal_filbtn2{
+	background: linear-gradient(63deg,blue,#b772b7 );
+	color:white;
+	transition:0.5s;
+  	border:1px solid white;
+}
+
+.prof_personal_savefilt1 button{
+	 border-radius:10px;
+	padding:7px 20px;
+}
+
+.prof_personal_filbtn2:hover{
+	background:white;
+	transition:0.5s;
+	color:black;
+	border:1px solid black;
+}
+.prof_personal_filbtn1:hover{
+	background:#7B61FF;
+	transition:0.5s;
+	color:white;
+
+}
+
+.prof_personal_filt2 label{
+	color:#2B3674;
+	font-weight:500;
+    font-size:1em;
+}
+/*over*/
+/*  */
+
+.addd{
+	background-color: white;
+}
+h6.amt {
+    font-size: 18px;
+}
+h6.bor.px-3 {
+    padding: 20px 0px 20px 0px;
+}
+.admin{
+	background-color: #e5f4e9;
+	border-radius: 5px;
+}
+label.form-label.tit {
+	font-weight: 600;
+	color: #2b3674;
+}
+label.form-check-label.tit1 {
+    font-size:12px;
+    color: #69697a;
+}
+.addd.px-4.py-3 {
+    padding-bottom: 7rem !important;
+}
+@media(max-width:767px){
+	.col-md-4.and {
+		margin-top: 0px;
+		background-color: white;
+	}
+	/* .addd.px-4.py-3 {
+		margin-top: 10px;
+	} */
+}
+@media(max-width:767px){
+	.col-md-4.and {
+		margin-top: 13px;
+		background-color: white;
+	}
+	/* .addd.px-4.py-3 {
+		margin-top: 10px;
+	} */
+}

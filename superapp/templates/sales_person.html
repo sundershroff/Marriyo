@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sales(Super User)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style1.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_one.css'%}">
+</head>
+<body style="background-color:  #f5f3fe;">
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+	{% include 'adminnav.html' %}
+	</div>
+	<div class="super_adm_chi2"> 
+		<div class="super_adm_head">
+		<div class="super_adm_cont1">
+			<div><i class="fa-regular fa-bell"></i></div>
+			<div class="super_adm_cont1_cur" id="super_adm_event1"><img src="{% static 'admin/images/girl3.png'%}"><i class="fa-solid fa-caret-down"></i></div>
+		</div>		
+		</div>
+
+
+
+ <!-- start -->
+ <div class="locl_adm_sec1 px-4 my-4">
+
+	<div>
+	  <h3><span style="color:rgba(123, 97, 255, 1);font-weight:700;">{{sales_manager|length}} </span>Sales User in the list</h3>
+	</div>
+
+	<div class="locl_adm_form">
+	  <form>
+	  
+	  <div class="locl_adm_align">
+		<input type="text" autofocus placeholder="Search">
+		<i class="fa-solid fa-magnifying-glass"></i>
+	  </div>
+
+	  </form>
+{% if "Add Sales User" in access %}
+<button data-bs-toggle="modal" data-bs-target="#filter_modal1">Add New <i class="bi bi-plus-circle"></i></button>
+{% elif access == "" %}
+<button data-bs-toggle="modal" data-bs-target="#filter_modal1">Add New <i class="bi bi-plus-circle"></i></button>
+
+{% else %}
+{% endif %}
+	</div>
+	
+  </div>
+  <!-- over -->
+
+  <!-- start -->
+  <div class="locl_adm_sec2 my-5">
+
+	<div class="locl_adm_table px-3 mb-5">
+
+	  <table>
+		<thead>
+		  <tr>
+			<th>No</th>
+			<th>User ID</th>
+			<th>User Name</th>
+			<th>Currency</th>
+			<th>Subscription</th>
+			<th>Email ID</th>
+			<th>Phone Number</th>
+			<th>Location</th>
+			<th>Status</th>
+		   
+			
+		  </tr>
+		</thead>
+		 <tbody>
+			{% for i in sales_manager %}
+			
+		  <tr>
+		   <td data-label = "No">{{forloop.counter}}</td>
+		   <td data-label = "User ID">{{i.uid}}</td>
+		   <td data-label = "Name"> {{i.full_name}}</td>
+		   <td data-label = "Inr">INR</td>
+		   <td data-label = "Currency"><i class="bi bi-currency-rupee"></i>19200</td>
+		   <td data-label = "Email ID">{{i.email}}</td>
+		   <td data-label = "Phone Number">+91 {{i.mobile}}</td>
+		   <td data-label = "Location">{{i.personal_country}}</td>
+		   <td data-label = "Status">
+			<label class="toggle-switch">
+			<input type="checkbox">
+			<span class="slider"></span>
+		  </label>
+		   </td>    
+		   <td data-label = "Actions"><button  data-bs-toggle="modal" data-bs-target="#filter{{forloop.counter}}" style="
+			border: 0px;
+			padding: 7px;
+			border-radius: 6px;
+		">
+
+			<i class="fa-solid fa-ellipsis-vertical locl_adm_action"></i> </button></td>
+		  </tr>
+		  <div class="modal fade modal-md px-4" id="filter{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+			<div class="modal-dialog modal-dialog-centered">
+			  <div class="modal-content">
+				<div class="modal-header border-0">
+			
+				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body locl_adm_modal1">
+		  
+					<ul style="list-style: none;text-align: center;font-size: 16px;line-height: 199%;">
+						<form method="POST">
+							{% csrf_token %}
+						{% comment %} <li><button type="submit" name="uid" value="{{i.uid}}" style="text-decoration: auto;border: transparent;background-color: transparent;">View Details</button> </li> {% endcomment %}
+					</form>
+					{% if "Edit Sales User" in access %}
+					<li><a href="/sm_edit_profile/{{key.id}}/{{i.uid}}" style="text-decoration: auto;">Edit</a></li>
+{% elif access == "" %}
+<li><a href="/sm_edit_profile/{{key.id}}/{{i.uid}}" style="text-decoration: auto;">Edit</a></li>
+
+					{% else %}
+					{% endif %}
+					{% if "Delete Sales User" in access %}
+					<form method="POST">
+						{% csrf_token %}
+					<li><button type="submit" name="delete" value="{{i.uid}}" style="text-decoration: auto;border: transparent;background-color: transparent;">Delete</button> </li>
+				</form>
+				{% elif access == ""  %}
+				<form method="POST">
+					{% csrf_token %}
+				<li><button type="submit" name="delete" value="{{i.uid}}" style="text-decoration: auto;border: transparent;background-color: transparent;">Delete</button> </li>
+			</form>
+					{% else %}
+					{% endif %}
+										
+												  </ul>
+				
+				</div>
+			   
+			  </div>
+			</div>
+		  </div>
+                       
+		  </tr>
+
+		  {% endfor %}
+
+
+		</tbody>
+	  </table>
+	</div>
+	
+  </div>
+  <!-- over -->
+
+</div>
+ 
+</div>
+<!-- modal -->
+<div class="modal fade modal-md" id="filter_modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+	<div class="modal-content">
+	  <div class="modal-header prof_personal_filt">
+		<h4 class="modal-title" id="exampleModalLabel" style="font-weight:700;" >Filter</h4>
+		<button type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times-circle" style="color:black;"></i></button>
+	  </div>
+	  <div class="modal-body prof_personal_filt2 px-5">
+		 
+		 <form method="post" action="#">
+	   
+			<div class="my-3">
+				<label for="exampleFormControlInput1" class="form-label">User Full Name</label>
+				<input type="text" name="" class="form-control" placeholder="ABCD">
+			   </div>
+	
+			   <div class="my-4">
+				<label for="exampleFormControlInput1" class="form-label">Email ID</label>
+				  <input type="text" name="" class="form-control" placeholder="mail@simmple.com">
+			   </div>
+		
+	
+					  <div class="my-4">
+				<label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+				 <input type="text" name="" class="form-control" placeholder="Example:1234567890">
+			   </div>
+	
+	
+					  <div class="my-4">
+				<label for="exampleFormControlInput1" class="form-label">Locations</label>
+				 <select class="form-select py-3">
+				  <option selected>Select</option>
+				  <option selected>India</option>
+				  <option selected>India</option>
+				  <option selected>India</option>
+				</select>
+			   </div>
+	
+			
+			   <div class="form-check mb-4">
+				<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+				<label class="form-check-label" for="flexCheckDefault">
+					Send email to user for completing the profile
+				</label>
+			  </div>
+
+				<div class="modal-footer">
+					<button class="button.prof_personal_filbtn1" type="reset" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+					<button class="button.prof_personal_filbtn2" type="button" id="addCityButton">Submit</button>
+				</div>
+		   <div class="py-1">
+	  
+		   </div>  
+
+		 </form>
+
+	  </div>
+	
+	</div>
+  </div>
+</div>
+
+
+
+<!-- over -->
+
+	
+	</div>
+</div>
+<div class="super_adm_profie" id="super_adm_event2">
+    <div><a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a></div>
+    <div><a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a></div>
+	<div><a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a></div>	
+</div>
+<!--js -->
+<script type="text/javascript" src="{% static 'admin/js/event1.js'%}"></script>
+
+</body>
+</html>

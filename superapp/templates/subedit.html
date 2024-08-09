@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Super Admin Dashboard (Profile Finder)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_subscription.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_subscription.css'%}">
+	<link rel="stylesheet" href="{% static 'admin/css/subedit.css'%}">
+</head>
+<body style="background-color:#f5f3fe;">
+
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+	{% include 'adminnav.html'%}
+		
+	</div>
+
+	<div class="super_adm_chi2"> 
+
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+
+
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static 'admin/images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+			
+		</div>
+		
+	</div>
+
+    <div class="locl_adm_sec1 px-4 ">
+
+		<div class="pt-3">
+		  <h5><a href="/subscription/{{key.id}}" style="text-decoration: none;"><span style="color:rgb(108, 79, 255);font-weight:600;">Subscription ></a> <span style="color:rgb(60, 35, 184);font-weight:700;">Edit</span>  </span></h5>
+		</div>
+	  </div>
+	  
+	  <!-- over -->
+  
+	  <!-- start -->
+	  <div class="section px-4 py-3">
+<form method="POST">
+	{% csrf_token %}
+	<input type="hidden" value="{{single_subscriptionN.duration}}" name="duration" id="">
+		<div class="sub px-3 py-2">
+			<div class="row py-3">
+			  <div class="col-md-6">
+				  <label for="exampleFormControlInput1" class="form-label titl">Subscription Country <span style="color: blueviolet;">*</span></label>
+				  <select class="form-select py-2" name="Subscription_Country">
+				  <option value="{{single_subscriptionN.Subscription_Country}}">{{single_subscriptionN.Subscription_Country}}</option>
+				</select>
+			  </div>
+			</div>
+  
+			<div class="row py-3">
+			  <div class="col-md-6">
+				<label class="form-label tit">Title of the plan <span style="color: blueviolet;">*</span></label>
+				<select name="Title_of_the_plan" class="form-select">
+					<option value="{{single_subscriptionN.Title_of_the_plan}}">{{single_subscriptionN.Title_of_the_plan}}</option>
+					<option value="Profile Finder">Profile Finder</option>
+					<option value="Private Investigator">Private Investigator</option>
+					<option value="Profile Manager">Profile Manager</option>
+					<option value="Hiring Manager">Hiring Manager</option>
+					<option value="Sales Manager">Sales Manager</option>
+					<option value="Ad Distributor">Ad Distributor</option>
+					<option value="Ad Provider">Ad Provider</option>
+					<option value="Affiliate Marketing">Affiliate Marketing</option>
+				  </select>  
+				  </div>
+			</div>
+  
+			<div class="row py-3">
+			  <div class="col-md-6">
+				  <label for="exampleFormControlInput1" class="form-label  titl">Type Of Subscription  <span style="color: blueviolet;">*</span></label>
+				  <select name="Type_Of_Subscription" class="form-select">
+					<option value="{{single_subscriptionN.Type_Of_Subscription}}">{{single_subscriptionN.Type_Of_Subscription}}</option>
+					<option value="Trial">Trial</option>
+					<option value="Basic">Basic</option>
+					<option value="Standard">Standard</option>
+					<option value="Premium">Premium</option>
+					<option value="Special">Special</option>
+				  </select>
+				</div>
+			</div>
+  
+  
+			  <div class="row py-3"> 
+				<div class="col-md-3">
+				  <label class="form-label tit">Amount <span class="advr">(With Advertisment)</span></label>
+				  <input type="text" name="Amount_with_ad" value="{{single_subscriptionN.Amount_with_ad}}" id="typeText" class="form-control py-2" placeholder="1,500">
+				</div>
+				<div class="col-md-3 amt">
+				  <label class="form-label tit">Amount <span  class="advr">(Without Advertisment)</span></label>
+			  <input type="text" name="Amount_without_ad" value="{{single_subscriptionN.Amount_without_ad}}" id="typeText" class="form-control py-2" placeholder="1,850">
+				</div>
+			  </div>
+  
+			  <div class="row py-3">
+				<div class="col-md-3">
+					<label class="form-label tit">Validity </label>
+					<!-- <input type="date" name="Validity_from" id="typeText" class="form-control" placeholder="From"> -->
+					<select name="Validity" id="typeText" class="form-control" placeholder="From">
+					<option value="{{single_subscriptionN.Validity}}">{{single_subscriptionN.Validity}}</option>
+					  <option value="15 days">15 days</option>
+					  <option value="1 Month">1 Month</option>
+					  <option value="6 Month">6 Month</option>
+					  <option value="1 Year">1 Year</option>
+					</select>
+  
+				  </div>
+				</div>
+  
+			  <div class="row py-3">
+				<div class="col-md-3">
+				  <label class="form-label tit">Option1 </label>
+				  <input type="text" name="Option1" value="{{single_subscriptionN.Option1}}" id="typeText" class="form-control" value="Profiles View">
+				</div>
+				<div class="col-md-3">
+					<label class="form-label tit">Value1 </label>
+					<input type="text" name="value1" value="{{single_subscriptionN.value1}}" id="typeText" class="form-control" placeholder="Days">
+				  </div>
+			  </div>
+  
+  
+			  <div class="row py-3">
+				<div class="col-md-3">
+				  <label class="form-label tit">Options2 </label>
+				  <input type="text" name="Option2" value="{{single_subscriptionN.Option2}}" id="typeText" class="form-control" value="Profiles Request">
+				</div>
+				<div class="col-md-3">
+					<label class="form-label tit">Value2 </label>
+					<input type="text" name="value2" value="{{single_subscriptionN.value2}}" id="typeText" class="form-control" placeholder="count">
+				  </div>
+			  </div>
+  
+			  <div class="row py-3">
+				<div class="col-md-3">
+				  <label class="form-label tit">Options3 </label>
+				  <input type="text" name="Option3" id="typeText" value="{{single_subscriptionN.Option3}}" class="form-control" value="Profiles Highlight">
+				</div>
+				
+				<div class="col-md-3">
+					<label class="form-label tit">Value3 </label>
+					<select name="value3" id="typeText"  class="form-control" placeholder="Enter">
+						<option value="{{single_subscriptionN.value3}}">{{single_subscriptionN.value3}}</option>
+						<option value="Yes">Yes</option>
+						<option value="No">No</option>
+						
+				</div>
+				<div class="prof_personal_savefilt1 py-3">
+					<input type="submit" class="prof_personal_filbtn2 mb-5 " value="Update" fdprocessedid="yhdywp">
+				</div>
+			  </div>
+				
+		</div>
+	</form>
+	  </div>
+  
+	
+	</div>
+	
+</div>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+
+<!--js -->
+<script type="text/javascript" src="./js/event1.js"></script>
+
+
+</body>
+</html>

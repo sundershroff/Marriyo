@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+	{% load static %}
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Super Admin Dashboard (Profile Finder)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style1.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_one.css'%}">
+	<link rel="stylesheet" href="{% static 'admin/css/cal.css'%}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body style="background-color:#f5f3fe;">
+
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+	{% include 'adminnav.html'%}
+		
+	</div>
+
+	<div class="super_adm_chi2"> 
+
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+
+
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static 'admin/images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+			
+		</div>
+		
+	</div>
+    <div class="locl_adm_sec1 px-4 my-4">
+
+		<div>
+		  <h5 style="color: #2B3674;"><a href="/commision_calculator/{{key.id}}" style="text-decoration: none;"><span style="font-weight:600;">Commission ></a><span style="font-weight:700;">Add New</span> </span></h5>
+		</div>
+  
+		
+	  </div>
+	  
+	  <!-- over -->
+	  <!-- start -->
+	  <form method="POST">
+		{% csrf_token %}
+	  <div class="section px-4">
+		  <div class=" px-4 commi">
+		<div class="row py-3 ">
+		  <div class="col-md-4">
+			<label class="form-label tit">Title <span style="color: blueviolet;">*</span></label>
+			<input type="text" value="{{edit_commision.title}}" name="title" id="typeText" class="form-control" placeholder="Enter">
+		  </div>
+		</div>
+		<div class="row py-3">
+		  <div class="col-md-4">
+			<label class="form-label tit">Country <span style="color: blueviolet;">*</span></label>
+			<input type="text" value="{{edit_commision.title}}" name="country" id="typeText" class="form-control" placeholder="placeholder">
+		  </div>
+		</div>
+		  <!-- date -->
+		<div class="row py-3">
+		  <div class="col-md-4">
+			  <div class="form-outline datepicker" data-mdb-inline="true">
+				  <label class="form-label tit">Commission Start Date  <span style="color: blueviolet;">*</span></label>
+				  <input type="date" value="{{edit_commision.commision_start}}"  name="commision_start" placeholder="Select" class="form-control py-2">
+				  
+				</div>
+		  </div>
+		</div>
+		<div class="row py-3">
+		  <div class="col-md-4">
+			  <div class="form-outline datepicker" data-mdb-inline="true">
+				  <label class="form-label tit">Commission End Date  <span style="color: blueviolet;">*</span></label>
+				  <input type="date" value="{{edit_commision.commision_end}}"  name="commision_end" placeholder="Select" class="form-control py-2">
+			  </div>
+		  </div>
+		</div>
+		<!-- dateovrt -->
+		<div class="row py-3">
+		  <div class="col-md-4">
+			  <label for="exampleFormControlInput1" class="form-label titl">To Whom? <span style="color: blueviolet;">*</span></label>
+			  <select name="to_whom" class="form-select ">
+				<option value="{{edit_commision.to_whom}}">{{edit_commision.to_whom}}</option>
+			   <option value="Profile Finder">Profile Finder</option>
+			   <option value="Private Investigator">Private Investigator</option>
+			   <option value="Profile Manager">Profile Manager</option>
+			   <option value="Sales Manager">Sales Manager</option>
+			   <option value="Ad Provider">Ad Provider</option>
+			   <option value="Ad Distributor">Ad Distributor</option>
+			   <option value="Hiring Manager">Hiring Manager</option>
+			   <option value="Affiliate Marketing">Affiliate Marketing</option>
+			 </select>
+		  </div>
+		</div>
+		<div class="row py-3">
+		  <div class="col-md-4">
+			  <label for="exampleFormControlInput1" class="form-label titl">Form Whom? <span style="color: blueviolet;">*</span></label>
+			  <select name="from_whom" class="form-select ">
+				<option value="{{edit_commision.from_whom}}">{{edit_commision.from_whom}}</option>
+				<option value="Profile Finder">Profile Finder</option>
+				<option value="Private Investigator">Private Investigator</option>
+				<option value="Profile Manager">Profile Manager</option>
+				<option value="Sales Manager">Sales Manager</option>
+				<option value="Ad Provider">Ad Provider</option>
+				<option value="Ad Distributor">Ad Distributor</option>
+				<option value="Hiring Manager">Hiring Manager</option>
+				<option value="Affiliate Marketing">Affiliate Marketing</option>
+			 </select>
+		  </div>
+		</div>
+		<div class="row py-3">
+		  <div class="col-md-4">
+			  <label for="exampleFormControlInput1" class="form-label titl">For What? <span style="color: blueviolet;">*</span></label>
+			  <select name="for_what" class="form-select " id="for_what">
+				<option value="{{edit_commision.for_what}}">{{edit_commision.for_what}}</option>
+			   <option value="Subscription" data-attribute="1">Subscription</option>
+			   <option value="Coin" data-attribute="2">Coin</option>
+			 </select>
+		  </div>
+		</div>
+		{% if edit_commision.for_what == "Subscription" %}
+		<div id="subscription1">
+			<div class="row py-3" >
+			  <div class="col-md-4">
+				  <label for="exampleFormControlInput1" class="form-label titl">How Many? <span style="color: blueviolet;">*</span></label>
+				  <input type="text" value="{{edit_commision.how_many}}" name="how_many" id="" class="form-control py-2">
+			  </div>
+			</div>
+			<div class="row py-3" >
+			  <div class="col-md-4">
+				  <label for="exampleFormControlInput1" class="form-label titl">Subscription <span style="color: blueviolet;">*</span></label>
+				  <input type="text" value="{{edit_commision.subscription}}" name="subscription" id="" class="form-control py-2">
+			  </div>
+			</div>
+			<div class="row py-3">
+			  <div class="col-md-4">
+				  <div class="form-outline datepicker" data-mdb-inline="true">
+					  <label class="form-label tit">Commission<span style="color: blueviolet;">*</span></label>
+					  <input type="text" value="{{edit_commision.commision}}" name="commision" class="form-control" id="exampleDatepicker2" placeholder="%">
+				  </div>
+			  </div>
+			</div>
+		</div>
+
+		<div id="coin1" style="display:none" >
+			<div class="row py-3"  >
+				<div class="col-md-4">
+					<div class="form-outline datepicker" data-mdb-inline="true">
+						<label class="form-label tit">How Many Coin?<span style="color: blueviolet;">*</span></label>
+						<input type="text" name="how_many_coin" value="{{edit_commision.how_many_coin}}" class="form-control" id="exampleDatepicker2" placeholder="%">
+					</div>
+				</div>
+			  </div>
+	  
+			  <div class="row py-3">
+				<div class="col-md-4">
+					<div class="form-outline datepicker" data-mdb-inline="true">
+						<label class="form-label tit">How Many Views?<span style="color: blueviolet;">*</span></label>
+						<input type="text" name="how_many_views" value="{{edit_commision.how_many_views}}" class="form-control" id="exampleDatepicker2" placeholder="%">
+					</div>
+				</div>
+			  </div>
+			</div>
+	
+				
+
+        {% elif edit_commision.for_what == "Coin" %}
+		<div id="subscription1" style="display:none">
+			<div class="row py-3" >
+			  <div class="col-md-4">
+				  <label for="exampleFormControlInput1" class="form-label titl">How Many? <span style="color: blueviolet;">*</span></label>
+				  <input type="text" value="{{edit_commision.how_many}}" name="how_many" id="" class="form-control py-2">
+			  </div>
+			</div>
+			<div class="row py-3" >
+			  <div class="col-md-4">
+				  <label for="exampleFormControlInput1" class="form-label titl">Subscription <span style="color: blueviolet;">*</span></label>
+				  <input type="text" value="{{edit_commision.subscription}}" name="subscription" id="" class="form-control py-2">
+			  </div>
+			</div>
+			<div class="row py-3">
+			  <div class="col-md-4">
+				  <div class="form-outline datepicker" data-mdb-inline="true">
+					  <label class="form-label tit">Commission<span style="color: blueviolet;">*</span></label>
+					  <input type="text" value="{{edit_commision.commision}}" name="commision" class="form-control" id="exampleDatepicker2" placeholder="%">
+				  </div>
+			  </div>
+			</div>
+		</div>
+
+		<div id="coin1"  >
+			<div class="row py-3"  >
+				<div class="col-md-4">
+					<div class="form-outline datepicker" data-mdb-inline="true">
+						<label class="form-label tit">How Many Coin?<span style="color: blueviolet;">*</span></label>
+						<input type="text" name="how_many_coin" value="{{edit_commision.how_many_coin}}" class="form-control" id="exampleDatepicker2" placeholder="%">
+					</div>
+				</div>
+			  </div>
+	  
+			  <div class="row py-3">
+				<div class="col-md-4">
+					<div class="form-outline datepicker" data-mdb-inline="true">
+						<label class="form-label tit">How Many Views?<span style="color: blueviolet;">*</span></label>
+						<input type="text" name="how_many_views" value="{{edit_commision.how_many_views}}" class="form-control" id="exampleDatepicker2" placeholder="%">
+					</div>
+				</div>
+			  </div>
+			</div>
+			{% else %}
+			<div id="subscription1">
+				<div class="row py-3" >
+				  <div class="col-md-4">
+					  <label for="exampleFormControlInput1" class="form-label titl">How Many? <span style="color: blueviolet;">*</span></label>
+					  <input type="text" value="{{edit_commision.how_many}}" name="how_many" id="" class="form-control py-2">
+				  </div>
+				</div>
+				<div class="row py-3" >
+				  <div class="col-md-4">
+					  <label for="exampleFormControlInput1" class="form-label titl">Subscription <span style="color: blueviolet;">*</span></label>
+					  <input type="text" value="{{edit_commision.subscription}}" name="subscription" id="" class="form-control py-2">
+				  </div>
+				</div>
+				<div class="row py-3">
+				  <div class="col-md-4">
+					  <div class="form-outline datepicker" data-mdb-inline="true">
+						  <label class="form-label tit">Commission<span style="color: blueviolet;">*</span></label>
+						  <input type="text" value="{{edit_commision.commision}}" name="commision" class="form-control" id="exampleDatepicker2" placeholder="%">
+					  </div>
+				  </div>
+				</div>
+			</div>
+	
+			<div id="coin1" style="display: none;" >
+				<div class="row py-3"  >
+					<div class="col-md-4">
+						<div class="form-outline datepicker" data-mdb-inline="true">
+							<label class="form-label tit">How Many Coin?<span style="color: blueviolet;">*</span></label>
+							<input type="text" name="how_many_coin" value="{{edit_commision.how_many_coin}}" class="form-control" id="exampleDatepicker2" placeholder="%">
+						</div>
+					</div>
+				  </div>
+		  
+				  <div class="row py-3">
+					<div class="col-md-4">
+						<div class="form-outline datepicker" data-mdb-inline="true">
+							<label class="form-label tit">How Many Views?<span style="color: blueviolet;">*</span></label>
+							<input type="text" name="how_many_views" value="{{edit_commision.how_many_views}}" class="form-control" id="exampleDatepicker2" placeholder="%">
+						</div>
+					</div>
+				  </div>
+				</div>
+		
+				
+			
+			{% endif %}
+	
+
+			{% if edit_commision == "" %}
+			<div class="prof_personal_savefilt1  ">
+				<button name="add" class="prof_personal_filbtn2 mb-5" type="submit">submit</button>
+				  </div>
+			{% else %}
+			<div class="prof_personal_savefilt1  ">
+				<button name="edit" class="prof_personal_filbtn2 mb-5" type="submit">submit</button>
+				  </div>
+			{% endif %}
+			
+		  </div>
+	  
+		  </div> 	
+
+
+
+
+ 
+	</form>
+
+	
+	</div>
+	
+</div>
+<p id="res"></p>
+<script>
+$(document).ready(function() { 
+	$('#for_what').change(function() { 
+		var selectedOption = $(this).val(); 
+		if (selectedOption === 'Coin') { 
+      $('#subscription1').hide(); 
+	  $('#coin1').show();
+    }
+	if (selectedOption === 'Subscription') { 
+      $('#coin1').hide(); 
+	  $('#subscription1').show(); 
+    }
+}); 
+}); 
+// 	$(document).ready(function() {
+// $("#for_what").change(function () {
+//     $("#subscription1").hide();
+//     $("#coin1").show()
+// })  
+// 	})
+</script>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+
+<!--js -->
+<script type="text/javascript" src="{% static 'admin/js/event1.js'%}"></script>
+
+
+</body>
+</html>
