@@ -22,6 +22,8 @@ import datetime
 from virtualExpert.models import affliate_marketing
 # Create your views here.
 all_image_url = "http://51.20.61.70:3000/"
+jsondec = json.decoder.JSONDecoder()
+
 @api_view(['POST'])
 def signup(request):
     try:
@@ -35,10 +37,23 @@ def signup(request):
                     code = "Empty"
                 else:
                     code = request.data['referral_code']
+                address = ""
+                address += request.data["door_no"]+","
+                address += request.data["street_name"]+","
+                address += request.data["address"]+","
+                address += request.data["pincode"]+"."
+                print(address)
+                manager = []
+                manager.append(request.data["my_manager"])
                 datas = {
                     'email': request.data["email"],
                     'mobile': request.data["mobile"],
                     'password': request.data["password"],
+                    'name': request.data["name"],
+                    'address': request.data["address"],
+                    'my_manager':json.dumps(request.data["my_manager"].split()),
+                    'complaints':json.dumps("empty".split()),
+                    'complaints_replay':json.dumps("empty".split()),
                     'referral_code': code,
                     'uid': extension.id_generate(),
                     'otp': extension.otp_generate(),
@@ -46,6 +61,10 @@ def signup(request):
                     'created_time':str(x.strftime("%I:%M %p"))
                 }
                 print(datas)
+                # print(xx)
+                pmanager = Profilemanager.objects.get(uid = request.data["my_manager"])
+                pmanager.my_client = json.dumps(datas['uid'].split())
+                pmanager.save()
                 try:
                     data = affliate_marketing.objects.get(uid = code)
                     print(data.coin)
@@ -88,6 +107,12 @@ def signup(request):
             return Response({"Invalid Json Format (OR) Invalid Key"}, status=status.HTTP_400_BAD_REQUEST)
     except:
         return Response({"Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['GET'])
+def all_pm_data(request):
+    if request.method == 'GET':
+       allDataa = Profilemanager.objects.all().values()
+    return Response(allDataa, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -2834,17 +2859,23 @@ def my_complaints(request,id):
         return Response({"Invalid Data"}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-def adprovider_ads(request):
+def adprovider_ads(request,id):
     if request.method == "GET":
-        all_ads=models.ad_pro_ads.objects.all()
+        profile_finder = ProfileFinder.objects.get(uid = id)
+        print(type(profile_finder.age))
+        # age_range
+        # age_to
+        # ,age_range_gt = profile_finder.age,age_to_lt = profile_finder.age
+        all_ads=models.ad_pro_ads.objects.filter(gender = profile_finder.gender.capitalize(),office_country = profile_finder.r_country,office_state = profile_finder.r_state,age_range__lte = profile_finder.age,age_to__gte = profile_finder.age)
         alldataserializer=ad_pro_serializer.list_ads_Serializer(all_ads,many=True)
     return Response(data=alldataserializer.data,status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
-def addistributor_ads(request):
+def addistributor_ads(request,id):
     if request.method == "GET":
-        all_ads=models.Create_ads.objects.all()
+        profile_finder = ProfileFinder.objects.get(uid = id)
+        all_ads=models.Create_ads.objects.filter(gender = profile_finder.gender.capitalize(),office_country = profile_finder.r_country,office_state = profile_finder.r_state,age_range__lte = profile_finder.age,age_to__gte = profile_finder.age)
         alldataserializer=ad_dis_serializer.list_ads_Serializer(all_ads,many=True)
     return Response(data=alldataserializer.data,status=status.HTTP_200_OK)
 
@@ -3204,3 +3235,18 @@ def pf_email_update(request,id):
             return Response("email update successfully", status=status.HTTP_200_OK)
     else:
         return Response({"Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)           
+
+
+@api_view(['GET'])
+def search_matching_list(request,id,search): 
+    try:
+        userdata = ProfileFinder.objects.get(uid = id)
+        if userdata.gender == "male":
+            print("male")
+            data = ProfileFinder.objects.filter(gender = "female",name = search).values()
+        else:
+            print("female")
+            data = ProfileFinder.objects.filter(gender = "male",name = search).values()
+        return Response(data, status=status.HTTP_200_OK)
+    except:
+        return Response(f"{search} not available", status=status.HTTP_500_INTERNAL_SERVER_ERROR)           

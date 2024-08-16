@@ -80,8 +80,8 @@ urlpatterns = [
     path('ads_highlight/<id>',views.ads_highlight),
 
     # distributor ads list 
-    path('all_provider_ads/',views.adprovider_ads),
-    path('all_distributor_ads/',views.addistributor_ads),
+    path('all_provider_ads/<id>',views.adprovider_ads),
+    path('all_distributor_ads/<id>',views.addistributor_ads),
     path('proads_views_count/<id>',views.proads_views_count),
     path('disads_views_count/<id>',views.disads_views_count),
     path('ads_viewed_data/<id>',views.ads_viewed_data),
@@ -98,6 +98,8 @@ urlpatterns = [
     path("profile_finder_notification/<id>",views.profile_finder_notification),
     path("related_list/<id>",views.related_list),
     path("pf_email_update/<id>",views.pf_email_update),
+    path("search_matching_list/<id>/<search>",views.search_matching_list),
+    path("all_pm_data/",views.all_pm_data),
 
 #superadmin
     

@@ -200,6 +200,9 @@ class SignupSerializer(serializers.Serializer):
     otp = serializers.IntegerField()
     created_date = serializers.CharField()
     created_time =serializers.CharField()
+    name = serializers.CharField()
+    address = serializers.CharField()
+    my_manager = serializers.CharField()
 
 
     
