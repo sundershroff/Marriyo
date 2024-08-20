@@ -346,3 +346,7 @@ class private_investigator(models.Model):
     otp1 = models.IntegerField(null=True)
     user_otp1 = models.IntegerField(null=True)
 
+class chat(models.Model):
+    user1 = models.TextField()
+    user2 = models.TextField()
+    chat = models.JSONField(default=list)

@@ -10,7 +10,7 @@ from rest_framework.decorators import api_view,renderer_classes,permission_class
 from rest_framework.response import Response
 from rest_framework import status,generics
 from apiapp import extension
-
+# from apiapp.models import chat
 from django.core.files.storage import FileSystemStorage
 from django.db.models import Q
 import requests
@@ -2685,7 +2685,7 @@ def my_manager(request,id):
                 # print(rec_dict)
             else:
                 print("something else")
-                received_uid_list = my_investigator_id[2:-2].replace("'","").replace(" ","").split(",")
+                received_uid_list = my_investigator_id[2:-2].replace("'","").replace(" ","").replace('"','').split(",")
                 print(received_uid_list)
                 allinvestigator_users=Profilemanager.objects.all().values()
                 # print(allinvestigator_users)
@@ -3243,10 +3243,58 @@ def search_matching_list(request,id,search):
         userdata = ProfileFinder.objects.get(uid = id)
         if userdata.gender == "male":
             print("male")
-            data = ProfileFinder.objects.filter(gender = "female",name = search).values()
+            data = ProfileFinder.objects.filter(gender = "female",name__contains = search).values()
         else:
             print("female")
-            data = ProfileFinder.objects.filter(gender = "male",name = search).values()
+            data = ProfileFinder.objects.filter(gender = "male",name__contains = search).values()
         return Response(data, status=status.HTTP_200_OK)
     except:
         return Response(f"{search} not available", status=status.HTTP_500_INTERNAL_SERVER_ERROR)           
+
+@api_view(['GET'])
+def chatting_profile(request,id): 
+    try:
+        # userdata = ProfileFinder.objects.get(uid = id)
+        my_profiles = sender_list.objects.get(sender_uid = id)
+        data = []
+        if my_profiles.received_uid != None:
+            a = my_profiles.received_uid[1:-2].replace("'","").replace(" ","").split(",")
+            b = my_profiles.action[1:-2].replace("'","").replace(" ","").split(",")
+            print(type(a))
+            print(b)
+            for x,y in zip(a,b):
+                if "accept" == y:
+                    all_value = ProfileFinder.objects.filter(uid = x).values()[0]
+                    data.append(all_value)
+        my_profiles_received = serializer.received_list.objects.get(received_uid = id)
+        print(my_profiles_received)
+        print(my_profiles_received.sender_uid)
+        if my_profiles_received.sender_uid != None:
+            c = my_profiles_received.sender_uid[1:-2].replace("'","").replace(" ","").split(",")
+            d = my_profiles_received.action[1:-2].replace("'","").replace(" ","").split(",")
+            print(c)
+            print(d)
+            for x,y in zip(c,d):
+                if "accept" == y:
+                    all_value1 = ProfileFinder.objects.filter(uid = x).values()[0]
+                    data.append(all_value1)
+        return Response(data, status=status.HTTP_200_OK)
+    except:
+        return Response("user not available", status=status.HTTP_500_INTERNAL_SERVER_ERROR)           
+
+# @api_view(['POST'])
+# def chatting(request,id1,id2):
+#     if request.method == "POST":
+#         print(request.POST)
+#         if ProfileFinder.objects.filter(uid = id1).exists():
+#             if ProfileFinder.objects.filter(uid = id2).exists():
+#                 if chat.objects.filter(user1 = id1,user2 = id2).exists():
+#                     print("exists")
+#                 elif chat.objects.filter(user1 = id2,user2 = id1).exists():
+#                     print("exists")
+#                 else:
+#                     print("user id is wrong")
+#             else:
+#                 print("user not exists")
+#         else:
+#             print("user not exists")

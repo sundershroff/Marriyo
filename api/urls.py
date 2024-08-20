@@ -100,6 +100,8 @@ urlpatterns = [
     path("pf_email_update/<id>",views.pf_email_update),
     path("search_matching_list/<id>/<search>",views.search_matching_list),
     path("all_pm_data/",views.all_pm_data),
+    #chat
+    path("chatting_profile/<id>",views.chatting_profile),
 
 #superadmin
     
