@@ -10,7 +10,7 @@ from rest_framework.decorators import api_view,renderer_classes,permission_class
 from rest_framework.response import Response
 from rest_framework import status,generics
 from apiapp import extension
-# from apiapp.models import chat
+from apiapp.models import chat
 from django.core.files.storage import FileSystemStorage
 from django.db.models import Q
 import requests
@@ -208,13 +208,13 @@ def profileForm(request, id):
         data = {
             'name': request.POST['name'],
             'address': request.POST['address'],
-            'height': request.POST['height'],
-            'weight': request.POST['weight'],
+            'height': int(request.POST['height']),
+            'weight': int(request.POST['weight']),
             'gender': request.POST['gender'],
             'marital': request.POST['marital'],
             'physical': request.POST['physical'],
             'religion': request.POST['religion'],
-            'age': request.POST['age'],
+            'age': int(request.POST['age']),
             'birth_place': request.POST['birth_place'],
             'birth_country': request.POST['birth_country'],
             'birth_time': request.POST['birth_time'],
@@ -512,82 +512,92 @@ def about_candidate(request, id):
         for my in mydata:
             print(my['uid'])
 #sibling details
-        sibling_name_value=[]
-        sibling_relation_value=[]
-        sibling_occupation_value=[]
-        sibling_name = my['sibling_name'][1:-1].split(", ")
-        sibling_relation = my['sibling_relation'][1:-1].split(", ")
-        sibling_occupation = my['sibling_occupation'][1:-1].split(", ")
-        for sibling_name_x in sibling_name:
-            sibling_name_value.append(sibling_name_x[1:-1])
-        for sibling_relation_x in sibling_relation:
-            sibling_relation_value.append(sibling_relation_x[1:-1])
-        for sibling_occupation_x in sibling_occupation:
-            sibling_occupation_value.append(sibling_occupation_x[1:-1])
-        sibling={}
-        sib = [sibling]
-        for i, sibling_name_data in enumerate(sibling_name_value):
-                sibling[f'sibling_name_{i}'] = sibling_name_data
-        for i, sibling_relation_data in enumerate(sibling_relation_value):
-                sibling[f'sibling_relation_{i}'] = sibling_relation_data
-        for i, sibling_occupation_data in enumerate(sibling_occupation_value):
-                sibling[f'sibling_occupation_{i}'] = sibling_occupation_data
-        print(sibling)
-
+        try:
+            sibling_name_value=[]
+            sibling_relation_value=[]
+            sibling_occupation_value=[]
+            sibling_name = my['sibling_name'][1:-1].split(", ")
+            sibling_relation = my['sibling_relation'][1:-1].split(", ")
+            sibling_occupation = my['sibling_occupation'][1:-1].split(", ")
+            for sibling_name_x in sibling_name:
+                sibling_name_value.append(sibling_name_x[1:-1])
+            for sibling_relation_x in sibling_relation:
+                sibling_relation_value.append(sibling_relation_x[1:-1])
+            for sibling_occupation_x in sibling_occupation:
+                sibling_occupation_value.append(sibling_occupation_x[1:-1])
+            sibling={}
+            sib = [sibling]
+            for i, sibling_name_data in enumerate(sibling_name_value):
+                    sibling[f'sibling_name_{i}'] = sibling_name_data
+            for i, sibling_relation_data in enumerate(sibling_relation_value):
+                    sibling[f'sibling_relation_{i}'] = sibling_relation_data
+            for i, sibling_occupation_data in enumerate(sibling_occupation_value):
+                    sibling[f'sibling_occupation_{i}'] = sibling_occupation_data
+            print(sibling)
+        except:
+            pass
 #education details
-        education_school_value=[]
-        education_year_value=[]
-        education_course_value=[]
-        education_school = my['education_school'][1:-1].split(", ")
-        education_year = my['education_year'][1:-1].split(", ")
-        education_course = my['education_course'][1:-1].split(", ")
-        for education_school_x in education_school:
-            education_school_value.append(education_school_x[1:-1])
-        for education_year_x in education_year:
-            education_year_value.append(education_year_x[1:-1])
-        for education_course_x in education_course:
-            education_course_value.append(education_course_x[1:-1])
-        education={}
-        edu = [education]
-        for i, education_school_data in enumerate(education_school_value):
-                education[f'education_school_{i}'] = education_school_data
-        for i, education_year_data in enumerate(education_year_value):
-                education[f'education_year_{i}'] = education_year_data
-        for i, education_course_data in enumerate(education_course_value):
-                education[f'education_course_{i}'] = education_course_data
-        print(education)
+        try:
+            education_school_value=[]
+            education_year_value=[]
+            education_course_value=[]
+            education_school = my['education_school'][1:-1].split(", ")
+            education_year = my['education_year'][1:-1].split(", ")
+            education_course = my['education_course'][1:-1].split(", ")
+            for education_school_x in education_school:
+                education_school_value.append(education_school_x[1:-1])
+            for education_year_x in education_year:
+                education_year_value.append(education_year_x[1:-1])
+            for education_course_x in education_course:
+                education_course_value.append(education_course_x[1:-1])
+            education={}
+            edu = [education]
+            for i, education_school_data in enumerate(education_school_value):
+                    education[f'education_school_{i}'] = education_school_data
+            for i, education_year_data in enumerate(education_year_value):
+                    education[f'education_year_{i}'] = education_year_data
+            for i, education_course_data in enumerate(education_course_value):
+                    education[f'education_course_{i}'] = education_course_data
+            print(education)
+        except:
+            pass
  #working details
-        company_name_value=[]
-        position_value=[]
-        salary_range_value=[]
-        profession_value = []
-        company_name = my['company_name'][1:-1].split(", ")
-        position = my['position'][1:-1].split(", ")
-        salary_range = my['salary_range'][1:-1].split(", ")
-        profession = my['profession'][1:-1].split(", ")
-        for company_name_x in company_name:
-            company_name_value.append(company_name_x[1:-1])
-        for position_x in position:
-            position_value.append(position_x[1:-1])
-        for salary_range_x in salary_range:
-            salary_range_value.append(salary_range_x[1:-1])
-        for profession_x in profession:
-            profession_value.append(profession_x[1:-1])
-        working={}
-        wor = [working]
-        for i, company_name_data in enumerate(company_name_value):
-                working[f'company_name_{i}'] = company_name_data
-        for i, position_data in enumerate(position_value):
-                working[f'position_{i}'] = position_data
-        for i, salary_range_data in enumerate(salary_range_value):
-                working[f'salary_range_{i}'] = salary_range_data
-        for i, profession_data in enumerate(profession_value):
+        try:
+            company_name_value=[]
+            position_value=[]
+            salary_range_value=[]
+            profession_value = []
+            company_name = my['company_name'][1:-1].split(", ")
+            position = my['position'][1:-1].split(", ")
+            salary_range = my['salary_range'][1:-1].split(", ")
+            profession = my['profession'][1:-1].split(", ")
+            for company_name_x in company_name:
+                company_name_value.append(company_name_x[1:-1])
+            for position_x in position:
+                position_value.append(position_x[1:-1])
+            for salary_range_x in salary_range:
+                salary_range_value.append(salary_range_x[1:-1])
+            for profession_x in profession:
+                profession_value.append(profession_x[1:-1])
+            working={}
+            wor = [working]
+            for i, company_name_data in enumerate(company_name_value):
+                    working[f'company_name_{i}'] = company_name_data
+            for i, position_data in enumerate(position_value):
+                    working[f'position_{i}'] = position_data
+            for i, salary_range_data in enumerate(salary_range_value):
+                    working[f'salary_range_{i}'] = salary_range_data
+            for i, profession_data in enumerate(profession_value):
                 working[f'profession_{i}'] = profession_data
+        except:
+            pass
 #gallery
-        all = my['gallery']
-        ga = all.replace("[", "").replace("]","").replace("'","").replace(" ","")
-        lengthgallery= ga.split(",")
-
+        try:
+            all = my['gallery']
+            ga = all.replace("[", "").replace("]","").replace("'","").replace(" ","")
+            lengthgallery= ga.split(",")
+        except:
+            pass
         if 'profile_tag' in request.POST:
                 userdata.profile_tag =  request.POST['profile_tag']
                 userdata.save()
@@ -2021,6 +2031,7 @@ def saved_searchh(request,id):
         if request.method == "POST":
             print(request.POST)
             if "tag" in request.POST:
+                print("tagg")
                 matc={
                         'my_id':id,
                         'tag':request.POST['tag'],
@@ -2033,6 +2044,7 @@ def saved_searchh(request,id):
                     }
                 print(matc)
                 p = []
+                # print(alldata)
                 for x in alldata:
                     print(type(matc['age']))
                     print(type(x['age']))
@@ -2086,30 +2098,22 @@ def saved_searchh(request,id):
                     #     h = ""
                     # else:
                     #     h = "no"
+                    print("sssssssssssss")
                     pref = {b,c,d,e,f,g}
                     print(pref)
                     if "no" not in pref:
-                        pref.remove("")
+                        print("pref")
+                        # pref.remove("")
                         for con in pref:
                            p.append(con)
                            print(p)
+                    
                     # else:
                     #     pref.remove("")
                     #     print(pref)
                 print(p)
+                print("ppppppppppp")
                         
-                # my_preference=[]
-                # userlist=[]
-                # for y in alldata:
-                #     userlist.append(y['uid'])
-                # print(userlist)
-                # for x in p:
-                #     # print(x)
-                #     numb = userlist.index(x)
-                #     print(numb)
-                #     get_Selected = alldata[numb]
-                #     my_preference.append(get_Selected)
-                # print(my_preference)
                 matc_final={
                         'my_id':id,
                         'tag':request.POST['tag'],
@@ -2121,15 +2125,29 @@ def saved_searchh(request,id):
                         'denomination':request.POST['denomination'],
                         'filterd_data':str(p)
                     }
+                print(matc_final)
                 # saved_me_list = serializer.saved_Serializer(
                 # instance=saved_me_userdata, data=matc, partial=True)
-                saved_me_list= serializer.saved_list_Serializer(data=matc_final)
-                if saved_me_list.is_valid():
-                    saved_me_list.save()
-                    print("valid data")
-                    return Response({"valid Data"}, status=status.HTTP_200_OK)
-                else:
-                    return Response({"Bad Request"}, status=status.HTTP_403_FORBIDDEN)
+                # saved_me_list= serializer.saved_list_Serializer(data=matc_final)
+                # if saved_me_list.is_valid():
+                #     saved_me_list.save()
+                data = serializer.saved_search.objects.create(
+                    my_id = matc_final['my_id'],
+                    tag = matc_final['tag'],
+                    country = matc_final['country'],
+                    city = matc_final['city'],
+                        age = matc_final['age'],
+                        complexion = matc_final['complexion'],
+                        gender = matc_final['gender'],
+                        denomination = matc_final['denomination'],
+                        filterd_data = matc_final['filterd_data'],
+                    
+                    )
+                data.save()
+                print("valid data")
+                return Response({"valid Data"}, status=status.HTTP_200_OK)
+                # else:
+                #     return Response({"Bad Request"}, status=status.HTTP_403_FORBIDDEN)
             elif "tag_edit" in request.POST:
                 print(request.POST)
                 matc_edit={
@@ -2253,7 +2271,8 @@ def saved_searchh(request,id):
             rec_list.append(x)
         rec_dict[id] = rec_list 
         # print(rec_dict)
-        return JsonResponse(rec_dict)  
+        # return JsonResponse(rec_dict)
+        return Response(rec_dict,status=status.HTTP_200_OK)  
 
 @api_view(['POST','GET'])
 def my_investigator(request,id):
@@ -3282,19 +3301,391 @@ def chatting_profile(request,id):
     except:
         return Response("user not available", status=status.HTTP_500_INTERNAL_SERVER_ERROR)           
 
-# @api_view(['POST'])
-# def chatting(request,id1,id2):
-#     if request.method == "POST":
-#         print(request.POST)
-#         if ProfileFinder.objects.filter(uid = id1).exists():
-#             if ProfileFinder.objects.filter(uid = id2).exists():
-#                 if chat.objects.filter(user1 = id1,user2 = id2).exists():
-#                     print("exists")
-#                 elif chat.objects.filter(user1 = id2,user2 = id1).exists():
-#                     print("exists")
-#                 else:
-#                     print("user id is wrong")
-#             else:
-#                 print("user not exists")
-#         else:
-#             print("user not exists")
+@api_view(['POST'])
+def chatting(request,id1,id2):
+    try:
+        if request.method == "POST":
+            print(request.POST)
+            if ProfileFinder.objects.filter(uid = id1).exists():
+                if ProfileFinder.objects.filter(uid = id2).exists():
+                    if chat.objects.filter(user1 = id1,user2 = id2).exists():
+                        data = chat.objects.get(user1 = id1,user2 = id2)
+                        old_msg = data.chat
+                        message = {request.POST['sender']:request.POST['msg']}
+                        old_msg.append(message)
+                        print(old_msg)
+                        data.chat = old_msg
+                        data.save()
+                        return Response("send",status=status.HTTP_200_OK)
+                    elif chat.objects.filter(user1 = id2,user2 = id1).exists():
+                        data = chat.objects.get(user1 = id2,user2 = id1)
+                        old_msg = data.chat
+                        message = {request.POST['sender']:request.POST['msg']}
+                        old_msg.append(message)
+                        print(old_msg)
+                        data.chat = old_msg
+                        data.save()
+                        return Response("send",status=status.HTTP_200_OK)
+                    else:
+                        print("new")
+                        message = [{request.POST['sender']:request.POST['msg']}]
+                        print(message)
+                        data = chat.objects.create(
+                            user1 = id1,
+                            user2 = id2,
+                            chat = message,
+                        )
+                        data.save()
+                        return Response("send",status=status.HTTP_200_OK)
+                else:
+                    return Response("user Id not exists",status=status.HTTP_404_NOT_FOUND)
+            else:
+                return Response("user Id not exists",status=status.HTTP_404_NOT_FOUND)
+    except:
+        return Response("server issue",status=status.HTTP_503_SERVICE_UNAVAILABLE)
+        
+@api_view(["GET"])
+def chat_display(request,id1,id2):
+    try:
+        if request.method == "GET":
+            if ProfileFinder.objects.filter(uid = id1).exists():
+                    if ProfileFinder.objects.filter(uid = id2).exists():
+                        if chat.objects.filter(user1 = id1,user2 = id2).exists():
+                            print("exists")
+                            data = chat.objects.get(user1 = id1,user2 = id2)
+                            msg = data.chat
+                            print(msg)
+                            return Response(msg,status=status.HTTP_200_OK)
+                        elif chat.objects.filter(user1 = id2,user2 = id1).exists():
+                            print("exists")
+                            data = chat.objects.get(user1 = id2,user2 = id1)
+                            msg = data.chat
+                            return Response(msg,status=status.HTTP_200_OK)
+                        else:
+                            print("new")
+                            return Response([],status=status.HTTP_200_OK)
+                    else:
+                        return Response("user Id not exists",status=status.HTTP_404_NOT_FOUND)
+            else:
+                return Response("user Id not exists",status=status.HTTP_404_NOT_FOUND)
+    except:
+        return Response("server issue",status=status.HTTP_503_SERVICE_UNAVAILABLE)
+    
+    
+@api_view(['GET','POST'])
+def my_preference(request,id):
+    try:
+        my = requests.get(f"http://51.20.61.70:3000/alldata/{id}").json()
+        my_intrest = my['your_intrest'][1:-2].replace("'","").replace(" ","").split(",")
+        non_intrest = my['non_intrest'][1:-2].replace("'","").replace(" ","").split(",")
+        complexion = my['complexion'][1:-2].replace("'","").replace(" ","").split(",")
+        food_taste = my['food_taste'][1:-2].replace("'","").replace(" ","").split(",")
+        daily_diet_plan = my['daily_diet_plan'][1:-2].replace("'","").replace(" ","").split(",")
+        
+        #find gender
+        if [my][0]['gender'] == "female":
+            male = requests.get(f"http://51.20.61.70:3000/all_male_user_data/{id}").json()
+            alldata = male[id]
+        
+        elif [my][0]['gender'] == "male":
+            female = requests.get(f"http://51.20.61.70:3000/all_female_user_data/{id}").json()
+            alldata = female[id]
+            # print(alldata)
+        global neww
+        neww = []
+        your_intrest_value=x=[]
+        for x in alldata:
+            #sibling details
+            # print(x['sibling_name'])
+            sibling_name_value=[]
+            sibling_relation_value=[]
+            sibling_occupation_value=[]
+            sibling_name = x['sibling_name'][1:-1].split(", ")
+            sibling_relation = x['sibling_relation'][1:-1].split(", ")
+            sibling_occupation = x['sibling_occupation'][1:-1].split(", ")
+            for sibling_name_x in sibling_name:
+                sibling_name_value.append(sibling_name_x[1:-1])
+            for sibling_relation_x in sibling_relation:
+                sibling_relation_value.append(sibling_relation_x[1:-1])
+            for sibling_occupation_x in sibling_occupation:
+                sibling_occupation_value.append(sibling_occupation_x[1:-1])
+            # print(type(sibling_name_value))
+            sibling=x
+            # sib = [sibling]
+            for i, sibling_name_data in enumerate(sibling_name_value):
+                    sibling[f'sibling_name_{i}'] = sibling_name_data
+            for i, sibling_relation_data in enumerate(sibling_relation_value):
+                    sibling[f'sibling_relation_{i}'] = sibling_relation_data
+            for i, sibling_occupation_data in enumerate(sibling_occupation_value):
+                    sibling[f'sibling_occupation_{i}'] = sibling_occupation_data
+            
+            neww.append(sibling)
+            #education
+            education_school_value=[]
+            education_year_value=[]
+            education_course_value=[]
+            education_school = x['education_school'][1:-1].split(", ")
+            education_year = x['education_year'][1:-1].split(", ")
+            education_course = x['education_course'][1:-1].split(", ")
+            for education_school_x in education_school:
+                education_school_value.append(education_school_x[1:-1])
+            for education_year_x in education_year:
+                education_year_value.append(education_year_x[1:-1])
+            for education_course_x in education_course:
+                education_course_value.append(education_course_x[1:-1])
+            education=x
+            # edu = [education]
+            for i, education_school_data in enumerate(education_school_value):
+                    education[f'education_school_{i}'] = education_school_data
+            for i, education_year_data in enumerate(education_year_value):
+                    education[f'education_year_{i}'] = education_year_data
+            for i, education_course_data in enumerate(education_course_value):
+                    education[f'education_course_{i}'] = education_course_data
+            neww.append(education)
+            #working experience
+            company_name_value=[]
+            position_value=[]
+            salary_range_value=[]
+            profession_value = []
+            company_name = x['company_name'][1:-1].split(", ")
+            position = x['position'][1:-1].split(", ")
+            salary_range = x['salary_range'][1:-1].split(", ")
+            profession = x['profession'][1:-1].split(", ")
+            for company_name_x in company_name:
+                company_name_value.append(company_name_x[1:-1])
+            for position_x in position:
+                position_value.append(position_x[1:-1])
+            for salary_range_x in salary_range:
+                salary_range_value.append(salary_range_x[1:-1])
+            for profession_x in profession:
+                profession_value.append(profession_x[1:-1])
+            working=x
+            # wor = [working]
+            for i, company_name_data in enumerate(company_name_value):
+                    working[f'company_name_{i}'] = company_name_data
+            for i, position_data in enumerate(position_value):
+                    working[f'position_{i}'] = position_data
+            for i, salary_range_data in enumerate(salary_range_value):
+                    working[f'salary_range_{i}'] = salary_range_data
+            for i, profession_data in enumerate(profession_value):
+                    working[f'profession_{i}'] = profession_data
+            neww.append(working)
+            # print(wor)
+            #intrest
+            intrestt = x
+            your_intrest = x['your_intrest'][1:-1].replace("'","").replace(" ","").split(",")
+            # print(your_intrest)
+            for i, your_intrest_data in enumerate(your_intrest):
+                    # neww.append({'myintrest':your_intrest_data[1:-1]})
+                    intrestt[f'intrest_{i}'] = your_intrest_data
+            # print(intrestt)
+            neww.append(intrestt)
+            #non-intrest
+            non_intrestt = x
+            n_intrest = x['non_intrest'][1:-1].replace("'","").replace(" ","").split(",")
+            # print(your_intrest)
+            for i, your_intrest_data in enumerate(n_intrest):
+                    # neww.append({'myintrest':your_intrest_data[1:-1]})
+                    non_intrestt[f'non_intrest_{i}'] = your_intrest_data
+            neww.append(non_intrestt)
+            #complexion
+            complexion_list = x
+            complexion_change_list = x['complexion'][1:-1].replace("'","").replace(" ","").split(",")
+            # print(your_intrest)
+            for i, your_intrest_data in enumerate(complexion_change_list):
+                    # neww.append({'myintrest':your_intrest_data[1:-1]})
+                    complexion_list[f'complexion_{i}'] = your_intrest_data
+            neww.append(complexion_list)
+            #food_taste
+            food_taste_list = x
+            food_taste_change_list = x['food_taste'][1:-1].replace("'","").replace(" ","").split(",")
+            # print(your_intrest)
+            for i, your_intrest_data in enumerate(food_taste_change_list):
+                    # neww.append({'myintrest':your_intrest_data[1:-1]})
+                    food_taste_list[f'food_taste_{i}'] = your_intrest_data
+            neww.append(food_taste_list)
+        
+
+    
+        # percentage
+        alluserdata =[]
+        for x in alldata:
+            comparision_intrest = x['your_intrest'][1:-2].replace("'","").replace(" ","").split(",")
+            comparision_non_intrest = x['non_intrest'][1:-2].replace("'","").replace(" ","").split(",")
+            comparision_complexion = x['complexion'][1:-2].replace("'","").replace(" ","").split(",")
+            comparision_food_taste = x['food_taste'][1:-2].replace("'","").replace(" ","").split(",")
+            comparision_daily_diet_plan = x['daily_diet_plan'][1:-2].replace("'","").replace(" ","").split(",")
+            #intrest
+            ci=0
+            for i,y in enumerate(my_intrest):
+                if y in comparision_intrest:
+                    ci+=len(y[1:-2].replace("'","").replace(" ","").split(","))
+            # print("")
+            inte= int((ci*100)/len(my_intrest))
+            #non_intrest
+            cn = 0
+            for j,z in enumerate(non_intrest):
+                if z in comparision_non_intrest:
+                    cn+=len(z[1:-2].replace("'","").replace(" ","").split(","))
+            # print("")
+            ninte = int((cn*100)/len(non_intrest))
+            #complexion
+            co = 0
+            for j,h in enumerate(complexion):
+                if h in comparision_complexion:
+                    co+=len(h[1:-2].replace("'","").replace(" ","").split(","))
+            # print("")
+            comp = int((co*100)/len(complexion))
+            #food_taste
+            ft = 0
+            for j,f in enumerate(food_taste):
+                if f in comparision_food_taste:
+                    ft+=len(f[1:-2].replace("'","").replace(" ","").split(","))
+            # print("")
+            food = int((ft*100)/len(food_taste))
+            #daily dite plan
+            ddp = 0
+            for j,dp in enumerate(daily_diet_plan):
+                if dp in comparision_daily_diet_plan:
+                    ddp+=len(dp[1:-2].replace("'","").replace(" ","").split(","))
+            # print("")
+            diet = int((ddp*100)/len(daily_diet_plan))
+            total = inte+ninte+comp+food+diet
+            x['percentage'] = int(total/5)
+            alluserdata.append(x)
+        lenofid=[]
+        for le in alluserdata:
+            if le['percentage'] > 50:
+                lenofid.append(le)
+        print(len(lenofid))
+        print(lenofid)
+            
+        profile_pic = [my][0]['profile_picture']
+        #for target
+        for x in alldata:
+            res = ''.join([j for j in x['uid'] if not j.isdigit()])
+            x['target']=res
+            alluserdata.append(x)
+        # print(alluserdata)
+        
+        #my favorite list
+        try:
+            sent = requests.get(f"http://51.20.61.70:3000/favorites/{id}").json()
+        except:
+            sent = []
+        favoritemy=[]
+        try:
+            for f in sent[id]:
+                favoritemy.append(f['uid'])
+        except:
+            pass
+
+        mydata = [my]
+        my_preference="1"
+        # if request.method == "POST":
+        print(request.POST)
+        matc={
+            'a':request.POST['marital_status'],
+            'b':request.POST['physical_mental_status'],
+            'c':request.POST['email'],
+            'd':request.POST['family_status'],
+            'e':request.POST['age'],
+            'f':request.POST['height'],
+            'g':request.POST['education'],
+            'h':request.POST['Working']
+        }
+        p = []
+        for x in alldata:
+            if matc['a'] == x['marital_status'] :
+                a = x['uid']
+            elif matc['a'] == "":
+                a = ""
+            else:
+                a = "no"
+            if matc['b'] == x['physical_mental_status']:
+                b = x['uid']
+            elif matc['b'] == "":
+                b = ""
+            else:
+                b = "no"
+            if matc['c'] == x['email'] :
+                c = x['uid']
+            elif matc['c'] == "":
+                c = ""
+            else:
+                c = "no"
+            if matc['d'] == x['family_status']:
+                d = x['uid']
+            elif matc['d'] == "":
+                d = ""
+            else:
+                d = "no"
+            if matc['e'] == x['age']:
+                e = x['uid']
+            elif matc['e'] == "":
+                e = ""
+            else:
+                e = "no"
+            if matc['f'] == x['height']:
+                f = x['uid']
+            elif matc['f'] == "":
+                f = ""
+            else:
+                f = "no"
+            if matc['g'] == x['education_major']:
+                g = x['uid']
+            elif matc['g'] == "":
+                g = ""
+            else:
+                g = "no"
+            if matc['h'] in x['are_you_working_now']:
+                h = x['uid']
+            elif matc['h'] == "":
+                h = ""
+            else:
+                h = "no"
+            pref = {a,b,c,d,e,f,g,h}
+            print(pref)
+            if "no" not in pref:
+                pref.remove("")
+                for con in pref:
+                    p.append(con)
+                    print(p)
+            # else:
+            #     pref.remove("")
+            #     print(pref)
+
+        # print(p)
+                
+        my_preference=[]
+        userlist=[]
+        for y in alluserdata:
+            userlist.append(y['uid'])
+        # print(userlist)
+        for x in p:
+            # print(x)
+            numb = userlist.index(x)
+            # print(numb)
+            get_Selected = alluserdata[numb]
+            my_preference.append(get_Selected)
+        print("my_preference")
+        print(my_preference)
+        return Response(my_preference,status=status.HTTP_200_OK)
+    except:
+        return Response("server issue",status=status.HTTP_503_SERVICE_UNAVAILABLE)
+    
+# def trail(request):
+#     data = {
+#         'marital_status': ['Unmarried'],
+#         'physical_mental_status': [''],
+#         'email': [''],
+#         'family_status': [''],
+#         'age': [''],
+#         'height': [''],
+#         'education': [''],
+#         'Working': ['Yes']
+#         }
+#     response = requests.get("http://127.0.0.1:3000/my_preference/MWOJGKTCQ71",data=data)
+#     print(response.status_code)
+#     print(response.text)
+#     return HttpResponse(response.text)

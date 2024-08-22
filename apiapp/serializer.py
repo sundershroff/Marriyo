@@ -188,6 +188,9 @@ class ProfileFinderSerializer(serializers.Serializer):
     feedback = serializers.CharField()
     rating = serializers.CharField()
 
+    #complaints
+    complaints = serializers.CharField()
+    complaints_replay = serializers.CharField()
 
 
 

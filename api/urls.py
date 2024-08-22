@@ -102,6 +102,11 @@ urlpatterns = [
     path("all_pm_data/",views.all_pm_data),
     #chat
     path("chatting_profile/<id>",views.chatting_profile),
+    path("chatting/<id1>/<id2>",views.chatting),
+    path("chat_display/<id1>/<id2>",views.chat_display),
+    #my preference
+    path("my_preference/<id>",views.my_preference),
+    # path("trail/",views.trail),
 
 #superadmin
     
