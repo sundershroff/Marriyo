@@ -2150,9 +2150,38 @@ def insentives_settings(request,id):
     }
     return render(request,"insentives_settings.html",context)
 
-
-
-
+def matching_list(request,id):
+    value = request.COOKIES.get('superadmin')
+    if value != None:
+        print(value)
+        # return redirect("/Dashboard_profile_finder/{value}")
+    else:
+        return redirect("/superadmin")
+    try:
+        mydata = requests.get(f"http://127.0.0.1:3000/superadmin/my_data/{id}").json()[0]
+        access=""
+    except:
+        mydata = requests.get(f"http://127.0.0.1:3000/superadmin/single_third_party_userrr/{id}").json()
+        access=mydata['access_privilage'] 
+    all_data = requests.get("http://127.0.0.1:3000/superadmin/dummy_matching_list").json()
+    context = {
+        'key':mydata,
+        'current_path':request.get_full_path(),
+        'access':access,
+        'all_data':all_data,
+        
+    } 
+    if request.method == "POST":
+        print(request.POST)
+        if "delete" in request.POST:
+            response = requests.post("http://127.0.0.1:3000/superadmin/dummy_matching_list",data = request.POST)
+            print(response.status_code)
+        else:
+            print(request.FILES)
+            response = requests.post("http://127.0.0.1:3000/superadmin/dummy_matching_list",data = request.POST,files = request.FILES)
+            print(response.status_code)
+        return redirect(f"/dummy_matching_list/{mydata['id']}")
+    return render(request,"dummy_matching_list.html",context)
 
 
 

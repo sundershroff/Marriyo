@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	{% load static %}
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Super Admin Dashboard (Profile Finder)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style1.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_one.css'%}">
+	<link rel="stylesheet" href="{% static 'admin/css/ins.css'%}">
+</head>
+<body style="background-color:#f5f3fe;">
+
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+	{% include 'adminnav.html'%}
+		
+	</div>
+
+	<div class="super_adm_chi2"> 
+
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+
+
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static 'admin/images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="locl_adm_sec1 px-4  ">
+
+		<div class="pt-4"> 
+		  <h5 style="font-size: 20px;"><span style="color:#5a5050e6;">Matching List</span></h5>
+		</div>
+	  </div>
+	  
+	  <!-- over -->
+
+	  <!-- start -->
+	  <div class="section px-4 py-3">
+		<div class="use px-2">
+			<div class="row">
+				<form method="POST" enctype="multipart/form-data" style="
+				display: contents;
+			">
+			{% csrf_token %}
+			  <div class="col-md-8 bg-white">
+				<div class="add px-2 py-3 ">
+				   <h6 class="amt pt-3"><span class="atm1"style=" color: dimgray;">Add User Details</span></h6>
+					<div class="row mt-5">
+					  <div class="col-md-6">
+						<label class="form-label tit">Image <span style="color: red;">*</span></label>
+					  <input type="file" name="image" id="typeText" class="form-control" placeholder="Enter Image">
+					  </div>
+					  </div>
+					  <div class="row  ">
+					  <div class="col-md-6 mt-4">
+						<label class="form-label tit">User Name<span style="color:red;">*</span></label>
+						<input type="text" name="username" id="typeText" class="form-control" placeholder="Enter User Name">
+					  </div>
+					</div>
+					  <div class="row">
+					  <div class="col-md-6  mt-4">
+						<label class="form-label tit"> User Id<span style="color: red;">*</span></label>
+					  <input type="text" name="userid" id="typeText" class="form-control" placeholder="Enter User Id">
+					  </div>
+					</div>
+                    <div class="row">
+                        <div class="col-md-6  mt-4">
+                          <label class="form-label tit"> Tagline<span style="color: red;">*</span></label>
+                        <input type="text" name="tagline" id="typeText" class="form-control" placeholder="Enter Tagline">
+                        </div>
+                      </div>
+					<div class="prof_personal_savefilt1  mt-5 mb-5">
+					  <!-- <button class="prof_personal_filbtn1 my-3" type="reset">Cancel</button> -->
+					  <button class="prof_personal_filbtn2 " type="submit">Update</button>
+					</div>
+				  </div>
+				</form>
+			  </div>
+			  <div class="col-md-4 and " style="overflow: auto;">
+                <div class="bg-white mx-2" style="height: 0;">
+                    {% for x in all_data %}
+                    
+                    
+				  <div class="addd px-4 py-3 m-2" style="border-radius: 10px;box-shadow: 0px 0px 3px;">
+					 <div class="row" style="border-radius: 10px;">
+                        <div class="col-3" style="
+                        align-items: center;display: flex;">
+                            <img src="{{x.image}}" alt="" style="
+                            width: 70px;height: 70px;border-radius: 50%;">
+                        </div>
+                        <div class="col-5">
+                            <h5>{{x.username}}</h5>
+                            <h6 style="color: #000082;">{{x.userid}}</h6>
+                            <h6>{{x.tagline}}</h6>
+                        </div>
+                        <div class="col-4" style="
+                        justify-content: end;display: flex;align-items: center;">
+                        <form method = "POST">
+                            {% csrf_token %}
+                            <button type="submit" name="delete" value="{{x.id}}" style="background: red;color: white;border: 1px solid white;border-radius: 6px;padding: 5px;">Remove</button>
+                        </form>
+                        </div>
+                     </div>
+
+  
+					</div>
+                    {% endfor %}
+                    </div>
+				  </div>
+			  </div>
+			</div>
+		</div>
+	  </div>
+
+	
+	</div>
+	
+</div>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+
+<!--js -->
+<script type="text/javascript" src="./js/event1.js"></script>
+
+
+</body>
+</html>

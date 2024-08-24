@@ -75,7 +75,7 @@ label.form-check-label.tit1 {
     color: #69697a;
 }
 .addd.px-4.py-3 {
-    padding-bottom: 7rem !important;
+    /* padding-bottom: 7rem !important; */
 }
 @media(max-width:767px){
 	.col-md-4.and {

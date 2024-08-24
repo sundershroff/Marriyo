@@ -134,6 +134,7 @@ urlpatterns = [
     path('superadmin/pi_performance_calculations/<id>',super_views.pi_performance_calculations),  
     path('superadmin/super_admin_hm_signup',super_views.super_admin_hm_signup),  
     path('superadmin/dropdownn/<id>',super_views.dropdownn),
+    path('superadmin/dummy_matching_list',super_views.dummyy_matching_list),
     # path('superadmin/dropdownn_cities_delete/<id>',super_views.dropdownn_cities_delete),
 
 
@@ -318,6 +319,7 @@ urlpatterns = [
     path('am_delete_data/',am_views.am_delete_data),
     path('am_notify_status_true/<id>',am_views.am_notify_status_true),
     path('am_notify_status_false/<id>',am_views.am_notify_status_false),
+    path('my_referal_details/<id>',am_views.my_referal_details),
 
    
 

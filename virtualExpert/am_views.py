@@ -684,3 +684,29 @@ def am_notify_status_false(request,id):
         return Response("success",status=status.HTTP_200_OK)
     except:
         return Response("nostatus",status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET'])
+def my_referal_details(request,id):
+    try:
+        new=[]
+        all_aff_details=requests.get("http://51.20.61.70:3000/all_aff_details").json()
+        all_profile_data=requests.get("http://51.20.61.70:3000/my_profile_finder_data/").json()
+
+        # all_date=requests.get(f"http://127.0.0.1:3000/date_in_range/{id}").json()
+        # print(all_date)
+        for p in all_profile_data:
+            h=p.get("referral_code")
+            if h == id:
+                # print("profile_finder",p)
+                new.append(p)
+
+        for i in all_aff_details:    
+            a=(i.get("referral_code"))
+            # print(a)
+            if id == a:
+                new.append(i)
+                
+        return Response(new,status=status.HTTP_200_OK)
+        
+    except:
+        return Response("server issue",status=status.HTTP_503_SERVICE_UNAVAILABLE)

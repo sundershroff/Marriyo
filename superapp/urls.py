@@ -77,6 +77,7 @@ urlpatterns = [
     path('subedit/<id>/<sid>', views.subscriptionedit),
     path('External_expense/<id>', views.External_expense),
     path('insentives_settings/<id>', views.insentives_settings),
+    path('dummy_matching_list/<id>', views.matching_list),
 
 
 

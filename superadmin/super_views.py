@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from apiapp.models import ProfileFinder,private_investigator
 from virtualExpert.models import hiringmanager,Profilemanager,salesmanager,ad_provider,ad_distributor,affliate_marketing
-from superadmin.models import superadmin_data,emra_coin,subscription,commision,third_party_user,pi_performance_calculation,insentives_settings,pi_settings,external_expenses,dropdown
+from superadmin.models import superadmin_data,emra_coin,subscription,commision,third_party_user,pi_performance_calculation,insentives_settings,pi_settings,external_expenses,dropdown,dummy_matching_list
 from superadmin import serializer
 from superadmin import extension
 from django.core.files.storage import FileSystemStorage
@@ -12,6 +12,7 @@ import json
 import yagmail
 from virtualExpert import hm_extension
 from virtualExpert import hm_serializer
+from django.views.decorators.csrf import csrf_exempt
 # from apiapp.models import *
 # from virtualExpert.models import *
 
@@ -906,6 +907,39 @@ def dropdownn_cities_delete(request,id):
         
                 
         return Response(status=status.HTTP_200_OK)
+    except:
+        return Response({"Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@csrf_exempt 
+@api_view(['GET','POST'])
+def dummyy_matching_list(request):
+    try:
+        if request.method == "GET":
+            data = dummy_matching_list.objects.all().values()
+            return Response(data,status=status.HTTP_200_OK)
+        
+        if request.method == "POST":
+            if "delete" in request.POST:
+                print("delete")
+                data = dummy_matching_list.objects.get(id = request.POST['delete'])
+                print(data)
+                data.delete()
+            else:
+                print(request.POST)
+                print(request.FILES)
+                fs = FileSystemStorage()            
+                id_card = str(request.FILES['image']).replace(" ", "_")
+                path = fs.save(f"superadmin/dummy_matching_list/"+id_card, request.FILES['image'])
+                imageone = all_image_url+fs.url(path)
+                print(imageone)
+                data = dummy_matching_list.objects.create(
+                    image = imageone,
+                    username = request.POST['username'],
+                    userid = request.POST['userid'],
+                    tagline = request.POST['tagline']
+                )
+                data.save()
+            return Response(status=status.HTTP_200_OK)
     except:
         return Response({"Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 

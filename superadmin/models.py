@@ -102,3 +102,9 @@ class dropdown(models.Model):
     familystatus = models.TextField(null=True)
     category = models.TextField(null=True)
     values = models.TextField(null=True)
+    
+class dummy_matching_list(models.Model):
+    image = models.TextField(null=True)
+    username = models.TextField(null=True)
+    userid = models.TextField(null=True)
+    tagline = models.TextField(null=True)
