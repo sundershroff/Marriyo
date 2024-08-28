@@ -211,6 +211,7 @@ def upload_acc(request,id):
         neww=[]
         response = requests.get('https://api.first.org/data/v1/countries').json()
         all = requests.get('https://countriesnow.space/api/v0.1/countries/states').json()
+        hiringmanager_fees = requests.get('http://127.0.0.1:3000/superadmin/fees_api').json()
         states = json.dumps(all["data"])
         al = (all["data"])
         for x in al:
@@ -219,7 +220,8 @@ def upload_acc(request,id):
         countryname = json.dumps(neww)
     
         context = {'response': response, 'region': response,'all':al,
-                    'country': countryname,'states': states,'hiring_manager':hiring_manager}
+                    'country': countryname,'states': states,'hiring_manager':hiring_manager,
+                    'hiringmanager_fees':hiringmanager_fees['fees']}
         if request.method == "POST":
             u_id=request.POST['notary']
             dictio = dict(request.POST)

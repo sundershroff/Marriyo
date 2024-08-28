@@ -135,6 +135,7 @@ urlpatterns = [
     path('superadmin/super_admin_hm_signup',super_views.super_admin_hm_signup),  
     path('superadmin/dropdownn/<id>',super_views.dropdownn),
     path('superadmin/dummy_matching_list',super_views.dummyy_matching_list),
+    path('superadmin/fees_api',super_views.fees_api),
     # path('superadmin/dropdownn_cities_delete/<id>',super_views.dropdownn_cities_delete),
 
 

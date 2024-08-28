@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Subscription(Super User)</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<!--nav bar icon-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.css" />
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- bs -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_subscription.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_subscription.css'%}">
+    <link rel="stylesheet" href="{% static 'admin/css/ins.css'%}">
+</head>
+<body style="background-color:  #f5f3fe;">
+
+	<div class="super_adm_par">
+
+	<div class="super_adm_chi1" id="super_admin_event1"> 
+
+
+			<div id="super_adm_navbtn" class="super_admin_movement">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+	<img src="{% static 'admin/images/logo.png'%}">
+
+	{% include 'adminnav.html'%}
+		
+	</div>
+
+	<div class="super_adm_chi2"> 
+		<div class="super_adm_head">
+
+		<div class="super_adm_cont1">
+			<div>
+				<i class="fa-regular fa-bell"></i>
+			</div>
+			<div class="super_adm_cont1_cur" id="super_adm_event1">
+
+				<img src="{% static 'admin/images/girl3.png'%}">
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+		</div>	
+	</div>
+
+
+	<div class="container">
+		<div class="row ">
+		<div class="col-12">
+		  
+			<div class="addsea mb-2 mt-4">
+				<div><h4> <span class="count"><a href="/subscription/{{key.id}}" style="text-decoration: none;">Subscription></a></span>&nbsp;&nbsp;<span class="count">Fees></span></h4></div>  
+				<!-- <div class="locl_adm_form">
+					{% if "Add new Subscription" in access  %}
+					<a href="/subscriptionadd/{{key.id}}"><button data-bs-toggle="modal" data-bs-target="#Addnew1" class="Addnew1">Add New <i class="bi bi-plus-circle"></i></button></a>
+					{% elif access == "" %}
+					<a href="/subscriptionadd/{{key.id}}"><button data-bs-toggle="modal" data-bs-target="#Addnew1" class="Addnew1">Add New <i class="bi bi-plus-circle"></i></button></a>
+
+					{% else %}
+					{% endif %}
+				</div> -->
+				</div> 
+		</div>
+	  </div>
+	  <!-- over -->
+
+	  <div class="section px-4 py-3">
+		<div class="use px-2">
+			<div class="row">
+				<form method="POST" style="
+				display: contents;
+			">
+			{% csrf_token %}
+			  <div class="col-md-8 bg-white">
+				<div class="add px-2 py-3 ">
+				   <h6 class="amt pt-3"><span class="atm1"style=" color: dimgray;">Fees For Hiring Manager</span></h6>
+					<div class="row mt-5">
+					  <div class="col-md-6">
+						<label class="form-label tit">Amount <span style="color: red;">*</span></label>
+					  <input type="text" name="fees" id="typeText" class="form-control" placeholder="Enter Amount">
+					  </div>
+					  </div>
+				  <div class="row">
+					</div>
+					<div class="prof_personal_savefilt1  mt-5 mb-5">
+					  <!-- <button class="prof_personal_filbtn1 my-3" type="reset">Cancel</button> -->
+					  <button class="prof_personal_filbtn2 " type="submit">Update</button>
+					</div>
+				  </div>
+				</form>
+			  </div>
+			  <div class="col-md-4 and ">
+				  <div class="addd px-4 py-3 ">
+					  <h6 class="pt-3" style="font-weight: 700;">Current Fees</h6>
+					 
+
+					  <div class="admin  ">
+						<h6 class="bor px-3 mt-3" > <span style="font-weight: 700;font-size: 30px;" >INR {{fees}}</span> </h6>
+
+					  </div>
+					  <!-- <div class="admin ">
+						<h6 class="bor px-3 mt-5" > <span style="font-weight: 700;font-size: 30px;" > USD {{incentive_data.Incentives_Amount_USD}}</span> </h6>
+  
+					</div> -->
+				  </div>
+			  </div>
+			</div>
+		</div>
+
+
+
+	  </div>
+	</div>
+</div>
+
+<div class="super_adm_profie" id="super_adm_event2">
+    <div> 	
+	  <a href="#"><i class="fa-solid fa-user mx-3"></i>My Account</a>
+    </div>
+
+    <div>
+    	<a href="#"><i class="fa-solid fa-gear mx-3"></i>Account Setting</a>
+    </div>
+	
+	<div>
+		<a href="/log_out"><i class="fa-solid fa-arrow-right-from-bracket mx-3"></i>Logout</a>
+	</div>
+	
+</div>
+
+
+<!--js -->
+<script type="text/javascript" src="{% static 'admin/js/event1.js'%}"></script>
+
+
+</body>
+</html>

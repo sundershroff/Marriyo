@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_subscription.css'%}">
 	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/style_one_subscription.css'%}">
 	<link rel="stylesheet" href="{% static 'admin/css/sub.css'%}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body style="background-color:#f5f3fe;">
 
@@ -84,7 +85,7 @@
 			  <div class="col-md-6">
 				<label class="form-label tit">Title of the plan <span style="color: blueviolet;">*</span></label>
 			  <!-- <input type="text" id="typeText" name="Title_of_the_plan" class="form-control" placeholder="Enter"> -->
-			  <select name="Title_of_the_plan" class="form-select">
+			  <select name="Title_of_the_plan" id="titleofplan" class="form-select">
 				<option value="Profile Finder">Profile Finder</option>
 				<option value="Private Investigator">Private Investigator</option>
 				<option value="Profile Manager">Profile Manager</option>
@@ -111,16 +112,7 @@
 			</div>
   
   
-			  <div class="row py-3"> 
-				<div class="col-md-3">
-				  <label class="form-label tit">Amount <span class="advr">(With Advertisment)</span></label>
-				  <input type="text" name="Amount_with_ad" id="typeText" class="form-control" placeholder="Enter">
-				</div>
-				<div class="col-md-3 amt">
-				  <label class="form-label tit">Amount <span  class="advr">(Without Advertisment)</span></label>
-			  <input type="text" name="Amount_without_ad" id="typeText" class="form-control" placeholder="Enter">
-				</div>
-			  </div>
+			  
   
 			  <div class="row py-3">
 				<div class="col-md-3">
@@ -139,7 +131,29 @@
 			  <input type="date" name="Validity_to" id="typeText tit2" class="form-control " placeholder="To">
 				</div> -->
 			  </div>
-  
+		<div id="virtualexpertamount">
+			<div class="row py-3"> 
+				  <input type="hidden" name="Amount_without_ad" id="typeText" class="form-control" placeholder="Enter">
+				<div class="col-md-6 amt">
+				  <label class="form-label tit">Amount <span  class="advr"></span></label>
+			  <input type="number" name="Amount_with_ad" id="typeText" class="form-control" placeholder="Enter">
+				</div>
+			  </div>
+		</div>
+		<div id="profilefinder_only">
+			  <div class="row py-3"> 
+				<div class="col-md-6">
+				  <label class="form-label tit">Amount <span class="advr"></span></label>
+				  <input type="number" name="Amount_with_ad" id="typeText" class="form-control" placeholder="Enter">
+				</div>
+				<input type="hidden" name="Amount_without_ad" id="typeText" class="form-control" placeholder="Enter">
+
+				<!-- <div class="col-md-3 amt">
+				  <label class="form-label tit">Amount <span  class="advr">(Without Advertisment)</span></label>
+			  <input type="text" name="Amount_without_ad" id="typeText" class="form-control" placeholder="Enter">
+				</div> -->
+			  </div>
+
 			  <div class="row py-3">
 				<div class="col-md-3">
 				  <label class="form-label tit">Option1 </label>
@@ -174,15 +188,22 @@
 						<option value="Yes">Yes</option>
 						<option value="No">No</option>
 				  </div>
-			  </div><br>
-  
-  
-			  <div class="prof_personal_savefilt1 py-5">
-				<br><input type="submit" class="prof_personal_filbtn2 mb-5 " value="submit">
-				</div>
+			  </div>
+		</div> 
+
+			  
 		</div>
-  
+		<div id="submit_buttonn" class="prof_personal_savefilt1 py-5">
+			<input type="submit" class="prof_personal_filbtn2 mb-5 " value="submit" style="display: none;">
+			</div>
+			
 	  </div>
+	</div>
+	  <input type="submit" class="prof_personal_filbtn2 mb-5 " value="submit" style="
+	  padding: 3px 20px 3px 20px;
+	  border-radius: 6px;
+	  width: 150px;
+  ">
 	</form>
 	
 	</div>
@@ -203,7 +224,23 @@
 	</div>
 	
 </div>
-
+<script>
+	$(document).ready(function(){
+		$('#virtualexpertamount').hide();
+		$('#titleofplan').change(function() { 
+			var selectedOption = $(this).val(); 
+			if (selectedOption === 'Profile Finder') { 
+			$('#profilefinder_only').show(); 
+			$('#virtualexpertamount').hide();
+			}
+		else{ 
+	
+			$('#profilefinder_only').hide(); 
+			$('#virtualexpertamount').show();
+			}
+		}); 
+	});
+	</script>
 
 <!--js -->
 <script type="text/javascript" src="./js/event1.js"></script>

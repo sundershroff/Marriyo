@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from apiapp.models import ProfileFinder,private_investigator
 from virtualExpert.models import hiringmanager,Profilemanager,salesmanager,ad_provider,ad_distributor,affliate_marketing
-from superadmin.models import superadmin_data,emra_coin,subscription,commision,third_party_user,pi_performance_calculation,insentives_settings,pi_settings,external_expenses,dropdown,dummy_matching_list
+from superadmin.models import superadmin_data,emra_coin,subscription,commision,third_party_user,pi_performance_calculation,insentives_settings,pi_settings,external_expenses,dropdown,dummy_matching_list,fees_hiringmanager
 from superadmin import serializer
 from superadmin import extension
 from django.core.files.storage import FileSystemStorage
@@ -315,10 +315,15 @@ def subscriptionN(request,id):
                 # else:
                 #     calcu = f"{int(days_difference/30)}"+ " "+"months"
                 # print(calcu)
-                if request.POST['Amount_with_ad'] == "":
+                print(request.POST.getlist('Amount_with_ad'))
+                a = request.POST.getlist('Amount_with_ad') 
+                b = ' '.join(a).split()
+                print(b)
+                # print(b[0])
+                if b == []:
                     Amount_with_ad = 0
                 else:
-                    Amount_with_ad = request.POST['Amount_with_ad']
+                    Amount_with_ad = b[0]
                 if request.POST['Amount_without_ad'] == "":
                     Amount_without_ad = 0
                 else:
@@ -355,8 +360,8 @@ def subscriptionN(request,id):
                 # print(data)
                 dataserializer = serializer.subscription_Serializer(data=data)
                 if dataserializer.is_valid():
-                    if request.POST['Amount_with_ad'] == "":
-                        dataserializer.validated_data['Amount_with_ad'] =None
+                    # if request.POST['Amount_with_ad'] == "":
+                    #     dataserializer.validated_data['Amount_with_ad'] =None
                     if request.POST['Amount_without_ad'] == "":
                         dataserializer.validated_data['Amount_without_ad'] =None
                     if request.POST['value1'] == "":
@@ -938,6 +943,31 @@ def dummyy_matching_list(request):
                     userid = request.POST['userid'],
                     tagline = request.POST['tagline']
                 )
+                data.save()
+            return Response(status=status.HTTP_200_OK)
+    except:
+        return Response({"Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@csrf_exempt 
+@api_view(['GET','POST'])
+def fees_api(request):
+    try:
+        if request.method == "GET":
+            data = fees_hiringmanager.objects.filter(id = 1).values()[0]
+            print(data)
+            return Response(data,status=status.HTTP_200_OK)
+        
+        if request.method == "POST":
+            if "delete" in request.POST:
+                print("delete")
+                data = dummy_matching_list.objects.get(id = request.POST['delete'])
+                print(data)
+                data.delete()
+            else:
+                print(request.POST)
+                print("wded")
+                data = fees_hiringmanager.objects.get(id = 1)
+                data.fees = request.POST['fees']
                 data.save()
             return Response(status=status.HTTP_200_OK)
     except:

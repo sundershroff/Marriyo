@@ -1440,6 +1440,46 @@
 
 </div>
 
+{% elif 'fees' in current_path %}
+<div class="super_adm_sidenav" id="style-7">
+    <a href="/Dashboard_profile_finder/{{key.id}}" ><i class="fa-solid fa-table-list"></i>  <span>Dashboard</span></a>
+    <a href="/public_user/{{key.id}}"><i class="fa-solid fa-user"></i>  <span>Public User</span></a>
+    <a href="/hiring_manager/{{key.id}}" ><i class="fa-solid fa-file-lines"></i>  <span>Hiring Manager</span></a>
+    <a href="/profile_manager/{{key.id}}"><i class="fa-solid fa-file-lines"></i>  <span>Profile Manager</span></a>
+    <a href="/sales_person/{{key.id}}"  ><i class="fa-solid fa-lock"></i>  <span>The Sales</span></a>
+    <a href="/affiliate_marketing/{{key.id}}"><i class="fa-solid fa-lock"></i>  <span>Affiliate Marketing</span></a>
+
+    <a href="/private_investigator/{{key.id}}"><i class="fa-solid fa-lock"></i>  <span>The Private Investigator</span></a>
+    <a href="/ad_provider/{{key.id}}"><i class="fa-solid fa-eye"></i>  <span>Add Provider</span></a>
+    <a href="/ad_distributor/{{key.id}}"><i class="fa-solid fa-eye"></i>  <span>Add Distributor</span></a>
+    {% if "Access Emara Coin" in access %}
+        <a href="/emra_coin/{{key.id}}"><i class="fa-brands fa-bitcoin"></i>  <span>Emara Coin</span></a>
+    {% elif access == "" %}
+        <a href="/emra_coin/{{key.id}}"><i class="fa-brands fa-bitcoin"></i>  <span>Emara Coin</span></a>
+    {% else %}
+    {% endif %}
+    {% if "Access Commission Calculator" in access %}
+    <a href="/commision_calculator/{{key.id}}"><i class="fa-solid fa-arrows-left-right"></i>  <span>Commission Calculator</span></a>
+    {% elif access == "" %}
+    <a href="/commision_calculator/{{key.id}}"><i class="fa-solid fa-arrows-left-right"></i>  <span>Commission Calculator</span></a>
+    {% else %}
+    {% endif %}    <a href=""><i class="fa-solid fa-envelope"></i><span>Email Templates</span></a>
+    {% if "Complaint List Access" in access %}
+    <a href="/complaint_list/{{key.id}}"><i class="fa-solid fa-house"></i><span>Complaint List</span></a>
+    {% elif access == "" %}
+    <a href="/complaint_list/{{key.id}}"><i class="fa-solid fa-house"></i><span>Complaint List</span></a>
+    {% else %}
+    {% endif %}
+    <a href="/dropdown_values/{{key.id}}" ><i class="fa-solid fa-arrows-turn-to-dots"></i><span>Dropdown Values</span></a>
+    <a href="/third_party_users/{{key.id}}" ><i class="fa-solid fa-user-plus"></i><span>Third Party Users</span></a>
+    <a href="/subscription/{{key.id}}" style="color: white;opacity: 100%;"><i class="fa-solid fa-circle-check"></i><span>Subscription</span></a>
+    <a href="/External_expense/{{key.id}}"><i class="fa-solid fa-file-invoice"></i><span>External Expenses</span></a>
+        <a href="/insentives_settings/{{key.id}}"><i class="fa-solid fa-id-badge"></i><span>Incentives Settings</span></a>
+    <a href="/dummy_matching_list/{{key.id}}"><i class="fa-solid fa-id-badge"></i><span>Matching List</span></a>
+
+</div>
+
+
 {% elif 'subscriptionadd' in current_path %}
 <div class="super_adm_sidenav" id="style-7">
     <a href="/Dashboard_profile_finder/{{key.id}}" ><i class="fa-solid fa-table-list"></i>  <span>Dashboard</span></a>

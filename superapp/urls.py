@@ -74,6 +74,7 @@ urlpatterns = [
     path('third_party_user_Add/<id>/<uid>', views.third_party_user_Add),
     path('subscription/<id>', views.subscription),
     path('subscriptionadd/<id>', views.subscriptionadd),
+    path('fees/<id>', views.fees),
     path('subedit/<id>/<sid>', views.subscriptionedit),
     path('External_expense/<id>', views.External_expense),
     path('insentives_settings/<id>', views.insentives_settings),

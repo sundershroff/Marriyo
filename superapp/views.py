@@ -2041,11 +2041,55 @@ def subscriptionadd(request,id):
             return redirect(f"/subscription/{id}")
 
         else:
-            response = requests.post(f"http://127.0.0.1:3000/superadmin/subscription/{id}",data=request.POST)
+            data = {
+                'Subscription_Country': request.POST['Subscription_Country'],
+                'Title_of_the_plan': request.POST['Title_of_the_plan'],
+                'Type_Of_Subscription': request.POST['Type_Of_Subscription'],
+                'Validity': request.POST['Validity'],
+                'Amount_without_ad': request.POST.getlist('Amount_without_ad'),
+                'Amount_with_ad': request.POST.getlist('Amount_with_ad'),
+                'Option1': request.POST['Option1'],
+                'value1': request.POST['value1'],
+                'Option2': request.POST['Option2'],
+                'value2': request.POST['value2'],
+                'Option3': request.POST['Option3'],
+                'value3': request.POST['value3']
+            }
+            response = requests.post(f"http://127.0.0.1:3000/superadmin/subscription/{id}",data=data)
             print(response.status_code)
             print(response.text)
-            return redirect(f"/subscription/{id}")
+            if response.status_code == 200:
+                return redirect(f"/subscription/{id}")
     return render(request,"subscriptionadd.html",context)
+
+def fees(request,id):
+    value = request.COOKIES.get('superadmin')
+    if value != None:
+        print(value)
+        # return redirect("/Dashboard_profile_finder/{value}")
+    else:
+        return redirect("/superadmin")
+    try:
+        mydata = requests.get(f"http://127.0.0.1:3000/superadmin/my_data/{id}").json()[0]
+        access=""
+    except:
+        mydata = requests.get(f"http://127.0.0.1:3000/superadmin/single_third_party_userrr/{id}").json()
+        access=mydata['access_privilage'] 
+    fees = requests.get(f"http://127.0.0.1:3000/superadmin/fees_api").json()
+
+    context = {
+        'key':mydata,
+        'current_path':request.get_full_path(),
+        'access':access,
+        'fees':fees['fees'],
+    }   
+    if request.method == "POST":
+        print(request.POST)
+        data = requests.post(f"http://127.0.0.1:3000/superadmin/fees_api",data = request.POST)
+        print(data.status_code)
+        if data.status_code == 200:
+            return redirect(f"/fees/{mydata['id']}")
+    return render(request,"fees.html",context)
 
 def subscriptionedit(request,id,sid):
     value = request.COOKIES.get('superadmin')

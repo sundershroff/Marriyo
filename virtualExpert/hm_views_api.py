@@ -384,6 +384,7 @@ def hm_upload_account(request,id):
             # 'arn_no': arn_no,                       
         }
         print(notary_issued)
+        print(data)
         basicdetailsserializer = hm_serializer.upload_acc_Serializer(
             instance=userdata, data=data, partial=True)
         print(userdata)
@@ -697,6 +698,7 @@ def ad_provider_upload_account(request,id):
         print(request.FILES)
         fs = FileSystemStorage()
         userdata = ad_provider.objects.get(uid=id)
+        print(userdata)
         if 'id_card' in request.FILES:
             id_card = str(request.FILES['id_card']).replace(" ", "_")
             path_one = fs.save(f"virtual_expert/ad_provider/{id}/id_card/"+id_card, request.FILES['id_card'])
@@ -719,6 +721,7 @@ def ad_provider_upload_account(request,id):
             verification_img = all_image_url+fs.url(path_three)
         else:
             verification_img = userdata.verification_img
+        print("allimages")
         #office
         if 'office_city' in request.POST:
             office_city = request.POST['office_city']

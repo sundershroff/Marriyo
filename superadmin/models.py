@@ -108,3 +108,7 @@ class dummy_matching_list(models.Model):
     username = models.TextField(null=True)
     userid = models.TextField(null=True)
     tagline = models.TextField(null=True)
+
+class fees_hiringmanager(models.Model):
+    fees = models.TextField(null=True)
+
